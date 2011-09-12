@@ -15,7 +15,9 @@
     <body>
         <%
         if (session.getAttribute("usuario")==null){
+            
             response.sendRedirect("login.jsp");
+            
         } else {
         %>
         <h1> Editar </h1>
