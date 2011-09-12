@@ -1,0 +1,164 @@
+/* 
+    Document   : styles
+    Created on : 11/09/2011, 22:56:58
+    Author     : Max e João Luiz
+    Description:
+        Purpose of the stylesheet follows.
+*/
+* {
+	margin:0;
+	padding:0;
+	list-style:none;
+	vertical-align:baseline;
+}
+body {
+	background:#948c75;
+	margin:0;
+	padding:0;
+	color:#000;
+}
+/* TOP INICIO */
+.bgheader {
+	background:url(../images/bkg/header_bkg.png) top repeat-x;
+	width:100%;
+	height:100px;
+}
+.header {
+	width:950px;
+	height:100px;
+	margin:0 auto;
+	padding:0 15px;
+	background-color:transparent;
+}
+.header h1{
+	height:80px;
+	width:170px;
+	margin:10px 0;
+	float:left;
+}
+.header ul {
+	padding:0px;
+    margin:65px 0 0 0;
+    width:350px;
+    float: right;
+    list-style:none;
+}
+.header ul li {	
+	display: inline;
+	float:right;
+	vertical-align:middle;
+}
+.header ul li a {
+	height:25px;
+    float:left;
+	padding:5px 25px;
+    /* visual do link */
+    text-decoration: none;
+	color:#7a6a53;
+	font-weight:bold;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+#what{
+    background-color:#d5ded9;
+}
+#about{
+    background-color:#d9ceb2;
+}
+#what:hover{
+    background-color:#ebf2ee;
+}
+#about:hover{
+    background-color:#ebe3ce;
+}
+
+/*CONTEINER*/
+.bgcontainer {
+	width:100%;
+	min-height:400px;
+	margin:0;
+	padding:0;
+	border-width:0;
+	background:#FFFFFF;
+}
+.container {
+	width:950px;
+	min-height:370px;
+	margin: 0 auto;
+	padding:15px;
+}
+.artes {
+	width:650px;
+	height:370px;
+	float:left;
+	margin:0;
+	border: dashed 1px black;
+}
+
+/* FOOTER */
+.bgfooter {
+	width:100%;
+	height:50px;
+	background:url(../images/bkg/footer_bkg.png) repeat-x;
+}
+.footer {
+	width:950px;
+	height:50px;
+	margin:0 auto;
+	padding:0 15px;
+}
+.footer address{
+	height:20px;
+	padding:15px 0 0 0;
+	color:#FFF;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:10px;
+	font-style:normal;
+	line-height:12px;
+}
+
+/*LOGIN*/
+.login{
+	width:249px;
+	height:199px;
+	float:right;
+	background-color:#d5ded9;
+	border: solid 1px #acb7b2;
+}
+.login form{
+	margin:25px 15px;	
+}
+.login p{
+	margin: 0 0 5px 0;	
+}
+.login input{
+	width:208px;
+	height:15px;
+	margin:0;
+	border: solid 1px #acb7b2;
+	padding:5px;
+	background-color:#f5f9f7;
+	/*Estilo da fonte*/
+	color:#948c75;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+.login label{
+	color:#7a6a53;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:10pt;	
+}
+.login input[type=submit]{
+	width:80px;
+	height:30px;
+	float:right;
+	margin:10px 0 0 0;
+	border-width:0;
+	background:url(../images/bt_entrar.png) no-repeat;	
+	cursor:pointer;
+}
+.login input[type=submit]:hover{
+	background:url(../images/bt_entrar_hover.png) no-repeat;	
+}
+root { 
+    display: block;
+}
+
