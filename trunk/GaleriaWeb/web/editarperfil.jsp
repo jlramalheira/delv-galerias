@@ -19,7 +19,6 @@
         } else {
         %>
         <h1> Editar </h1>
-        <p>Jota Bundão</p>
         <a href="home.jsp">Voltar</a>
         <%
         }
