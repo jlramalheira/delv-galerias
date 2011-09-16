@@ -1,6 +1,7 @@
 package controle;
 
 import dao.Dao;
+import entidades.Perfil;
 import entidades.Usuario;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -19,6 +20,7 @@ import javax.servlet.http.HttpSession;
 public class NovoUsuario extends HttpServlet {
 
     Dao<Usuario> daoUsuario = new Dao<Usuario>(Usuario.class);
+    Dao<Perfil> daoPerfil = new Dao<Perfil>(Perfil.class);
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -54,6 +56,16 @@ public class NovoUsuario extends HttpServlet {
             daoUsuario.insert(u);
 
             session.setAttribute("usuario", u);
+            
+            //Cria o novo perfil do usuário
+            Perfil p = new Perfil();            
+            p.setUsuario(u);            
+            daoPerfil.insert(p);
+            
+            session.setAttribute("perfil", p);
+            
+            
+            
             try {
                 Email.sendEmail(email, "Obrigado por partiipar do Delv",
                         "Olá "+login+", \nObrigado por fazer a sua conta no Delv Galerias® "
