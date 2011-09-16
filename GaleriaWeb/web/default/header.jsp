@@ -7,8 +7,8 @@
     <div class="header">
         <h1><img src="images/logo.png" alt="Delv Galerias" width="170" height="80"/></h1>
         <ul>
-            <li><a href="#" id="what">O que é Delv?</a></li>
-            <li><a href="#" id="about">Quer participar?</a></li>
+            <li><a href="quemSomos.jsp" id="what">O que é Delv?</a></li>
+            <li><a href="cadastro.jsp" id="about">Quer participar?</a></li>
         </ul>
     </div>
 </div>
