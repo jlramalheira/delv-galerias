@@ -19,6 +19,7 @@
         } else {
         %>
         <h1> Editar </h1>
+        <p>Sou biba</p>
         <a href="home.jsp">Voltar</a>
         <%
         }
