@@ -9,7 +9,6 @@
     <class>entidades.Galeria</class>
     <class>entidades.Imagem</class>
     <class>entidades.Pais</class>
-    <class>entidades.Perfil</class>
     <class>entidades.Usuario</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>

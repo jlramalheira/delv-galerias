@@ -29,14 +29,14 @@ public class Comentario implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dia;
     @ManyToOne
-    private Usuario usuario;
+    private Usuario remetente;
     private String tipo;
     @ManyToOne
     private Imagem imagem;
     @ManyToOne
     private Diario diario;
     @ManyToOne
-    private Perfil perfil;
+    private Usuario destinatinatario;
 
     public int getId() {
         return id;
@@ -70,14 +70,6 @@ public class Comentario implements Serializable {
         this.tipo = tipo;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
     public Diario getDiario() {
         return diario;
     }
@@ -94,15 +86,22 @@ public class Comentario implements Serializable {
         this.imagem = imagem;
     }
 
-    public Perfil getPerfil() {
-        return perfil;
+    public Usuario getDestinatinatario() {
+        return destinatinatario;
     }
 
-    public void setPerfil(Perfil perfil) {
-        this.perfil = perfil;
+    public void setDestinatinatario(Usuario destinatinatario) {
+        this.destinatinatario = destinatinatario;
     }
-    
-    
+
+    public Usuario getRemetente() {
+        return remetente;
+    }
+
+    public void setRemetente(Usuario remetente) {
+        this.remetente = remetente;
+    }
+        
     @Override
     public int hashCode() {
         int hash = 0;

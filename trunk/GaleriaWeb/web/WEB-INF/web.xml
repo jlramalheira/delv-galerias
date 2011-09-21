@@ -8,6 +8,14 @@
         <servlet-name>Login</servlet-name>
         <servlet-class>controle.Login</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletEditaLogin</servlet-name>
+        <servlet-class>controle.ServletEditaLogin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletEditaPerfil</servlet-name>
+        <servlet-class>controle.ServletEditaPerfil</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NovoUsuario</servlet-name>
         <url-pattern>/NovoUsuario</url-pattern>
@@ -15,6 +23,14 @@
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletEditaLogin</servlet-name>
+        <url-pattern>/ServletEditaLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletEditaPerfil</servlet-name>
+        <url-pattern>/ServletEditaPerfil</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

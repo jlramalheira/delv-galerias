@@ -23,14 +23,14 @@ public class Atualizacao implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @ManyToOne
-    private Usuario usuario;
+    private Usuario remetente;
     private String tipo;
     @ManyToOne
     private Imagem imagem;
     @ManyToOne
     private Diario diario;
     @ManyToOne
-    private Perfil perfil;
+    private Usuario destinatario;
 
     public int getId() {
         return id;
@@ -40,6 +40,22 @@ public class Atualizacao implements Serializable {
         this.id = id;
     }
 
+    public Usuario getDestinatario() {
+        return destinatario;
+    }
+
+    public void setDestinatario(Usuario destinatario) {
+        this.destinatario = destinatario;
+    }
+
+    public Usuario getRemetente() {
+        return remetente;
+    }
+
+    public void setRemetente(Usuario remetente) {
+        this.remetente = remetente;
+    }
+    
     public Diario getDiario() {
         return diario;
     }
@@ -56,28 +72,12 @@ public class Atualizacao implements Serializable {
         this.imagem = imagem;
     }
 
-    public Perfil getPerfil() {
-        return perfil;
-    }
-
-    public void setPerfil(Perfil perfil) {
-        this.perfil = perfil;
-    }
-
     public String getTipo() {
         return tipo;
     }
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
     }
 
     @Override
