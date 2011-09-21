@@ -6,7 +6,6 @@ package controle;
 
 import dao.Dao;
 import dao.DaoUsuario;
-import entidades.Perfil;
 import entidades.Usuario;
 import java.io.IOException;
 import java.util.List;
@@ -19,7 +18,6 @@ import javax.servlet.http.HttpSession;
 public class Login extends HttpServlet {
 
     Dao<Usuario> daoUsuario = new Dao<Usuario>(Usuario.class);
-    Dao<Perfil> daoPerfil = new Dao<Perfil>(Perfil.class);
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -46,9 +44,6 @@ public class Login extends HttpServlet {
             Usuario u = usuarios.get(0);
             if (u.getSenha().equals(senha)) {
                 session.setAttribute("usuario", u);
-                //Pega o perfil do usuário
-                Perfil p = daoPerfil.get(u.getId());                
-                session.setAttribute("perfil", p);
                 
             } else {
                 mensagem += "Senha invalida";
