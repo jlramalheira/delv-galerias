@@ -34,7 +34,7 @@
                 if (u.getNome() != null) {
                     nome = u.getNome();
                 }
-                if (u.getDataNascimento() != null){
+                if (u.getDataNascimento() != null) {
                     dataNascimento = Util.DateToString(u.getDataNascimento());
                 }
                 if (u.getCidade() != null) {
@@ -53,7 +53,7 @@
         %>
         <h1> Editar </h1>
         <a href="home.jsp">Voltar</a>
-        <form name="formEditaPerfil" action="ServletEditaPerfil" method="post" >
+        <form name="formEditaPerfil" action="ServletEditaPerfil" method="post" enctype="multipart/form-data">
             <p><label for="Nome">Nome:</label><br/>
                 <input type="text" name="nome" value="<%=nome%>"/></p>
             <p><label for="dataNascimento">Data Nascimento:</label><br/>
@@ -68,7 +68,7 @@
                     }
                 %>
             </p>
-            
+
             <p><label for="Descricao">Descricao:</label><br/>
                 <input type="text" name="descricao" value="<%=descricao%>"/></p>
             <p><label for="Pais">Pais:</label><br/>
@@ -79,21 +79,24 @@
                         if (u.getPais() != null) { //caso tenha algum, escolhe o selcionado
                             for (Pais p : paises) {
                                 if (u.getPais() == p) {
-                                    out.println("<option value=\"" + p.getId() + "\" selected=\"selected\">"+p.getNome()+"</option>");
+                                    out.println("<option value=\"" + p.getId() + "\" selected=\"selected\">" + p.getNome() + "</option>");
                                 } else {
-                                    out.println("<option value=\"" + p.getId() + "\">"+p.getNome()+"</option>");
+                                    out.println("<option value=\"" + p.getId() + "\">" + p.getNome() + "</option>");
 
                                 }
                             }
                         } else {
                             for (Pais p : paises) {
-                                out.println("<option value=\"" + p.getId() + "\">"+p.getNome()+"</option>");
+                                out.println("<option value=\"" + p.getId() + "\">" + p.getNome() + "</option>");
                             }
                         }
                     %>
                 </select></p>
-                <p><label for="Cidade">Cidade:</label><br/>
+            <p><label for="Cidade">Cidade:</label><br/>
                 <input type="text" name="cidade" value="<%=cidade%>"/></p>
+            <p><label for="Cidade">Cidade:</label><br/>
+                <input name="imagem" type="file" maxlength="60" />
+                <input type="submit" name="upload" value="insert" /></p>
             <p><input type="submit" value="Salvar" name="btSalvar" /></p>
         </form>
         <%

@@ -8,12 +8,14 @@ import dao.Dao;
 import entidades.Pais;
 import entidades.Usuario;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import upload.Upload;
 
 /**
  *
@@ -22,6 +24,7 @@ import javax.servlet.http.HttpSession;
 public class ServletEditaPerfil extends HttpServlet {
 
     Dao<Usuario> daoUsuario = new Dao<Usuario>(Usuario.class);
+    public final String dir = "/files/";
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -31,12 +34,21 @@ public class ServletEditaPerfil extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String nome = request.getParameter("nome");
-        String dataNascimento = request.getParameter("dataNascimento");
-        char sexo = request.getParameter("sexo").charAt(0);
-        String descricao = request.getParameter("descricao");
-        String cidade = request.getParameter("cidade");
-        int pais = Integer.parseInt(request.getParameter("pais"));
+        Upload upload = new Upload(getServletContext().getRealPath(dir));
+
+        List list = upload.processRequest(request);
+
+        Map<String, String> map = upload.getFormValues(list);
+        
+        
+        String nome = map.get("nome");
+        String dataNascimento = map.get("dataNascimento");
+        char sexo = map.get("sexo").charAt(0);
+        String descricao = map.get("descricao");
+        String cidade = map.get("cidade");
+        int pais = Integer.parseInt(map.get("pais"));
+        String imagem = map.get("imagem");
+        
         HttpSession session = request.getSession(false);
         Usuario u = (Usuario) session.getAttribute("usuario");
         u.setNome(nome);
@@ -44,6 +56,8 @@ public class ServletEditaPerfil extends HttpServlet {
         u.setSexo(sexo);
         u.setDescricao(descricao);
         u.setCidade(cidade);
+        u.setImagem(imagem);
+        
         if (pais != -1) {
             u.setPais(new Dao<Pais>(Pais.class).get(pais));
         }
