@@ -52,6 +52,7 @@
 
         %>
         <h1> Editar </h1>
+        <p>Teste</p>
         <a href="home.jsp">Voltar</a>
         <form name="formEditaPerfil" action="ServletEditaPerfil" method="post" enctype="multipart/form-data">
             <p><label for="Nome">Nome:</label><br/>
