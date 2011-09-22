@@ -98,7 +98,7 @@
             <p><label for="Cidade">Cidade:</label><br/>
                 <input name="imagem" type="file" maxlength="60" />
                 <input type="submit" name="upload" value="insert" /></p>
-            <p><input type="submit" value="Salvar" name="btSalvar" /></p>
+            <p><button name="operacao" value="salvar" type="submit">Salvar</button></p>
         </form>
         <%
             }
