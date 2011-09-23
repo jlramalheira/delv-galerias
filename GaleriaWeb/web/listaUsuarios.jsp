@@ -20,7 +20,7 @@
             } else {
                 List<Usuario> usuarios = (List<Usuario>) session.getAttribute("usuarios");
                 for (Usuario u : usuarios) {
-                    out.println("<p>"+u.getNome()+"</p>");
+                    out.println("<a href=\"ServletPerfil?id=\""+u.getId()+"\"\">"+u.getNome()+"</a>");
                 }
         %>
         <a href="Login">Sair</a>
