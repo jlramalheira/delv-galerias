@@ -24,7 +24,7 @@ import upload.Upload;
 public class ServletEditaPerfil extends HttpServlet {
 
     Dao<Usuario> daoUsuario = new Dao<Usuario>(Usuario.class);
-    public final String dir = "/files/";
+    public String dir = "/files/";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -43,6 +43,7 @@ public class ServletEditaPerfil extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         Usuario u = (Usuario) session.getAttribute("usuario");
+        dir += ("temp/"+u.getId());
         Upload upload = new Upload(getServletContext().getRealPath(dir));
 
         List list = upload.processRequest(request);
