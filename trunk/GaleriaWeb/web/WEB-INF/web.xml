@@ -16,6 +16,14 @@
         <servlet-name>ServletEditaPerfil</servlet-name>
         <servlet-class>controle.ServletEditaPerfil</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletBuscaUsuario</servlet-name>
+        <servlet-class>controle.ServletBuscaUsuario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletPerfil</servlet-name>
+        <servlet-class>controle.ServletPerfil</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NovoUsuario</servlet-name>
         <url-pattern>/NovoUsuario</url-pattern>
@@ -31,6 +39,14 @@
     <servlet-mapping>
         <servlet-name>ServletEditaPerfil</servlet-name>
         <url-pattern>/ServletEditaPerfil</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletBuscaUsuario</servlet-name>
+        <url-pattern>/ServletBuscaUsuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletPerfil</servlet-name>
+        <url-pattern>/ServletPerfil</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
