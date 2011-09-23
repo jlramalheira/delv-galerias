@@ -32,13 +32,12 @@
                 <input type="submit" value="Ok" name="btMensagem" />
             </label>
         </form>
-        <form name="formBuscaUsuario" action="ServletEditaPerfil" method="GET">
-            <label for="mensagem">Mensagem:
-                <input type="text" name="mensagem" value="<%=mensagem%>" />
-                <input type="submit" value="Ok" name="btMensagem" />
+        <form name="formBuscaUsuario" action="ServletBuscaUsuario" method="POST">
+            <label for="nomeUsuario">Pesquisar:
+                <input type="text" name="nomeUsuario" value="" />
+                <input type="submit" value="Pesquisar" name="btPesquisar" />
             </label>
-        </form>
-        
+        </form>       
         
         <%
         }

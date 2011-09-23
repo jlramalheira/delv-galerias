@@ -21,4 +21,8 @@ public class DaoUsuario extends Dao {
         return Dao.getEm().createQuery("SELECT p FROM Usuario p WHERE p.login LIKE '%"+login+"%'").getResultList();
     }
     
+    public List<Usuario> listByNome(String nome){
+        return Dao.getEm().createQuery("SELECT p FROM Usuario p WHERE p.nome LIKE '%"+nome+"%'").getResultList();
+    }
+    
 }
