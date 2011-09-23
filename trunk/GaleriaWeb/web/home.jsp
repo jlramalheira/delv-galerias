@@ -24,6 +24,7 @@
             }
         %>
         <h1> Bem Vindo!! <%=(u.getNome())%> </h1>
+        
         <script type="text/javascript">          
             function aparece(){
                 var component = document.getElementById("formMensagem");
