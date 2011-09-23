@@ -52,7 +52,6 @@
 
         %>
         <h1> Editar </h1>
-        <p>Teste</p>
         <a href="home.jsp">Voltar</a>
         <form name="formEditaPerfil" action="ServletEditaPerfil" method="post" enctype="multipart/form-data">
             <p><label for="Nome">Nome:</label><br/>
@@ -98,7 +97,7 @@
             <p><label for="Cidade">Cidade:</label><br/>
                 <input name="imagem" type="file" maxlength="60" />
                 <input type="submit" name="upload" value="insert" /></p>
-            <p><button name="operacao" value="salvar" type="submit">Salvar</button></p>
+            <p><input type="submit" value="Salvar" name="btSalvar" /></p>
         </form>
         <%
             }
