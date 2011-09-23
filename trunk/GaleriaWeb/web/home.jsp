@@ -24,14 +24,22 @@
             }
         %>
         <h1> Bem Vindo!! <%=(u.getNome())%> </h1>
-        <a href="editarperfil.jsp">Editar</a>
-        <a href="Login">Sair</a>
-        <form name="formMensagem" action="ServletEditaPerfil" method="GET">
+        <script type="text/javascript">          
+            function aparece(){
+                var component = document.getElementById("formMensagem");
+                component.style.display = "block";
+            }
+        </script>
+
+        <p><a href="editarperfil.jsp">Editar</a> | <a href="Login">Sair</a></p>
+        <p id="mensagem"><%=mensagem%> <input type="button" name="" value="Mudar?" onclick="aparece()"/> </p>
+        <form name="formMensagem" action="ServletEditaPerfil" method="GET" id="formMensagem" style="display: none;" >
             <label for="mensagem">Mensagem:
                 <input type="text" name="mensagem" value="<%=mensagem%>" />
                 <input type="submit" value="Ok" name="btMensagem" />
             </label>
         </form>
+        
         <form name="formBuscaUsuario" action="ServletBuscaUsuario" method="POST">
             <label for="nomeUsuario">Pesquisar:
                 <input type="text" name="nomeUsuario" value="" />
