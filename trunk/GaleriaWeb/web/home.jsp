@@ -29,7 +29,13 @@
         <form name="formMensagem" action="ServletEditaPerfil" method="GET">
             <label for="mensagem">Mensagem:
                 <input type="text" name="mensagem" value="<%=mensagem%>" />
-                <button name="operacao" value="mensagem" type="submit">Mensagem</button>
+                <input type="submit" value="Ok" name="btMensagem" />
+            </label>
+        </form>
+        <form name="formBuscaUsuario" action="ServletEditaPerfil" method="GET">
+            <label for="mensagem">Mensagem:
+                <input type="text" name="mensagem" value="<%=mensagem%>" />
+                <input type="submit" value="Ok" name="btMensagem" />
             </label>
         </form>
         
