@@ -26,12 +26,13 @@
         <h1> Bem Vindo!! <%=(u.getNome())%> </h1>
         <a href="editarperfil.jsp">Editar</a>
         <a href="Login">Sair</a>
-        <form name="formMensagem" action="ServletEditaPerfil" method="POST">
+        <form name="formMensagem" action="ServletEditaPerfil" method="GET">
             <label for="mensagem">Mensagem:
                 <input type="text" name="mensagem" value="<%=mensagem%>" />
                 <button name="operacao" value="mensagem" type="submit">Mensagem</button>
             </label>
         </form>
+        
         
         <%
         }
