@@ -7,9 +7,13 @@ package controle;
 import dao.Dao;
 import entidades.Pais;
 import entidades.Usuario;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -43,13 +47,12 @@ public class ServletEditaPerfil extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         Usuario u = (Usuario) session.getAttribute("usuario");
-        dir += ("temp/"+u.getId());
+        dir += ("temp/" + u.getId());
         Upload upload = new Upload(getServletContext().getRealPath(dir));
 
         List list = upload.processRequest(request);
 
         Map<String, String> map = upload.getFormValues(list);
-
 
         String nome = map.get("nome");
         String dataNascimento = map.get("dataNascimento");
@@ -73,9 +76,8 @@ public class ServletEditaPerfil extends HttpServlet {
 
         daoUsuario.update(u);
 
-
-
-
+        //redimencionando
+        redimencionarImagem(u,imagem);
 
         response.sendRedirect("home.jsp");
 
@@ -85,4 +87,22 @@ public class ServletEditaPerfil extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private void redimencionarImagem(Usuario u, String nome) {
+        String path = "/files/temp/" + u.getId() + "/"+nome;
+        
+        try {
+            BufferedImage imagem = ImageIO.read(new File(path));
+            Image image = imagem.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+            BufferedImage imagemredimencionada = new BufferedImage(
+                    50, 50, BufferedImage.TYPE_INT_BGR);
+            imagemredimencionada.createGraphics().drawImage(image, 0, 0, null);
+            File file = new File("/files/images/" + u.getId() + "/");
+            if (!file.exists()) {
+                file.mkdir();
+            }
+            ImageIO.write(imagemredimencionada, "JPG", new File("/files/images/" + u.getId() + "/avatar"));
+        } catch (IOException ex) {
+        }
+    }
 }
