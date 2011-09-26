@@ -18,11 +18,13 @@
             if (session.getAttribute("usuario") == null) {
                 response.sendRedirect("login.jsp");
             } else {
-                //VERIFICAR NULL
                 List<Usuario> usuarios = (List<Usuario>) session.getAttribute("usuarios");
-                for (Usuario u : usuarios) {
-                    out.println("<a href=\"ServletPerfil?id=\""+u.getId()+"\"\">"+u.getNome()+"</a>");
+                if (usuarios != null) {
+                    for (Usuario u : usuarios) {
+                        out.println("<a href=\"ServletPerfil?id=" + u.getId() + "\">" + u.getNome() + "</a><br />");
+                    }
                 }
+
         %>
         <a href="Login">Sair</a>
         <a href="home.jsp">Voltar</a>
@@ -30,6 +32,6 @@
         <%
             }
         %>
-        
+
     </body>
 </html>
