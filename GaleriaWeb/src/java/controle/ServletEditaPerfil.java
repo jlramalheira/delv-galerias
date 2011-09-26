@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import upload.Upload;
+import util.Util;
 
 /**
  *
@@ -68,7 +69,7 @@ public class ServletEditaPerfil extends HttpServlet {
         u.setSexo(sexo);
         u.setDescricao(descricao);
         u.setCidade(cidade);
-        u.setImagem(imagem);
+        u.setImagem("avatar.jpg");
 
         if (pais != -1) {
             u.setPais(new Dao<Pais>(Pais.class).get(pais));
@@ -77,7 +78,23 @@ public class ServletEditaPerfil extends HttpServlet {
         daoUsuario.update(u);
 
         //redimencionando
-        redimencionarImagem(u,imagem);
+        String path1 = getServletContext().getRealPath("/files/temp/" + u.getId() + "/"+imagem);
+        String path2 = getServletContext().getRealPath("/files/images/" + u.getId() + "/");
+        
+        try {
+            BufferedImage imageb = ImageIO.read(new File(path1));
+            Image image = imageb.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+            BufferedImage imagemredimencionada = new BufferedImage(
+                    50, 50, BufferedImage.TYPE_INT_BGR);
+            imagemredimencionada.createGraphics().drawImage(image, 0, 0, null);          
+            File file = new File(path2);
+            if (!file.exists()) {
+                file.mkdir();
+            }
+            ImageIO.write(imagemredimencionada, "JPG", new File(path2+"/avatar.jpg"));
+        } catch (IOException ex) {
+            System.out.println("erro");
+        }
 
         response.sendRedirect("home.jsp");
 
@@ -88,21 +105,5 @@ public class ServletEditaPerfil extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private void redimencionarImagem(Usuario u, String nome) {
-        String path = "/files/temp/" + u.getId() + "/"+nome;
-        
-        try {
-            BufferedImage imagem = ImageIO.read(new File(path));
-            Image image = imagem.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-            BufferedImage imagemredimencionada = new BufferedImage(
-                    50, 50, BufferedImage.TYPE_INT_BGR);
-            imagemredimencionada.createGraphics().drawImage(image, 0, 0, null);
-            File file = new File("/files/images/" + u.getId() + "/");
-            if (!file.exists()) {
-                file.mkdir();
-            }
-            ImageIO.write(imagemredimencionada, "JPG", new File("/files/images/" + u.getId() + "/avatar"));
-        } catch (IOException ex) {
-        }
-    }
+    
 }

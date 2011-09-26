@@ -28,8 +28,6 @@
                 char sexo = '\0';
                 String descricao = "";
                 String cidade = "";
-                String imagem = "";
-                String pais = "";
 
                 if (u.getNome() != null) {
                     nome = u.getNome();
@@ -45,9 +43,6 @@
                 }
                 if (u.getSexo() != '\0') {
                     sexo = u.getSexo();
-                }
-                if (u.getPais() != null) {
-                    pais = u.getPais().getNome();
                 }
 
         %>
@@ -94,7 +89,7 @@
                 </select></p>
             <p><label for="Cidade">Cidade:</label><br/>
                 <input type="text" name="cidade" value="<%=cidade%>"/></p>
-            <p><label for="Cidade">Cidade:</label><br/>
+            <p><label for="Imagem">Imagem:</label><br/>
                 <input name="imagem" type="file" maxlength="60" />
                 <input type="submit" name="upload" value="insert" /></p>
             <p><input type="submit" value="Salvar" name="btSalvar" /></p>
