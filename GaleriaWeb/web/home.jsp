@@ -49,6 +49,7 @@
             </label>
         </form>       
 
+        
         <%
                 if (u.getAmigos().size() > 9) { //mostra no maximo 9 amigos
                     for (int i = 0; i < 9; i++) {
@@ -62,5 +63,6 @@
                 }
             }
         %>
+        <a href="ServletExibeAmigos?pagina=1">Todos</a>
     </body>
 </html>
