@@ -21,6 +21,7 @@
                 Usuario perfil = (Usuario) session.getAttribute("perfil");
                 if (perfil != null) {
                     out.println("<h1>" + perfil.getNome() + "</h1>");
+                    out.println("<img src=\"/files/"+perfil.getId()+"/"+perfil.getImagem()+"\" />");
                     if (session.getAttribute("amigos") != null) {
                         boolean amigos = (Boolean) session.getAttribute("amigos");
                         if (!amigos && (u.getId() != perfil.getId())) {
@@ -29,6 +30,14 @@
             <button type="submit" name="btAdd" value="<%=perfil.getId()%>">Adicionar+</button>
         </form>
         <%              }
+            if (amigos) {
+        %>
+        <form name="formRemoveamigo" action="ServletPerfil" method="POST">
+            <button type="submit" name="btRemove" value="<%=perfil.getId()%>">Remove</button>
+        </form>
+        <%
+
+                    }
                 }
             } else {
                 out.println("<h1>Usuario nao encontrado</h1>");

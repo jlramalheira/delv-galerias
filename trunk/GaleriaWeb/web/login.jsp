@@ -3,6 +3,7 @@
     Created on : 26/08/2011, 09:24:53
     Author     : aluno
 --%>
+<%@page import="entidades.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -19,6 +20,10 @@
                 </div>
                 <div class="login">
                     <%
+                        Usuario u = (Usuario) (session.getAttribute("usuario"));
+                        if (u != null) {
+                            response.sendRedirect("home.jsp");
+                        }
                         String login = "";
                         if (session.getAttribute("login") != null) {
                             login = session.getAttribute("login") + "";
