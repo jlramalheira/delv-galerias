@@ -4,6 +4,7 @@
     Author     : aluno
 --%>
 
+<%@page import="java.util.Collections"%>
 <%@page import="java.util.Random"%>
 <%@page import="entidades.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -49,12 +50,14 @@
             </label>
         </form>       
 
-        
+
         <%
                 if (u.getAmigos().size() > 9) { //mostra no maximo 9 amigos
+                    //Usuario sorteado = u.getAmigos().get(new Random().nextInt(u.getAmigos().size())); //sorteia um amigo na lista
+                    Collections.shuffle(u.getAmigos());
                     for (int i = 0; i < 9; i++) {
-                        Usuario sorteado = u.getAmigos().get(new Random().nextInt(u.getAmigos().size())); //sorteia um amigo na lista
-                        out.println("<a href=\"ServletPerfil?id=" + sorteado.getId() + "\">" + sorteado.getNome() + "</a><br />");
+                        out.println("<a href=\"ServletPerfil?id=" + u.getAmigos().get(i).getId() + "\">" + u.getAmigos().get(i).getNome() + "</a><br />");
+
                     }
                 } else {
                     for (Usuario user : u.getAmigos()) {

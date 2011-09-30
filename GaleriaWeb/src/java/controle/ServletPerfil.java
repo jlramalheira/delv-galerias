@@ -49,21 +49,44 @@ public class ServletPerfil extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("btAdd"));
-        HttpSession session = request.getSession(false);
+        if (request.getParameter("btAdd") != null) {
+            int id = Integer.parseInt(request.getParameter("btAdd"));
+            HttpSession session = request.getSession(false);
+            Usuario usuario = (Usuario) session.getAttribute("usuario");
 
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
-        Usuario novoamigo = daoUsuario.get(id);
-        List<Usuario> listamigos = usuario.getAmigos();
-        if (novoamigo != null) {
-            listamigos.add(novoamigo);
-            usuario.setAmigos(listamigos);
-            session.removeAttribute("amigos");
+            Usuario novoamigo = daoUsuario.get(id);
+            List<Usuario> listamigos = usuario.getAmigos();
+            if (novoamigo != null) {
+                listamigos.add(novoamigo);
+                usuario.setAmigos(listamigos);
+                session.removeAttribute("amigos");
+            }
+
+            daoUsuario.update(usuario);
+            boolean agoraeh = true;
+            session.setAttribute("agoraeh", agoraeh);
+
+            response.sendRedirect("confirmacaoAmigos.jsp");
+        } else {
+            int id = Integer.parseInt(request.getParameter("btRemove"));
+            HttpSession session = request.getSession(false);
+            Usuario usuario = (Usuario) session.getAttribute("usuario");
+            Usuario inimigo = daoUsuario.get(id);
+            List<Usuario> listamigos = usuario.getAmigos();
+            if (inimigo != null) {
+                listamigos.remove(inimigo);
+                usuario.setAmigos(listamigos);
+                session.removeAttribute("confirmacaoAmigos.jsp");
+            }
+
+            daoUsuario.update(usuario);
+            boolean agoraeh = false;
+            session.setAttribute("agoraeh", agoraeh);
+            response.sendRedirect("home.jsp");
         }
-        
-        daoUsuario.update(usuario);
 
-        response.sendRedirect("exibeperfil.jsp");
+
+
     }
 
     @Override
