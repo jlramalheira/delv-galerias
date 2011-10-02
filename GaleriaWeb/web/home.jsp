@@ -43,8 +43,6 @@
             <div class="container"> 
                 <%-- SIDEBAR --%>
                 <div class="sidebar">
-                    <%-- OPÇÕES --%>
-                    <p><a href="editarperfil.jsp">Editar</a> | <a href="Login">Sair</a></p>
                     <%-- PESQUISAR --%>
                     <form name="formBuscaUsuario" action="ServletBuscaUsuario" method="post" >
                         <label for="nomeUsuario">Pesquisar:
