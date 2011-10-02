@@ -20,8 +20,8 @@
     <div class="header">
         <h1><img src="images/logo.png" alt="Delv Galerias" width="170" height="80"/></h1>
         <ul>
-            <li><a href="editarperfil.jsp" id="what">Editar</a></li>
-            <li><a href="Login" id="about">Sair</a></li>
+            <li><a href="Login" id="what">Sair</a></li>
+            <li><a href="editarperfil.jsp" id="about">Editar</a></li>
         </ul>
     </div>
 </div>
