@@ -5,6 +5,7 @@
     Description:
         Purpose of the stylesheet follows.
 */
+@charset "utf-8";
 * {
 	margin:0;
 	padding:0;
@@ -93,6 +94,16 @@ body {
 	margin:0;
 	border: dashed 1px black;
 }
+.content {
+	width:690px;
+	min-height:300px;
+}
+.sidebar {
+	float:right;
+	width:250px;
+	min-height:300px;
+	background-color:#D5DED9;
+}
 
 /* FOOTER */
 .bgfooter {
@@ -158,7 +169,55 @@ body {
 .login input[type=submit]:hover{
 	background:url(../images/bt_entrar_hover.png) no-repeat;	
 }
-root { 
-    display: block;
-}
 
+/*HOME*/
+.me {			
+}
+.me img{
+	float:left;
+}
+.me .welcome{
+	float:left;
+	width: 530px;
+	margin:0 0 0 10px;
+	font:16px "Trebuchet MS", Arial, Helvetica, sans-serif;	
+	color:#7A6A53;
+}
+.me .welcome .name{
+	color:#99B2B7;	
+	font:22px "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	font-variant:small-caps;	
+}
+.me .welcome .mensagem{
+	margin: 10px 0 0 0;
+	color:#948C75;
+	font-size:14px;
+	font-style:italic;
+	cursor:pointer;
+}
+.me form{
+	display:none;
+	margin: 10px 0 0 0;
+	background-color:#D9CEB2;
+	border:1px solid #948C75;	
+}
+.me form input[type='text']{
+	width:400px;
+	margin:10px;
+	padding:5px;
+	color:#7A6A53;
+	font:italic 14px "Trebuchet MS", Arial, Helvetica, sans-serif;		
+}
+.me form input[type='submit']{
+	padding:5px 10px;
+	background-color:#948C75;
+	border:0;
+	color:#FFFFFF;
+	font:bold 14px "Trebuchet MS", Arial, Helvetica, sans-serif;
+	text-transform:uppercase;
+	cursor:pointer;	
+}
+.me form input[type='submit']:hover{
+	background-color:#b0a892;
+}

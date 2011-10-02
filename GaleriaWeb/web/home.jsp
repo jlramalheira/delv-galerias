@@ -8,11 +8,12 @@
 <%@page import="java.util.Random"%>
 <%@page import="entidades.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="css/styles.css" rel="stylesheet" type="text/css" />
+        <title>Inicio</title>
     </head>
     <body>
         <%
@@ -20,30 +21,52 @@
             if (u == null) {
                 response.sendRedirect("login.jsp");
             } else {
-                String mensagem = "";
+                String mensagem = "[Sem Mensagem]";
                 if (u.getMensagem() != null) {
                     mensagem = u.getMensagem();
                 }
         %>
-        <h1> Bem Vindo!! <%=(u.getNome())%> </h1>
-
+        <%-- JAVASCRIPT --%>
         <script type="text/javascript">          
             function aparece(){
-                var component = document.getElementById("formMensagem");
-                component.style.display = "block";
+                document.getElementById("msg").style.display = "none";
+                document.getElementById("formMensagem").style.display = "block";				
             }
         </script>
 
-        <p><a href="editarperfil.jsp">Editar</a> | <a href="Login">Sair</a></p>
-        <p id="mensagem"><%=mensagem%> <input type="button" name="" value="Mudar?" onclick="aparece()"/> </p>
-        <form name="formMensagem" action="ServletEditaPerfil" method="GET" id="formMensagem" style="display: none;" >
-            <label for="mensagem">Mensagem:
-                <input type="text" name="mensagem" value="<%=mensagem%>" />
-                <input type="submit" value="Ok" name="btMensagem" />
-            </label>
-        </form>
+        <%-- HEADER --%>
+        <%@include file="default/header.jsp" %>
 
-        <form name="formBuscaUsuario" action="ServletBuscaUsuario" method="POST">
+        <%-- CONTENT --%>
+        <div class="bgcontainer">
+            <div class="container"> 
+                <!-- SIDEBAR -->
+                <div class="sidebar"></div>
+                <!-- CONTENT -->
+                <div class="content">
+                    <div class="me"> <img src="images/pic.png" alt="Foto"/>
+                        <div class="welcome">
+                            <p>Bem vindo,<br />
+                                <span class="name"><%=(u.getNome())%></span></p>
+                            <p class="mensagem" id="msg" title="Clique para alterar sua mensagem" onclick="aparece()"><%=mensagem%></p>
+                            <form name="formMensagem" action="ServletEditaPerfil" method="get" id="formMensagem">
+                                <input type="text" name="mensagem" value="<%=mensagem%>" />
+                                <input type="submit" value="ok" name="btMensagem" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <%-- FOOTER --%>
+        <%@include file="default/footer.jsp" %>
+
+
+
+        <p><a href="editarperfil.jsp">Editar</a> | <a href="Login">Sair</a></p>
+
+        <form name="formBuscaUsuario" action="ServletBuscaUsuario" method="post" >
             <label for="nomeUsuario">Pesquisar:
                 <input type="text" name="nomeUsuario" value="" />
                 <input type="submit" value="Pesquisar" name="btPesquisar" />
