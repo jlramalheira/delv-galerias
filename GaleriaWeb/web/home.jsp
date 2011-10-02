@@ -23,7 +23,9 @@
             } else {
                 String mensagem = "[Sem Mensagem]";
                 if (u.getMensagem() != null) {
-                    mensagem = u.getMensagem();
+                    if (!u.getMensagem().equalsIgnoreCase("")) {
+                        mensagem = u.getMensagem();
+                    }
                 }
         %>
         <%-- JAVASCRIPT --%>
@@ -36,13 +38,40 @@
 
         <%-- HEADER --%>
         <%@include file="default/header.jsp" %>
-
-        <%-- CONTENT --%>
+        <%-- BODY --%>
         <div class="bgcontainer">
             <div class="container"> 
-                <!-- SIDEBAR -->
-                <div class="sidebar"></div>
-                <!-- CONTENT -->
+                <%-- SIDEBAR --%>
+                <div class="sidebar">
+                    <%-- OPÇÕES --%>
+                    <p><a href="editarperfil.jsp">Editar</a> | <a href="Login">Sair</a></p>
+                    <%-- PESQUISAR --%>
+                    <form name="formBuscaUsuario" action="ServletBuscaUsuario" method="post" >
+                        <label for="nomeUsuario">Pesquisar:
+                            <input type="text" name="nomeUsuario" value="" />
+                            <input type="submit" value="Pesquisar" name="btPesquisar" />
+                        </label>
+                    </form>
+                    <%-- LISTAR AMIGOS --%>
+                    <%
+                        if (u.getAmigos().size() > 9) { //mostra no maximo 9 amigos
+                            //Usuario sorteado = u.getAmigos().get(new Random().nextInt(u.getAmigos().size())); //sorteia um amigo na lista
+                            Collections.shuffle(u.getAmigos());
+                            for (int i = 0; i < 9; i++) {
+                                out.println("<a href=\"ServletPerfil?id=" + u.getAmigos().get(i).getId() + "\">" + u.getAmigos().get(i).getNome() + "</a><br />");
+
+                            }
+                        } else {
+                            for (Usuario user : u.getAmigos()) {
+                                out.println("<a href=\"ServletPerfil?id=" + user.getId() + "\">" + user.getNome() + "</a><br />");
+                            }
+                        }
+
+                    %>
+                    <a href="ServletExibeAmigos?pagina=1">Todos</a>
+
+                </div>
+                <%-- CONTENT --%>
                 <div class="content">
                     <div class="me"> <img src="images/pic.png" alt="Foto"/>
                         <div class="welcome">
@@ -58,37 +87,8 @@
                 </div>
             </div>
         </div>
-
+        <%}%>
         <%-- FOOTER --%>
         <%@include file="default/footer.jsp" %>
-
-
-
-        <p><a href="editarperfil.jsp">Editar</a> | <a href="Login">Sair</a></p>
-
-        <form name="formBuscaUsuario" action="ServletBuscaUsuario" method="post" >
-            <label for="nomeUsuario">Pesquisar:
-                <input type="text" name="nomeUsuario" value="" />
-                <input type="submit" value="Pesquisar" name="btPesquisar" />
-            </label>
-        </form>       
-
-
-        <%
-                if (u.getAmigos().size() > 9) { //mostra no maximo 9 amigos
-                    //Usuario sorteado = u.getAmigos().get(new Random().nextInt(u.getAmigos().size())); //sorteia um amigo na lista
-                    Collections.shuffle(u.getAmigos());
-                    for (int i = 0; i < 9; i++) {
-                        out.println("<a href=\"ServletPerfil?id=" + u.getAmigos().get(i).getId() + "\">" + u.getAmigos().get(i).getNome() + "</a><br />");
-
-                    }
-                } else {
-                    for (Usuario user : u.getAmigos()) {
-                        out.println("<a href=\"ServletPerfil?id=" + user.getId() + "\">" + user.getNome() + "</a><br />");
-                    }
-                }
-            }
-        %>
-        <a href="ServletExibeAmigos?pagina=1">Todos</a>
     </body>
 </html>
