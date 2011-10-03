@@ -56,12 +56,15 @@
                             //Usuario sorteado = u.getAmigos().get(new Random().nextInt(u.getAmigos().size())); //sorteia um amigo na lista
                             Collections.shuffle(u.getAmigos());
                             for (int i = 0; i < 9; i++) {
-                                out.println("<a href=\"ServletPerfil?id=" + u.getAmigos().get(i).getId() + "\">" + u.getAmigos().get(i).getNome() + "</a><br />");
+                                Usuario user = u.getAmigos().get(i);
+                                out.println("<img src=\"files/images/"+user.getId()+"/"+user.getImagem()+"\" alt=\"Foto\" height=\"75\" width=\"75\"/> <br />");
+                                out.println("<a href=\"ServletPerfil?id=" + user.getId() + "\">" + user.getNome() + "</a>");
 
                             }
                         } else {
                             for (Usuario user : u.getAmigos()) {
-                                out.println("<a href=\"ServletPerfil?id=" + user.getId() + "\">" + user.getNome() + "</a><br />");
+                                out.println("<img src=\"files/images/"+user.getId()+"/"+user.getImagem()+"\" alt=\"Foto\" height=\"75\" width=\"75\"/> <br />");
+                                out.println("<a href=\"ServletPerfil?id=" + user.getId() + "\">" + user.getNome() + "</a>");
                             }
                         }
 
@@ -71,7 +74,7 @@
                 </div>
                 <%-- CONTENT --%>
                 <div class="content">
-                    <div class="me"> <img src="images/pic.png" alt="Foto"/>
+                    <div class="me"> <img src="files/images/<%=u.getId()+"/"+u.getImagem()%>" alt="Foto"/>
                         <div class="welcome">
                             <p>Bem vindo,<br />
                                 <span class="name"><%=(u.getNome())%></span></p>

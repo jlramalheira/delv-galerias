@@ -106,9 +106,9 @@ public class ServletEditaPerfil extends HttpServlet {
         
         try {
             BufferedImage imageb = ImageIO.read(new File(path1));
-            Image image = imageb.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+            Image image = imageb.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
             BufferedImage imagemredimencionada = new BufferedImage(
-                    50, 50, BufferedImage.TYPE_INT_BGR);
+                    150, 150, BufferedImage.TYPE_INT_BGR);
             imagemredimencionada.createGraphics().drawImage(image, 0, 0, null);          
             File file = new File(path2);
             if (!file.exists()) {
