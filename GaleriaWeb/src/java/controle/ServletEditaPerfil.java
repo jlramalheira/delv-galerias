@@ -29,6 +29,8 @@ public class ServletEditaPerfil extends HttpServlet {
 
     Dao<Usuario> daoUsuario = new Dao<Usuario>(Usuario.class);
     public String dir = "/files/";
+    public String dir1 = "/files/temp";
+    public String dir2 = "/files/images";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -47,8 +49,30 @@ public class ServletEditaPerfil extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         Usuario u = (Usuario) session.getAttribute("usuario");
-        dir += ("temp/" + u.getId());
-        Upload upload = new Upload(getServletContext().getRealPath(dir));
+        
+        //criando pastas
+        //criando pastas necessarias se elas nao existirem
+        String caminhosauxiliares = getServletContext().getRealPath(dir);
+        File criapastafiles = new File(caminhosauxiliares);
+        if (!criapastafiles.exists()) {
+            criapastafiles.mkdir();
+            
+        }
+        caminhosauxiliares = getServletContext().getRealPath(dir1);
+        File criapastatemp = new File(caminhosauxiliares);
+        if (!criapastatemp.exists()) {
+            criapastatemp.mkdir();
+            
+        }
+        caminhosauxiliares = getServletContext().getRealPath(dir2);
+        File criapastaimages = new File(caminhosauxiliares);
+        if (!criapastaimages.exists()) {
+            criapastaimages.mkdir();
+            
+        }
+
+
+        Upload upload = new Upload(getServletContext().getRealPath(dir+"temp/" + u.getId()));
 
         List list = upload.processRequest(request);
 
