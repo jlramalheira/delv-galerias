@@ -10,6 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <link href="css/styles.css" rel="stylesheet" type="text/css" />
+        <%@include file="default/favicon.jsp" %>
         <title>Login</title>
     </head>    
     <body>
