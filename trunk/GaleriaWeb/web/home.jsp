@@ -13,8 +13,6 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <link href="css/styles.css" rel="stylesheet" type="text/css" />
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-        <%@include file="default/favicon.jsp" %>
         <title>Inicio</title>
     </head>
     <body>
@@ -42,7 +40,7 @@
         </script>
 
         <%-- HEADER --%>
-        <%@include file="default/header.jsp" %>
+        <%@include file="header.jsp" %>
         <%-- BODY --%>
         <div class="bgcontainer">
             <div class="container"> 
@@ -95,6 +93,6 @@
         </div>
         <%}%>
         <%-- FOOTER --%>
-        <%@include file="default/footer.jsp" %>
+        <%@include file="footer.jsp" %>
     </body>
 </html>
