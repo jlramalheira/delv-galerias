@@ -45,14 +45,7 @@
         <div class="bgcontainer">
             <div class="container"> 
                 <%-- SIDEBAR --%>
-                <div class="sidebar">
-                    <%-- PESQUISAR --%>
-                    <form name="formBuscaUsuario" action="ServletBuscaUsuario" method="post" >
-                        <label for="nomeUsuario">Pesquisar:
-                            <input type="text" name="nomeUsuario" value="" />
-                            <input type="submit" value="Pesquisar" name="btPesquisar" />
-                        </label>
-                    </form>
+                <div class="sidebar">                   
                     <%-- LISTAR AMIGOS --%>
                     <%
                         if (u.getAmigos().size() > 9) { //mostra no maximo 9 amigos

@@ -25,6 +25,13 @@
             <li><a href="Login" id="what">Sair</a></li>
             <li><a href="editarperfil.jsp" id="about">Editar</a></li>
         </ul>
+        <%-- PESQUISAR --%>
+        <form name="formBuscaUsuario" action="ServletBuscaUsuario" method="post" >
+            <label for="nomeUsuario">Pesquisar:
+                <input type="text" name="nomeUsuario" value="" />
+                <input type="submit" value="Pesquisar" name="btPesquisar" />
+            </label>
+        </form>
     </div>
 </div>
 <%    }%>
