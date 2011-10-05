@@ -13,6 +13,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <link href="css/styles.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
         <%@include file="default/favicon.jsp" %>
         <title>Inicio</title>
     </head>
@@ -31,10 +32,13 @@
         %>
         <%-- JAVASCRIPT --%>
         <script type="text/javascript">          
-            function aparece(){
-                document.getElementById("msg").style.display = "none";
-                document.getElementById("formMensagem").style.display = "block";				
-            }
+            $(document).ready(function(){
+                $("#formMensagem").hide();
+                $("#msg").click(function(){
+                    $("#msg").hide();
+                    $("#formMensagem").fadeIn();                    
+                });
+            });       
         </script>
 
         <%-- HEADER --%>
@@ -58,13 +62,13 @@
                             Collections.shuffle(u.getAmigos());
                             for (int i = 0; i < 9; i++) {
                                 Usuario user = u.getAmigos().get(i);
-                                out.println("<img src=\"files/images/"+user.getId()+"/"+user.getImagem()+"\" alt=\"Foto\" height=\"75\" width=\"75\"/> <br />");
+                                out.println("<img src=\"files/images/" + user.getId() + "/" + user.getImagem() + "\" alt=\"Foto\" height=\"75\" width=\"75\"/> <br />");
                                 out.println("<a href=\"ServletPerfil?id=" + user.getId() + "\">" + user.getNome() + "</a>");
 
                             }
                         } else {
                             for (Usuario user : u.getAmigos()) {
-                                out.println("<img src=\"files/images/"+user.getId()+"/"+user.getImagem()+"\" alt=\"Foto\" height=\"75\" width=\"75\"/> <br />");
+                                out.println("<img src=\"files/images/" + user.getId() + "/" + user.getImagem() + "\" alt=\"Foto\" height=\"75\" width=\"75\"/> <br />");
                                 out.println("<a href=\"ServletPerfil?id=" + user.getId() + "\">" + user.getNome() + "</a>");
                             }
                         }
@@ -75,7 +79,7 @@
                 </div>
                 <%-- CONTENT --%>
                 <div class="content">
-                    <div class="me"> <img src="files/images/<%=u.getId()+"/"+u.getImagem()%>" alt="Foto"/>
+                    <div class="me"> <img src="files/images/<%=u.getId() + "/" + u.getImagem()%>" alt="Foto"/>
                         <div class="welcome">
                             <p>Bem vindo,<br />
                                 <span class="name"><%=(u.getNome())%></span></p>

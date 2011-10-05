@@ -217,10 +217,11 @@ body {
 }
 .me img{
     float:left;
+    border:3px solid #6b6456;
 }
 .me .welcome{
     float:left;
-    width: 530px;
+    width: 524px;
     margin:0 0 0 10px;
     font:16px "Trebuchet MS", Arial, Helvetica, sans-serif;	
     color:#7A6A53;
@@ -239,7 +240,7 @@ body {
     cursor:pointer;
 }
 .me form{
-    display:none;
+    display:block;
     margin: 10px 0 0 0;
     background-color:#D9CEB2;
     border:1px solid #948C75;	
