@@ -13,7 +13,7 @@
         <title>Login</title>
     </head>    
     <body>
-        <%@include file="default/header.jsp" %>
+        <%@include file="header.jsp" %>
         <div class="bgcontainer">
             <div class="container">
                 <div class="artes"> 
@@ -42,6 +42,6 @@
                 </div>
             </div>
         </div>
-        <%@include file="default/footer.jsp" %>
+        <%@include file="footer.jsp" %>
     </body>
 </html>
