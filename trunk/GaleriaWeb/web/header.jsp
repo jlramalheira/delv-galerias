@@ -19,12 +19,16 @@
 <div class="bgheader">
     <div class="header">
         <h1><img src="images/logo.png" alt="Delv Galerias" width="170" height="80"/></h1>
-        <ul class="barme">
-            <img src="files/images/<%=a.getId() + "/" + a.getImagem()%>" alt="Avatar"/>
-            <p><%=a.getNome()%></p>
-            <li><a href="Login" id="what">Sair</a></li>
-            <li><a href="editarperfil.jsp" id="about">Editar</a></li>
-        </ul>
+            <%-- BARRA PESSOAL --%>
+        <div class="barmediv">
+            <ul class="barme">
+                <img src="files/images/<%=a.getId() + "/" + a.getImagem()%>" alt="Avatar"/>
+                <p><%=a.getNome()%></p>
+                <li><a href="Login" id="what">Sair</a></li>
+                <li><a href="editarperfil.jsp" id="about">Editar</a></li>
+            </ul>
+        </div>
+
         <%-- PESQUISAR --%>
         <form name="formBuscaUsuario" action="ServletBuscaUsuario" method="post" >
             <label for="nomeUsuario">Pesquisar:

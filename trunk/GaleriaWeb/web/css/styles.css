@@ -73,6 +73,17 @@ body {
     background-color:#ebe3ce;
 }
 /* HEADER BAR ME */
+.barmediv {
+    width: 950px;
+    position: absolute;   
+}
+.barme {
+    width: 350px;
+    height: 30px;
+    margin:0 0 0 600px;
+    background-color: #6b6456;
+    list-style:none;
+}
 .barme img {
     float: left;
     width: 20px;
@@ -87,14 +98,6 @@ body {
     color: #d5ded9;
     font-size: 14px;
     font-family: "Trebuchet MS", Helvetica, Arial, sans-serif;
-}
-.barme {
-    position: absolute;
-    width: 350px;
-    height: 30px;
-    margin:0 0 0 600px;
-    background-color: #6b6456;
-    list-style:none;
 }
 .barme li {	
     display: inline;
