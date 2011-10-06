@@ -66,5 +66,6 @@
             </div>
         </div>
         <%@include file="footer.jsp" %>
+        <%session.removeAttribute("mensagem"); %>
     </body>
 </html>
