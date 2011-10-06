@@ -29,7 +29,7 @@
                             login = session.getAttribute("login") + "";
                         }
                         if (session.getAttribute("mensagem") != null) {
-                            out.println("<h2>" + session.getAttribute("mensagem") + "</h2>");
+                            out.println("<p class=\"erro\">" + session.getAttribute("mensagem") + "</p>");
                         }
                     %>
                     <form name="formLogin" action="Login" method="post" >
