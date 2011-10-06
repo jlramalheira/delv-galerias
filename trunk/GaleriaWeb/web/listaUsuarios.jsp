@@ -26,7 +26,7 @@
         <div class="bgcontainer">
             <div class="container">
                 <h2>Resultados da Busca</h2>
-                <p><a href="home.jsp">Voltar</a></p>
+                <p class="voltar"><a href="home.jsp">Voltar</a></p>
                 <div class="resultadosbusca">
                     <ul>
                         <%
