@@ -6,6 +6,8 @@ package controle;
 
 import entidades.Usuario;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -52,7 +54,7 @@ public class ServletExibeAmigos extends HttpServlet {
         String nomeamigo = request.getParameter("nomeamigo");
         int quantidade = 0;
         int pagina = 1;
-        List<Usuario> amigos = null;
+        List<Usuario> amigos = new ArrayList<Usuario>() {};
         for (Usuario u : usuario.getAmigos()) {
             if (u.getNome().contains(nomeamigo)){
                 amigos.add(u);
