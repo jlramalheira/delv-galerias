@@ -88,7 +88,7 @@ public class ServletEditaPerfil extends HttpServlet {
         if (map.get("imagem") == null) {
             imagem = "images/pic.png";
         } else {
-            imagem = map.get("imagem");
+            imagem = "files/images/"+u.getId()+"/avatar.jpg";
         }
 
 
