@@ -39,7 +39,7 @@
                                         <p class="nome"><a href="ServletPerfil?id=<%= u.getId()%>"><%= u.getNome()%></a></p>
                                         <p class="msg"><%= (u.getMensagem() != null) ? u.getMensagem() : ""%></p>
                                         <p><br/>
-                                            <strong>Local:</strong> <%= u.getCidade()%> - <%= u.getPais().getNome() %></p>
+                                           <%-- <strong>Local:</strong> <%= u.getCidade()%> - <%= u.getPais().getNome() %></p> --%>
                                     </div>
                                 </li>                                
                         <% }
