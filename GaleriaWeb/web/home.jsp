@@ -36,6 +36,7 @@
                     $("#msg").hide();
                     $("#formMensagem").fadeIn();                    
                 });
+                $('#search').val('Pesquisar').toggleVal();
             });       
         </script>
 
