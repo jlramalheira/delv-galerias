@@ -56,7 +56,7 @@ public class ServletExibeAmigos extends HttpServlet {
         int pagina = 1;
         List<Usuario> amigos = new ArrayList<Usuario>() {};
         for (Usuario u : usuario.getAmigos()) {
-            if (u.getNome().contains(nomeamigo)){
+            if (u.getNome().toUpperCase().contains(nomeamigo.toUpperCase())){
                 amigos.add(u);
             }
         }

@@ -49,30 +49,30 @@ public class ServletEditaPerfil extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         Usuario u = (Usuario) session.getAttribute("usuario");
-        
+
         //criando pastas
         //criando pastas necessarias se elas nao existirem
         String caminhosauxiliares = getServletContext().getRealPath(dir);
         File criapastafiles = new File(caminhosauxiliares);
         if (!criapastafiles.exists()) {
             criapastafiles.mkdir();
-            
+
         }
         caminhosauxiliares = getServletContext().getRealPath(dir1);
         File criapastatemp = new File(caminhosauxiliares);
         if (!criapastatemp.exists()) {
             criapastatemp.mkdir();
-            
+
         }
         caminhosauxiliares = getServletContext().getRealPath(dir2);
         File criapastaimages = new File(caminhosauxiliares);
         if (!criapastaimages.exists()) {
             criapastaimages.mkdir();
-            
+
         }
 
 
-        Upload upload = new Upload(getServletContext().getRealPath(dir+"temp/" + u.getId()));
+        Upload upload = new Upload(getServletContext().getRealPath(dir + "temp/" + u.getId()));
 
         List list = upload.processRequest(request);
 
@@ -84,7 +84,12 @@ public class ServletEditaPerfil extends HttpServlet {
         String descricao = map.get("descricao");
         String cidade = map.get("cidade");
         int pais = Integer.parseInt(map.get("pais"));
-        String imagem = map.get("imagem");
+        String imagem = "";
+        if (map.get("imagem") == null) {
+            imagem = "images/pic.png";
+        } else {
+            imagem = map.get("imagem");
+        }
 
 
         u.setNome(nome);
@@ -92,7 +97,7 @@ public class ServletEditaPerfil extends HttpServlet {
         u.setSexo(sexo);
         u.setDescricao(descricao);
         u.setCidade(cidade);
-        u.setImagem("avatar.jpg");
+        u.setImagem(imagem);
 
         if (pais != -1) {
             u.setPais(new Dao<Pais>(Pais.class).get(pais));
@@ -101,20 +106,20 @@ public class ServletEditaPerfil extends HttpServlet {
         daoUsuario.update(u);
 
         //redimencionando
-        String path1 = getServletContext().getRealPath("/files/temp/" + u.getId() + "/"+imagem);
+        String path1 = getServletContext().getRealPath("/files/temp/" + u.getId() + "/" + imagem);
         String path2 = getServletContext().getRealPath("/files/images/" + u.getId() + "/");
-        
+
         try {
             BufferedImage imageb = ImageIO.read(new File(path1));
             Image image = imageb.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
             BufferedImage imagemredimencionada = new BufferedImage(
                     150, 150, BufferedImage.TYPE_INT_BGR);
-            imagemredimencionada.createGraphics().drawImage(image, 0, 0, null);          
+            imagemredimencionada.createGraphics().drawImage(image, 0, 0, null);
             File file = new File(path2);
             if (!file.exists()) {
                 file.mkdir();
             }
-            ImageIO.write(imagemredimencionada, "JPG", new File(path2+"/avatar.jpg"));
+            ImageIO.write(imagemredimencionada, "JPG", new File(path2 + "/avatar.jpg"));
         } catch (IOException ex) {
             System.out.println("erro");
         }
@@ -127,6 +132,4 @@ public class ServletEditaPerfil extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-    
 }
