@@ -9,15 +9,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="css/styles.css" rel="stylesheet" type="text/css" />
-        <%@include file="default/favicon.jsp" %>
+        <%@include file="head.jsp" %>
         <title>JSP Page</title>
     </head>
-     <%@include file="default/header.jsp" %>
-        <div class="bgcontainer">
-            <div class="container">
-                <p>Delv Galerias...</p>              
-            </div>
+    <%@include file="default/header.jsp" %>
+    <div class="bgcontainer">
+        <div class="container">
+            <p>Delv Galerias...</p>              
         </div>
-        <%@include file="default/footer.jsp" %>
+    </div>
+    <%@include file="default/footer.jsp" %>
 </html>

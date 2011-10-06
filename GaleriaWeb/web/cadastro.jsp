@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <%@include file="default/favicon.jsp" %>
+        <%@include file="head.jsp" %>
         <title>Novo Cadastro</title>
         <script>
             function validarcampos(){
