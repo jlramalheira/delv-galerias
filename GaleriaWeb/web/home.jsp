@@ -48,25 +48,35 @@
                 <%-- SIDEBAR --%>
                 <div class="sidebar">                   
                     <%-- LISTAR AMIGOS --%>
-                    <%
-                        if (u.getAmigos().size() > 9) { //mostra no maximo 9 amigos
-                            //Usuario sorteado = u.getAmigos().get(new Random().nextInt(u.getAmigos().size())); //sorteia um amigo na lista
-                            Collections.shuffle(u.getAmigos());
-                            for (int i = 0; i < 9; i++) {
-                                Usuario user = u.getAmigos().get(i);
-                                out.println("<img src=\"files/images/" + user.getId() + "/" + user.getImagem() + "\" alt=\"Foto\" height=\"75\" width=\"75\"/> <br />");
-                                out.println("<a href=\"ServletPerfil?id=" + user.getId() + "\">" + user.getNome() + "</a>");
+                    <div class="amigoslist">
+                        <h2>Amigos</h2>
+                        <ul>                        
+                            <%
+                                Collections.shuffle(u.getAmigos());
+                                if (u.getAmigos().size() > 8) { //mostra no maximo 9 amigos
+                                    //Usuario sorteado = u.getAmigos().get(new Random().nextInt(u.getAmigos().size())); //sorteia um amigo na lista
 
-                            }
-                        } else {
-                            for (Usuario user : u.getAmigos()) {
-                                out.println("<img src=\"files/images/" + user.getId() + "/" + user.getImagem() + "\" alt=\"Foto\" height=\"75\" width=\"75\"/> <br />");
-                                out.println("<a href=\"ServletPerfil?id=" + user.getId() + "\">" + user.getNome() + "</a>");
-                            }
-                        }
+                                    for (int i = 0; i < 8; i++) {
+                                        Usuario user = u.getAmigos().get(i);
+                            %>                                         
+                            <li>
+                                <a href="ServletPerfil?id=<%= user.getId()%>"><img src="files/images/<%= user.getId()%>/<%= user.getImagem()%>" alt="Foto" /></a>                        
+                            </li>       
+                            <%
+                                }
+                            } else {
+                                for (Usuario user : u.getAmigos()) {%>
+                            <li>
+                                <a href="ServletPerfil?id=<%= user.getId()%>"><img src="files/images/<%= user.getId()%>/<%= user.getImagem()%>" alt="Foto" /></a>                   
+                            </li> 
+                            <%        }
+                                }
 
-                    %>
-                    <a href="ServletExibeAmigos?pagina=1">Todos</a>
+                            %>
+                        </ul>
+                        <p class="vermais"><a href="ServletExibeAmigos?pagina=1">Ver todos os amigos</a></p>
+                    </div>
+                    
 
                 </div>
                 <%-- CONTENT --%>

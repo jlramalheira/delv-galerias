@@ -164,9 +164,54 @@ body {
 }
 .sidebar {
     float:right;
-    width:250px;
+    width:230px;
+    padding: 10px;
     min-height:300px;
     background-color:#D5DED9;
+}
+
+/* CONTEÚDO GERAL */
+.container h2{
+    color:#99B2B7;
+    font: normal bold 20px "Trebuchet MS", Arial, Helvetica, sans-serif;
+    margin: 0 0 25px 0;
+}
+.container p{
+    color:#7A6A53;
+    font: normal 14px "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+/* SIDEBAR AMIGOS*/
+.amigoslist{
+    width: auto;
+}
+.amigoslist h2{
+    margin: 0 0 10px 0;
+    color: #7a6a53;
+    text-align: right;    
+}
+.amigoslist .vermais{
+    font: normal bold 14px "Trebuchet MS", Helvetica, Arial, sans-serif;
+}
+.amigoslist .vermais a {
+    color: #7a6a53;
+    text-decoration: none;
+}
+.amigoslist .vermais a:hover {
+    color: #948C75;
+    text-decoration: none;
+}
+.amigoslist ul {
+    margin: 10px 0;
+    list-style:none;
+}
+.amigoslist ul li{
+    display: inline;    
+}
+.amigoslist ul li img{
+    width: 50px;
+    height: 50px;
+    border:2px solid #99B2B7;
 }
 
 /* FOOTER */
@@ -287,16 +332,7 @@ body {
     background-color:#b0a892;
 }
 
-/* CONTEÚDO GERAL */
-.container h2{
-    color:#99B2B7;
-    font: normal bold 20px "Trebuchet MS", Arial, Helvetica, sans-serif;
-    margin: 0 0 25px 0;
-}
-.container p{
-    color:#7A6A53;
-    font: normal 14px "Trebuchet MS", Arial, Helvetica, sans-serif;
-}
+
 
 /* CADASTRO */
 .formulario{
