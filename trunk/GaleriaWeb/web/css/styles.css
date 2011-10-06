@@ -332,8 +332,6 @@ body {
     background-color:#b0a892;
 }
 
-
-
 /* CADASTRO */
 .formulario{
     width: 340px;
@@ -402,6 +400,36 @@ body {
     font:normal 14px "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 
+/* RESULTADOS PESQUISA */
+.resultadosbusca {
+}
+.resultadosbusca ul li {
+    height: 120px;
+    border-bottom: 1px dotted #99B2B7;
+}
+.resultadosbusca ul li img{
+    float: left;
+    width: 94px;
+    height: 94px;
+    border:3px solid #7A6A53;
+    margin: 10px 10px 10px 0px;
+}
+.resultadosbusca ul li .info{
+    float: left;
+    width: 840px;
+    margin: 10px 0 10px 0;
+}
+.resultadosbusca ul li .info .nome{
+    font: normal bold 20px "Trebuchet MS", Helvetica, Arial, sans-serif;
+    font-variant: small-caps;
+}
+.resultadosbusca ul li .info .nome a{
+    color:#99B2B7;
+    text-decoration: none;
+}
+.resultadosbusca ul li .info .msg{
+    font-style: italic;
+}
 
 /* OUTROS */
 .erro {
