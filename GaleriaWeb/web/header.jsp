@@ -8,7 +8,7 @@
     if (a == null) {%>
 <div class="bgheader">
     <div class="header">
-        <h1><img src="images/logo.png" alt="Delv Galerias" width="170" height="80"/></h1>
+        <h1><a href="login.jsp"><img src="images/logo.png" alt="Delv Galerias" width="170" height="80"/></a></h1>
         <ul class="menuoff">
             <li><a href="quemSomos.jsp" id="what">O que é Delv?</a></li>
             <li><a href="cadastro.jsp" id="about">Quer participar?</a></li>
@@ -18,7 +18,7 @@
 <%    } else {%>
 <div class="bgheader">
     <div class="header">
-        <h1><img src="images/logo.png" alt="Delv Galerias" width="170" height="80"/></h1>
+        <h1><a href="login.jsp"><img src="images/logo.png" alt="Delv Galerias" width="170" height="80"/></a></h1>
             <%-- BARRA PESSOAL --%>
         <div class="barmecontainer">
             <div class="barme">
