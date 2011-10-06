@@ -136,8 +136,6 @@ body {
     margin: 8px 0 0 228px;    
 }
 
-
-
 /*CONTEINER*/
 .bgcontainer {
     width:100%;
@@ -295,21 +293,32 @@ body {
     font: normal bold 20px "Trebuchet MS", Arial, Helvetica, sans-serif;
     margin: 0 0 25px 0;
 }
+.container p{
+    color:#7A6A53;
+    font: normal 14px "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
 
 /* CADASTRO */
-.cadastro{
+.formulario{
     width: 340px;
-    height: 140px;
+    height: auto;
     padding: 20px;
     background-color: #D5DED9;
     border: 1px solid #99B2B7;
 }
-.cadastro p{
+.formulario p{
+    width: auto;
     height: 30px;
     color:#6b6456;
     font: 14px "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
-.cadastro label {
+.formulario .radios{
+    width: 340px;
+    height: auto;
+    color:#6b6456;
+    font: 14px "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+.formulario label {
     float: left;
     width: 75px;
     height: 25px;
@@ -317,32 +326,62 @@ body {
     margin: 0 10px 0 0;
     text-align: right;
 }
-.cadastro input{
-    width:233px;
+.formulario input{
+    width:243px;
     height:13px;
     margin:0;
     border: 1px solid #99B2B7;
     padding:5px 5px;
     color:#7A6A53;
-    font:italic 14px "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font:normal 14px "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
-.cadastro input[type=submit]{
+.formulario input[type=radio]{
+    width:auto;
+    height: auto;
+    margin: 5px 0;
+}
+.formulario input[type=file]{
+    width: 253px;
+    height: 23px;
+    padding: 0;
+}
+.formulario input[type=submit]{
     width:80px;
     height:30px;
-    float:right;
-    margin:10px;
+    float: right;
     border-width:0;
-    background:url(../images/bt_entrar.png) no-repeat;	
+    background:url(../images/bt_enviar.png) no-repeat;	
     cursor:pointer;
 }
-.cadastro input[type=submit]:hover{
-    background:url(../images/bt_entrar_hover.png) no-repeat;	
+.formulario input[type=submit]:hover{
+    background:url(../images/bt_enviar_hover.png) no-repeat;	
 }
+.formulario select{
+    width:253px;
+    height:25px;
+    margin:0;
+    border: 1px solid #99B2B7;
+    padding:0;
+    color:#7A6A53;
+    font:normal 14px "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
 
 /* OUTROS */
 .erro {
     color: #ff3c55;
     font: normal bold 14px "Trebuchet MS", Arial, Helvetica, sans-serif;
     margin: 10px 0;
+}
+.voltar {
+    background:url(../images/back.png) left center no-repeat;
+    margin: 10px 0;
+    padding: 0 0 0 20px;
+    text-transform: uppercase;
+}
+.voltar a {
+    font: normal bold 14px "Trebuchet MS", Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    color: #7A6A53;
 }
 
