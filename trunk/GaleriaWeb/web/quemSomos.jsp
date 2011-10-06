@@ -12,11 +12,11 @@
         <%@include file="head.jsp" %>
         <title>JSP Page</title>
     </head>
-    <%@include file="default/header.jsp" %>
+    <%@include file="header.jsp" %>
     <div class="bgcontainer">
         <div class="container">
             <p>Delv Galerias...</p>              
         </div>
     </div>
-    <%@include file="default/footer.jsp" %>
+    <%@include file="footer.jsp" %>
 </html>
