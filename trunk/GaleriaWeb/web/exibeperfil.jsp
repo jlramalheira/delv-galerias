@@ -22,7 +22,7 @@
                 Usuario perfil = (Usuario) session.getAttribute("perfil");
                 if (perfil != null) {
                     out.println("<h1>" + perfil.getNome() + "</h1>");
-                    out.println("<img src=\"/files/"+perfil.getId()+"/"+perfil.getImagem()+"\" />");
+                    out.println("<img src=\"files/images/" + perfil.getId() + "/" + perfil.getImagem() + "\" />");
                     if (session.getAttribute("amigos") != null) {
                         boolean amigos = (Boolean) session.getAttribute("amigos");
                         if (!amigos && (u.getId() != perfil.getId())) {
