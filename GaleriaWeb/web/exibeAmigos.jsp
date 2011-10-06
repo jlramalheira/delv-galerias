@@ -16,31 +16,38 @@
     </head>
     <body>
         <%
-        Usuario u = (Usuario) (session.getAttribute("usuario"));
+            Usuario u = (Usuario) (session.getAttribute("usuario"));
             if (u == null) {
                 response.sendRedirect("login.jsp");
             } else {
-            List<Usuario> amigos = (List<Usuario>)session.getAttribute("amigos");
-            int pagina = (Integer)session.getAttribute("paginaatual");
-            int quantidade = (Integer)session.getAttribute("quantidadepaginas");
-            if ((pagina+1) * 20 > amigos.size()){
-                for (int i = (pagina*20 - 20); i<amigos.size();i++){
+                List<Usuario> amigos = (List<Usuario>) session.getAttribute("amigos");
+                int pagina = (Integer) session.getAttribute("paginaatual");
+                int quantidade = (Integer) session.getAttribute("quantidadepaginas");
+        %>
+        <form name="formpesquisaAmigos" action="ServletExibeAmigos" method="POST">
+            <p><label for="nomeamigo">Nome:</label>
+                <input type="text" name="nomeamigo" value="" id="nomeamigo"/></p>
+            <input type="submit" value="Pesquisar" name="btPesquiar" />
+        </form>
+        <%
+            if ((pagina + 1) * 20 > amigos.size()) {
+                for (int i = (pagina * 20 - 20); i < amigos.size(); i++) {
                     Usuario user = amigos.get(i);
                     out.println("<a href=\"ServletPerfil?id=" + user.getId() + "\">" + user.getNome() + "</a><br />");
                 }
             } else {
-                for (int i = (pagina*20 - 20); i<=pagina*20;i++){
+                for (int i = (pagina * 20 - 20); i <= pagina * 20; i++) {
                     Usuario user = amigos.get(i);
                     out.println("<a href=\"ServletPerfil?id=" + user.getId() + "\">" + user.getNome() + "</a><br />");
                 }
             }
         %>
-        
+
         <%
-            for (int i = 1; i<=quantidade;i++){
-                out.println("<a href=\"ServletExibeAmigos?pagina="+i+"\">"+i+"</a>");
+                for (int i = 1; i <= quantidade; i++) {
+                    out.println("<a href=\"ServletExibeAmigos?pagina=" + i + "\">" + i + "</a>");
+                }
             }
-           }
         %>
     </body>
 </html>

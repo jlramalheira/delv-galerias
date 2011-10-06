@@ -47,7 +47,30 @@ public class ServletExibeAmigos extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        Usuario usuario = (Usuario) session.getAttribute("usuario");
+        String nomeamigo = request.getParameter("nomeamigo");
+        int quantidade = 0;
+        int pagina = 1;
+        List<Usuario> amigos = null;
+        for (Usuario u : usuario.getAmigos()) {
+            if (u.getNome().contains(nomeamigo)){
+                amigos.add(u);
+            }
+        }
+        if (amigos.size()%20 == 0){
+            quantidade = amigos.size()/20;
+        } else {
+            quantidade = (amigos.size()/20)+1;
+        }
+        session.removeAttribute("quantidadepaginas");
+        session.setAttribute("quantidadepaginas", quantidade);
+        session.removeAttribute("paginaatual");
+        session.setAttribute("paginaatual", pagina);
+        session.removeAttribute("amigos");
+        session.setAttribute("amigos", amigos);
         
+        response.sendRedirect("exibeAmigos.jsp");
     }
 
     @Override
