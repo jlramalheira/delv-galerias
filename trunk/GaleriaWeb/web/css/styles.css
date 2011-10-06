@@ -126,14 +126,14 @@ body {
     background-color: #6b6456;
 }
 .header form input{    
-    width: 173px;
+    width: 168px;
     height: 18px;
     border: 1px solid #7A6A53;
-    padding: 5px 20px 5px 5px; 
+    padding: 5px 25px 5px 5px; 
 }
 .header form img {
     position: absolute;
-    margin: 8px 0 0 175px;    
+    margin: 8px 0 0 178px;    
 }
 
 

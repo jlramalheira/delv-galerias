@@ -34,7 +34,7 @@
         <%-- PESQUISAR --%>
         <form name="formBuscaUsuario" action="ServletBuscaUsuario" method="post" >
             <img src="images/bkg/search.png" alt="Search icon" />
-            <input type="text" name="nomeUsuario" value="Pesquisar" />      
+            <input type="text" name="nomeUsuario" value="" id="search"/>      
         </form>
     </div>
 </div>
