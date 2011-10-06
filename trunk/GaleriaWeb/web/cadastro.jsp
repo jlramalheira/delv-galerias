@@ -34,30 +34,36 @@
                 }
             }
         </script>
-    </head>
+    </head>    
     <body>
-        <h1>Crie uma nova conta</h1>
-        <%
-        String login = "";
-        String email = "";
-        if ((session.getAttribute("login") != null)){
-            login = session.getAttribute("login")+"";
-        }
-        if ((session.getAttribute("email") != null)){
-            email = session.getAttribute("email")+"";
-        }
-        if ((session.getAttribute("mensagem") != null)){
-            out.println("<h2>"+session.getAttribute("mensagem")+"</h2>");
-        }
-        %>
-        <form method="POST" action="NovoUsuario" name="FormCadastro">
-            <p>Usuario*: <br/>
-            <input type="text" name="usuario" value="<%=login%>" /></p>
-            <p>Senha*:<br/>
-            <input type="password" name="password" value="" /></p>
-            <p>E-mail*:<br/>
-            <input type="text" name="email" value="<%=email%>" /></p>
-            <p><input type="submit" value="Confirmar" name="btConfirmar" onclick="return validarcampos()"/></p>
-        </form>
+        <%@include file="header.jsp" %>
+        <div class="bgcontainer">
+            <div class="container">
+                <h2>Crie uma nova conta</h2>
+                <%
+                    String login = "";
+                    String email = "";
+                    if ((session.getAttribute("login") != null)) {
+                        login = session.getAttribute("login") + "";
+                    }
+                    if ((session.getAttribute("email") != null)) {
+                        email = session.getAttribute("email") + "";
+                    }
+                    if ((session.getAttribute("mensagem") != null)) {
+                        out.println("<p class=\"erro\">" + session.getAttribute("mensagem") + "</p>");
+                    }
+                %>
+                <form method="POST" action="NovoUsuario" name="FormCadastro" class="cadastro">
+                    <p><label for="usuario">Usuario*:</label>
+                        <input type="text" name="usuario" value="<%=login%>" id="usuario" /></p>
+                    <p><label for="password">Senha*:</label>
+                        <input type="password" name="password" value="" id="password"/></p>
+                    <p><label for="email">E-mail*:</label>
+                        <input type="text" name="email" value="<%=email%>" id="email"/></p>
+                    <p><input type="submit" value="" name="btConfirmar" onclick="return validarcampos()"/></p>
+                </form>
+            </div>
+        </div>
+        <%@include file="footer.jsp" %>
     </body>
 </html>
