@@ -17,17 +17,17 @@
 </div>    
 <%    } else {%>
 <script type="text/javascript">          
-            $(document).ready(function(){
-                $('#search').val('Pesquisar').toggleVal();
-            });       
-        </script>
+    $(document).ready(function(){
+        $('#search').val('Pesquisar').toggleVal();
+    });       
+</script>
 <div class="bgheader">
     <div class="header">
         <h1><a href="login.jsp"><img src="images/logo.png" alt="Delv Galerias" width="170" height="80"/></a></h1>
-            <%-- BARRA PESSOAL --%>
+                <%-- BARRA PESSOAL --%>
         <div class="barmecontainer">
             <div class="barme">
-                <p><img src="files/images/<%=a.getId() + "/" + a.getImagem()%>" alt="Avatar" />
+                <p><img src="<%=(a.getImagem() != null) ? a.getImagem() : "images/pic.png"%>" alt="Avatar"/>
                     <%=a.getNome()%>
                 </p>
                 <ul>               
