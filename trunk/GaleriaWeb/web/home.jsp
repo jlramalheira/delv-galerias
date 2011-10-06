@@ -81,7 +81,7 @@
                 </div>
                 <%-- CONTENT --%>
                 <div class="content">
-                    <div class="me"> <img src="files/images/<%=u.getId() + "/" + u.getImagem()%>" alt="Foto"/>
+                    <div class="me"> <img src="<%=u.getImagem()%>" alt="Foto"/>
                         <div class="welcome">
                             <p>Bem vindo,<br />
                                 <span class="name"><%=(u.getNome())%></span></p>
