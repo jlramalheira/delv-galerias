@@ -53,7 +53,8 @@
                         out.println("<p class=\"erro\">" + session.getAttribute("mensagem") + "</p>");
                     }
                 %>
-                <form method="POST" action="NovoUsuario" name="FormCadastro" class="cadastro">
+                <form method="POST" action="NovoUsuario" name="FormCadastro" class="formulario">
+                    <p><small>Os Campos com * são de preenchimento obrigatório</small></p>
                     <p><label for="usuario">Usuario*:</label>
                         <input type="text" name="usuario" value="<%=login%>" id="usuario" /></p>
                     <p><label for="password">Senha*:</label>

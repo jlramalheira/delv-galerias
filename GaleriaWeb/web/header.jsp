@@ -16,6 +16,11 @@
     </div>
 </div>    
 <%    } else {%>
+<script type="text/javascript">          
+            $(document).ready(function(){
+                $('#search').val('Pesquisar').toggleVal();
+            });       
+        </script>
 <div class="bgheader">
     <div class="header">
         <h1><a href="login.jsp"><img src="images/logo.png" alt="Delv Galerias" width="170" height="80"/></a></h1>
