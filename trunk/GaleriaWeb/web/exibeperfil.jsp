@@ -19,6 +19,7 @@
         <%-- BODY --%>
         <div class="bgcontainer">
             <div class="container">
+                <p class="voltar"><a href="home.jsp">Voltar</a></p> <br />
                 <%
                     Usuario u = (Usuario) session.getAttribute("usuario");
                     if (u == null) {

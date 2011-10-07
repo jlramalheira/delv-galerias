@@ -49,7 +49,7 @@
                 <div class="sidebar">                   
                     <%-- LISTAR AMIGOS --%>
                     <div class="amigoslist">
-                        <h2>Amigos</h2>
+                        <h2>Amigos (<%=u.getAmigos().size() %>)</h2>
                         <ul>                        
                             <%
                                 Collections.shuffle(u.getAmigos());
