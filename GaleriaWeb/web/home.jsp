@@ -60,14 +60,14 @@
                                         Usuario user = u.getAmigos().get(i);
                             %>                                         
                             <li>
-                                <a href="ServletPerfil?id=<%= user.getId()%>"><img src="files/images/<%= user.getId()%>/<%= user.getImagem()%>" alt="Foto" /></a>                        
+                                <a href="ServletPerfil?id=<%= user.getId()%>"><img src="<%= user.getImagem()%>" alt="Foto de <%=user.getNome()%>" /></a>                        
                             </li>       
                             <%
                                 }
                             } else {
                                 for (Usuario user : u.getAmigos()) {%>
                             <li>
-                                <a href="ServletPerfil?id=<%= user.getId()%>"><img src="files/images/<%= user.getId()%>/<%= user.getImagem()%>" alt="Foto" /></a>                   
+                                <a href="ServletPerfil?id=<%= user.getId()%>"><img src="<%= user.getImagem()%>" alt="Foto de <%=user.getNome()%>" /></a>                   
                             </li> 
                             <%        }
                                 }
@@ -76,7 +76,7 @@
                         </ul>
                         <p class="vermais"><a href="ServletExibeAmigos?pagina=1">Ver todos os amigos</a></p>
                     </div>
-                    
+
 
                 </div>
                 <%-- CONTENT --%>

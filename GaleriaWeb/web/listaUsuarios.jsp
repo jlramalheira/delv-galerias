@@ -34,7 +34,7 @@
                             if (usuarios != null) {
                                 for (Usuario u : usuarios) {%>
                                 <li>
-                                    <a href="ServletPerfil?id=<%= u.getId()%>"><img src="files/images/<%= u.getId()%>/<%= u.getImagem()%>" alt="Foto de <%= u.getNome()%>"/></a>
+                                    <a href="ServletPerfil?id=<%= u.getId()%>"><img src="<%= u.getImagem()%>" alt="Foto de <%= u.getNome()%>"/></a>
                                     <div class="info">
                                         <p class="nome"><a href="ServletPerfil?id=<%= u.getId()%>"><%= u.getNome()%></a></p>
                                         <p class="msg"><%= (u.getMensagem() != null) ? u.getMensagem() : ""%></p>
