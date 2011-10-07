@@ -37,7 +37,6 @@
                                 if ((pagina + 1) * 20 > usuarios.size()) {
                                     for (int i = (pagina * 20 - 20); i < usuarios.size(); i++) {
                                         Usuario u = usuarios.get(i);%>
-                        %>
                         <li>
                             <a href="ServletPerfil?id=<%= u.getId()%>"><img src="<%= u.getImagem()%>" alt="Foto de <%= u.getNome()%>"/></a>
                             <div class="info">
@@ -64,19 +63,20 @@
                         <%
                                 }
                             }%>
-                        <p> Paginas: 
-                            <%
-                                    for (int i = 1; i <= quantidade; i++) {
-                                        if (i == pagina) {
-                                            out.println(i);
-                                        } else {
-                                            out.println("<a href=\"ServletExibeAmigos?pagina=" + i + "\">" + i + "</a>");
-                                        }
+
+                    </ul>
+                    <p> Paginas: 
+                        <%
+                                for (int i = 1; i <= quantidade; i++) {
+                                    if (i == pagina) {
+                                        out.println(i);
+                                    } else {
+                                        out.println("<a href=\"ServletExibeAmigos?pagina=" + i + "\">" + i + "</a>");
                                     }
                                 }
-                            %>
-                        </p>
-                    </ul>
+                            }
+                        %>
+                    </p>
                 </div>
             </div>           
         </div>
