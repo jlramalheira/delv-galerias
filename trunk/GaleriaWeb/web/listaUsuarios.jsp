@@ -71,7 +71,7 @@
                                     if (i == pagina) {
                                         out.println(i);
                                     } else {
-                                        out.println("<a href=\"ServletExibeAmigos?pagina=" + i + "\">" + i + "</a>");
+                                        out.println("<a href=\"ServletBuscaUsuario?pagina=" + i + "\">" + i + "</a>");
                                     }
                                 }
                             }
