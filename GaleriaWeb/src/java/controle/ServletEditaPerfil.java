@@ -85,14 +85,19 @@ public class ServletEditaPerfil extends HttpServlet {
         String cidade = map.get("cidade");
         int pais = Integer.parseInt(map.get("pais"));
         String imagem = "";
-        if (map.get("imagem") == null &&  u.getImagem().equals("")) {
-            imagem = "images/pic.png";
+        if (u.getImagem() != null) {
+            if (map.get("imagem") == null && u.getImagem().equals("")) {
+                imagem = "images/pic.png";
+            } else {
+                imagem = "files/images/" + u.getId() + "/avatar.jpg";
+            }
         } else {
-            imagem = "files/images/" + u.getId() + "/avatar.jpg";
+            imagem = "images/pic.png";
         }
 
 
-        if (nome.isEmpty()){
+
+        if (nome.isEmpty()) {
             nome = "Usuario sem nome";
         }
         u.setNome(nome);
@@ -114,7 +119,6 @@ public class ServletEditaPerfil extends HttpServlet {
         String path2 = getServletContext().getRealPath("/files/images/" + u.getId() + "/");
 
         try {
-            System.out.println("entrei");
             BufferedImage imageb = ImageIO.read(new File(path1));
             System.out.println("foi");
             Image image = imageb.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
@@ -131,7 +135,6 @@ public class ServletEditaPerfil extends HttpServlet {
             ImageIO.write(imagemredimencionada, "JPG", new File(path2 + "/avatar.jpg"));
             System.out.println("foi5");
         } catch (IOException ex) {
-            System.out.println("erro");
         }
 
         response.sendRedirect("home.jsp");
