@@ -56,6 +56,7 @@ public class ServletPerfil extends HttpServlet {
 
             Usuario novoamigo = daoUsuario.get(id);
             List<Usuario> listamigos = usuario.getAmigos();
+           
             if (novoamigo != null) {
                 listamigos.add(novoamigo);
                 usuario.setAmigos(listamigos);
