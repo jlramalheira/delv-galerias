@@ -14,39 +14,58 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <%
-            Usuario u = (Usuario) session.getAttribute("usuario");
-            if (u == null) {
-                response.sendRedirect("login.jsp");
-            } else {
-                Usuario perfil = (Usuario) session.getAttribute("perfil");
-                if (perfil != null) {
-                    out.println("<h1>" + perfil.getNome() + "</h1>");
-                    out.println("<img src=\"files/images/" + perfil.getId() + "/" + perfil.getImagem() + "\" />");
-                    if (session.getAttribute("amigos") != null) {
-                        boolean amigos = (Boolean) session.getAttribute("amigos");
-                        if (!amigos && (u.getId() != perfil.getId())) {
-        %>
-        <form name="formadicionaamigo" action="ServletPerfil" method="POST">
-            <button type="submit" name="btAdd" value="<%=perfil.getId()%>">Adicionar+</button>
-        </form>
-        <%              }
-            if (amigos) {
-        %>
-        <form name="formRemoveamigo" action="ServletPerfil" method="POST">
-            <button type="submit" name="btRemove" value="<%=perfil.getId()%>">Remove</button>
-        </form>
-        <%
+        <%-- HEADER --%>
+        <%@include file="header.jsp" %>
+        <%-- BODY --%>
+        <div class="bgcontainer">
+            <div class="container">
+                <%
+                    Usuario u = (Usuario) session.getAttribute("usuario");
+                    if (u == null) {
+                        response.sendRedirect("login.jsp");
+                    } else {
+                        Usuario perfil = (Usuario) session.getAttribute("perfil");
+                        if (perfil != null) {
+                %>
+                <div class="content">
+                    <div class="perfil"> <img src="<%=perfil.getImagem()%>" alt="Foto"/>
+                        <div class="welcome">
+                            <p>Bem vindo ao perfil de,<br />
+                                <span class="name"><%=(perfil.getNome())%></span></p>
+                            <p class="mensagem"><%= perfil.getMensagem()%></p>
+                            <p><strong>Local:</strong> <%= ((perfil.getCidade() != null) ? perfil.getCidade() : "")
+                                    + " - " + ((perfil.getPais() != null) ? perfil.getPais().getNome() : "")%></p>
+                            <p><strong>Descrição:</strong> <%= ((perfil.getDescricao() != null) ? perfil.getDescricao() : "")%></p>
 
+                            <%
+                                if (session.getAttribute("amigos") != null) {
+                                    boolean amigos = (Boolean) session.getAttribute("amigos");
+                                    if (!amigos && (u.getId() != perfil.getId())) {
+                            %>
+                            <form name="formadicionaamigo" action="ServletPerfil" method="POST">
+                                <button type="submit" name="btAdd" value="<%=perfil.getId()%>">Adicionar aos amigos</button>
+                            </form>
+                            <%              }
+                                if (amigos) {
+                            %>
+                            <form name="formRemoveamigo" action="ServletPerfil" method="POST">
+                                <button type="submit" name="btRemove" value="<%=perfil.getId()%>">Remover dos Amigos</button>
+                            </form>
+                            <%
+                                    }
+                                }%>
+                        </div>
+                    </div>
+                </div>
+                <%
+                        } else {
+                            out.println("<h1>Usuario nao encontrado</h1>");
+                        }
                     }
-                }
-            } else {
-                out.println("<h1>Usuario nao encontrado</h1>");
-            }
-        %>
-
-        <%
-            }
-        %>
+                %>
+            </div>            
+        </div>
+        <%-- FOOTER --%>
+        <%@include file="footer.jsp" %>
     </body>
 </html>
