@@ -334,12 +334,12 @@ body {
 
 /*PERFIL*/
 .perfil{
-    
+
 }
 .perfil img{
     float:left;
     border:3px solid #6b6456;
-    
+
 }
 .perfil .welcome{
     float:left;
@@ -476,6 +476,28 @@ body {
 }
 .resultadosbusca ul li .info .msg{
     font-style: italic;
+}
+/* BUSCAR AMIGOS */
+.resultadosbusca #buscaamigo{    
+}
+.resultadosbusca #buscaamigo input{
+    width: 250px;
+    height: 14px;
+    padding: 3px 10px;
+}
+.resultadosbusca #buscaamigo input[type=submit]{
+    width: auto;
+    height: 24px;
+    padding:3px 10px;
+    background-color:#948C75;
+    border:0;
+    color:#FFFFFF;
+    font:bold 14px "Trebuchet MS", Arial, Helvetica, sans-serif;
+    text-transform:uppercase;
+    cursor:pointer;
+}
+.resultadosbusca #buscaamigo input[type=submit]:hover{
+    background-color:#b0a892;
 }
 
 /* OUTROS */
