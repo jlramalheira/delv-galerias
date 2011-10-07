@@ -92,6 +92,9 @@ public class ServletEditaPerfil extends HttpServlet {
         }
 
 
+        if (nome.isEmpty()){
+            nome = "Usuario sem nome";
+        }
         u.setNome(nome);
         u.setDataNascimento(util.Util.StringToDate(dataNascimento));
         u.setSexo(sexo);
