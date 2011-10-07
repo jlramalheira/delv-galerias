@@ -299,6 +299,10 @@ body {
     font-weight:bold;
     font-variant:small-caps;	
 }
+.me .welcome .name a {
+    text-decoration: none;
+    color:#99B2B7;
+}
 .me .welcome .mensagem{
     margin: 10px 0 0 0;
     color:#948C75;

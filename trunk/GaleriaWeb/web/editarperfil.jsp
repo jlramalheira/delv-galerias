@@ -47,6 +47,13 @@
             }
 
     %>
+    <script type="text/javascript">
+        jQuery(function($){            
+            $.mask.definitions['~']='[+-]';
+            $('#datanascimento').mask('99/99/9999');
+        })
+    </script>
+
     <body>
         <%-- HEADER --%>
         <%@include file="header.jsp" %>
@@ -56,8 +63,8 @@
                 <h2> Editar </h2>
                 <p class="voltar"><a href="home.jsp">Voltar</a></p>
                 <form name="formEditaPerfil" action="ServletEditaPerfil" method="post" enctype="multipart/form-data" class="formulario">
-                    <p><label for="Nome">Nome:</label><input type="text" name="nome" value="<%=nome%>"/></p>
-                    <p><label for="dataNascimento">Nascimento:</label><input type="text" name="dataNascimento" value="<%=dataNascimento%>"/></p>
+                    <p><label for="nome">Nome:</label><input type="text" name="nome" value="<%=nome%>" id="nome"/></p>
+                    <p><label for="datanascimento">Nascimento:</label><input type="text" name="dataNascimento" id="datanascimento" value="<%=dataNascimento%>"/></p>
                     <p class="radios"><label for="Sexo">Sexo:</label>
                         <% if (sexo == 'F') {
                                 out.println("Masculino: <input type=\"radio\" name=\"sexo\" value=\"M\"/><br/>");
@@ -91,10 +98,10 @@
                                 }
                             %>
                         </select></p>
-                    <p><label for="Cidade">Cidade:</label>
-                        <input type="text" name="cidade" value="<%=cidade%>"/></p>
-                    <p><label for="Imagem">Imagem:</label>
-                        <input name="imagem" type="file" maxlength="60" />
+                    <p><label for="cidade">Cidade:</label>
+                        <input type="text" name="cidade" value="<%=cidade%>" id="cidade"/></p>
+                    <p><label for="imagem">Imagem:</label>
+                        <input name="imagem" type="file" maxlength="60" id="imagem"/>
                         <input type="submit" name="upload" value="insert" hidden="true"/></p>
                     <p><input type="submit" value="" name="btSalvar" /></p>
                 </form>

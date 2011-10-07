@@ -84,7 +84,7 @@
                     <div class="me"> <a href="ServletPerfil?id=<%= u.getId()%>"><img src="<%=u.getImagem()%>" alt="Foto"/></a>
                         <div class="welcome">
                             <p>Bem vindo,<br />
-                                <a href="ServletPerfil?id=<%= u.getId()%>"><span class="name"><%=(u.getNome())%></span></a></p>
+                                <span class="name"><a href="ServletPerfil?id=<%= u.getId()%>"><%=(u.getNome())%></a></span></p>
                             <p class="mensagem" id="msg" title="Clique para alterar sua mensagem" onclick="aparece()"><%=mensagem%></p>
                             <form name="formMensagem" action="ServletEditaPerfil" method="get" id="formMensagem">
                                 <input type="text" name="mensagem" value="<%=mensagem%>" />
