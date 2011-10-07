@@ -40,6 +40,8 @@
                 %>
             </div> 
         </div>
+        <%-- FOOTER --%>
+        <%@include file="footer.jsp" %>
 
 
 
