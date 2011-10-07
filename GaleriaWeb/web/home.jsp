@@ -81,10 +81,10 @@
                 </div>
                 <%-- CONTENT --%>
                 <div class="content">
-                    <div class="me"> <img src="<%=u.getImagem()%>" alt="Foto"/>
+                    <div class="me"> <a href="ServletPerfil?id=<%= u.getId()%>"><img src="<%=u.getImagem()%>" alt="Foto"/></a>
                         <div class="welcome">
                             <p>Bem vindo,<br />
-                                <span class="name"><%=(u.getNome())%></span></p>
+                                <a href="ServletPerfil?id=<%= u.getId()%>"><span class="name"><%=(u.getNome())%></span></a></p>
                             <p class="mensagem" id="msg" title="Clique para alterar sua mensagem" onclick="aparece()"><%=mensagem%></p>
                             <form name="formMensagem" action="ServletEditaPerfil" method="get" id="formMensagem">
                                 <input type="text" name="mensagem" value="<%=mensagem%>" />
