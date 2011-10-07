@@ -29,10 +29,10 @@
                         Usuario perfil = (Usuario) session.getAttribute("perfil");
                         if (agoraeh) {
                 %>
-                <h2><a href="home.jsp" >Você</a> e <a href="ServletPerfil?id=<%= perfil.getId()%>"><%=perfil.getNome()%></a> agora são amigos</h2>
+                <h2><a href="ServletPerfil?id=<%= u.getId()%>" >Você</a> e <a href="ServletPerfil?id=<%= perfil.getId()%>"><%=perfil.getNome()%></a> agora são amigos</h2>
                 <%                        } else {
                 %>
-                <h2><a href="home.jsp" >Você</a> e <a href="ServletPerfil?id=<%= perfil.getId()%>"><%=perfil.getNome()%></a> agora não são mais amigos</h2>
+                <h2><a href="ServletPerfil?id=<%= u.getId()%>" >Você</a> e <a href="ServletPerfil?id=<%= perfil.getId()%>"><%=perfil.getNome()%></a> agora não são mais amigos</h2>
                 <%            }
                 %>
 

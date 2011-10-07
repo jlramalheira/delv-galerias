@@ -85,7 +85,7 @@ public class ServletEditaPerfil extends HttpServlet {
         String cidade = map.get("cidade");
         int pais = Integer.parseInt(map.get("pais"));
         String imagem = "";
-        if (map.get("imagem") == null) {
+        if (map.get("imagem") == null &&  u.getImagem().equals("")) {
             imagem = "images/pic.png";
         } else {
             imagem = "files/images/" + u.getId() + "/avatar.jpg";
