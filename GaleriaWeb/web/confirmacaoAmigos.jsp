@@ -20,14 +20,17 @@
                 response.sendRedirect("login.jsp");
             } else {
                 boolean agoraeh = (Boolean) session.getAttribute("agoraeh");
-                if (agoraeh){
-                    //mostra se eh
-                } else{
-                    //mostra se nao eh
-                }
+                Usuario perfil = (Usuario) session.getAttribute("perfil");
+                if (agoraeh) {
         %>
-            
+        <h2><a href="home.jsp" >Você</a> e <a href="ServletPerfil?id=<%= perfil.getId()%>"><%=perfil.getNome()%></a> agora são amigos</a></h2>
+            <%                        } else {
+            %>
+    <h2><a href="home.jsp" >Você</a> e <a href="ServletPerfil?id=<%= perfil.getId()%>"><%=perfil.getNome()%></a> agora não são mais amigos</a></h2>
         <%            }
         %>
-    </body>
+
+<%            }
+%>
+</body>
 </html>
