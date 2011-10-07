@@ -32,7 +32,7 @@
                         <div class="welcome">
                             <p>Bem vindo ao perfil de,<br />
                                 <span class="name"><%=(perfil.getNome())%></span></p>
-                            <p class="mensagem"><%= perfil.getMensagem()%></p>
+                            <p class="mensagem"><%= (perfil.getMensagem() != null) ? perfil.getMensagem() : "" %></p>
                             <p><strong>Local:</strong> <%= ((perfil.getCidade() != null) ? perfil.getCidade() : "")
                                     + " - " + ((perfil.getPais() != null) ? perfil.getPais().getNome() : "")%></p>
                             <p><strong>Descrição:</strong> <%= ((perfil.getDescricao() != null) ? perfil.getDescricao() : "")%></p>
