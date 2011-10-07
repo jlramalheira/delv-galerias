@@ -15,7 +15,9 @@
     <%@include file="header.jsp" %>
     <div class="bgcontainer">
         <div class="container">
-            <p>Delv Galerias...</p>              
+            <p>Delv Galerias® é um site de relacionamentos para compartilhamento de artes de todos os tipos para VOCÊ que adora compartilhar
+                suas artes e apreciar outras de diversos cantos do mundo!!</p> <br /></br>
+            <p>Entre agora mesmo clicando <a href="cadastro.jsp">aqui</a></p>
         </div>
     </div>
     <%@include file="footer.jsp" %>
