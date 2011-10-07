@@ -106,20 +106,27 @@ public class ServletEditaPerfil extends HttpServlet {
         daoUsuario.update(u);
 
         //redimencionando
+        imagem = map.get("imagem");
         String path1 = getServletContext().getRealPath("/files/temp/" + u.getId() + "/" + imagem);
         String path2 = getServletContext().getRealPath("/files/images/" + u.getId() + "/");
 
         try {
+            System.out.println("entrei");
             BufferedImage imageb = ImageIO.read(new File(path1));
+            System.out.println("foi");
             Image image = imageb.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
             BufferedImage imagemredimencionada = new BufferedImage(
                     150, 150, BufferedImage.TYPE_INT_BGR);
+            System.out.println("foi2");
             imagemredimencionada.createGraphics().drawImage(image, 0, 0, null);
+            System.out.println("foi3");
             File file = new File(path2);
             if (!file.exists()) {
                 file.mkdir();
+                System.out.println("foi4");
             }
             ImageIO.write(imagemredimencionada, "JPG", new File(path2 + "/avatar.jpg"));
+            System.out.println("foi5");
         } catch (IOException ex) {
             System.out.println("erro");
         }
