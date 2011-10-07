@@ -34,7 +34,7 @@
                             if (usuarios != null) {
                                 int pagina = (Integer) session.getAttribute("paginaatual");
                                 int quantidade = (Integer) session.getAttribute("quantidadepaginas");
-                                if ((pagina + 1) * 20 > usuarios.size()) {
+                                if ((pagina) * 20 > usuarios.size()) {
                                     for (int i = (pagina * 20 - 20); i < usuarios.size(); i++) {
                                         Usuario u = usuarios.get(i);%>
                         <li>
@@ -48,7 +48,7 @@
                         </li>                                
                         <% }
                         } else {
-                            for (int i = (pagina * 20 - 20); i <= pagina * 20; i++) {
+                            for (int i = (pagina * 20 - 20); i < pagina * 20; i++) {
                                 Usuario user = usuarios.get(i);
                         %>
                         <li>

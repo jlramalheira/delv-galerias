@@ -41,7 +41,7 @@
                     </form>
                     <ul>
                         <%
-                            if ((pagina + 1) * 20 > amigos.size()) {
+                            if ((pagina) * 20 > amigos.size()) {
                                 for (int i = (pagina * 20 - 20); i < amigos.size(); i++) {
                                     Usuario user = amigos.get(i);%>
                         <li>
@@ -56,7 +56,7 @@
                         <%
                             }
                         } else {
-                            for (int i = (pagina * 20 - 20); i <= pagina * 20; i++) {
+                            for (int i = (pagina * 20 - 20); i < pagina * 20; i++) {
                                 Usuario user = amigos.get(i);
                         %>
                         <li>
