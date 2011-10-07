@@ -26,7 +26,13 @@ public class ServletBuscaUsuario extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+        int pagina = Integer.parseInt(request.getParameter("pagina"));
+        HttpSession session = request.getSession(false);
+        
+        session.removeAttribute("paginaatual");
+        session.setAttribute("paginaatual", pagina);
+        
+        response.sendRedirect("listaUsuarios.jsp");
     }
     
     @Override
@@ -35,6 +41,17 @@ public class ServletBuscaUsuario extends HttpServlet {
         String nome = request.getParameter("nomeUsuario");
         List<Usuario> usuarios = daoUsuario.listByNome(nome);
         HttpSession session = request.getSession(false);
+        int quantidade = 0;
+        int pagina = 1;
+        if (usuarios.size()%20 == 0){
+            quantidade = usuarios.size()/20;
+        } else {
+            quantidade = (usuarios.size()/20)+1;
+        }
+        session.removeAttribute("quantidadepaginas");
+        session.setAttribute("quantidadepaginas", quantidade);
+        session.removeAttribute("paginaatual");
+        session.setAttribute("paginaatual", pagina);
         
         session.setAttribute("usuarios", usuarios);
         

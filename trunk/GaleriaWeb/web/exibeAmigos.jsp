@@ -36,32 +36,42 @@
                     %>
                     <form name="formpesquisaAmigos" action="ServletExibeAmigos" method="POST" id="buscaamigo">
                         <p><label for="nomeamigo">Nome:</label>
-                        <input type="text" name="nomeamigo" value="" id="nomeamigo"/>
-                        <input type="submit" value="Pesquisar" name="btPesquiar" /></p>
+                            <input type="text" name="nomeamigo" value="" id="nomeamigo"/>
+                            <input type="submit" value="Pesquisar" name="btPesquiar" /></p>
                     </form>
                     <ul>
-                    <%
-                        if ((pagina + 1) * 20 > amigos.size()) {
-                            for (int i = (pagina * 20 - 20); i < amigos.size(); i++) {
-                                Usuario user = amigos.get(i);%>
-                                <li>
-                                    <a href="ServletPerfil?id=<%= user.getId()%>"><img src="<%= user.getImagem()%>" alt="Foto de <%= user.getNome()%>"/></a>
-                                    <div class="info">
-                                        <p class="nome"><a href="ServletPerfil?id=<%= user.getId()%>"><%= user.getNome()%></a></p>
-                                        <p class="msg"><%= (user.getMensagem() != null) ? user.getMensagem() : ""%></p>
-                                        <p><br/>
-                                           <strong>Local:</strong> <%= (user.getCidade() != null) ? user.getCidade() : "" %> - <%= (user.getPais() != null) ? user.getPais().getNome() : "" %></p>
-                                    </div>
-                                </li>
-                                <%                                
+                        <%
+                            if ((pagina + 1) * 20 > amigos.size()) {
+                                for (int i = (pagina * 20 - 20); i < amigos.size(); i++) {
+                                    Usuario user = amigos.get(i);%>
+                        <li>
+                            <a href="ServletPerfil?id=<%= user.getId()%>"><img src="<%= user.getImagem()%>" alt="Foto de <%= user.getNome()%>"/></a>
+                            <div class="info">
+                                <p class="nome"><a href="ServletPerfil?id=<%= user.getId()%>"><%= user.getNome()%></a></p>
+                                <p class="msg"><%= (user.getMensagem() != null) ? user.getMensagem() : ""%></p>
+                                <p><br/>
+                                    <strong>Local:</strong> <%= (user.getCidade() != null) ? user.getCidade() : ""%> - <%= (user.getPais() != null) ? user.getPais().getNome() : ""%></p>
+                            </div>
+                        </li>
+                        <%
                             }
                         } else {
                             for (int i = (pagina * 20 - 20); i <= pagina * 20; i++) {
                                 Usuario user = amigos.get(i);
-                                out.println("<a href=\"ServletPerfil?id=" + user.getId() + "\">" + user.getNome() + "</a><br />");
+                        %>
+                        <li>
+                            <a href="ServletPerfil?id=<%= user.getId()%>"><img src="<%= user.getImagem()%>" alt="Foto de <%= user.getNome()%>"/></a>
+                            <div class="info">
+                                <p class="nome"><a href="ServletPerfil?id=<%= user.getId()%>"><%= user.getNome()%></a></p>
+                                <p class="msg"><%= (user.getMensagem() != null) ? user.getMensagem() : ""%></p>
+                                <p><br/>
+                                    <strong>Local:</strong> <%= (user.getCidade() != null) ? user.getCidade() : ""%> - <%= (user.getPais() != null) ? user.getPais().getNome() : ""%></p>
+                            </div>
+                        </li>
+                        <%
+                                }
                             }
-                        }
-                    %>
+                        %>
                     </ul>
                     <p> Paginas: 
                         <%
