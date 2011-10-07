@@ -28,7 +28,7 @@
         <div class="barmecontainer">
             <div class="barme">
                 <p><img src="<%=(a.getImagem() != null) ? a.getImagem() : "images/pic.png"%>" alt="Avatar"/>
-                    <%=a.getNome()%>
+                    <%= (a.getNome() != null) ? a.getNome() : "Não definido" %>
                 </p>
                 <ul>               
                     <li><a href="Login" id="what">Sair</a></li>
