@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <%@include file="head.jsp" %>
-        <title>JSP Page</title>
+        <title>Quem Somos</title>
     </head>
     <%@include file="header.jsp" %>
     <div class="bgcontainer">
