@@ -64,6 +64,7 @@ public class ServletPerfil extends HttpServlet {
 
             daoUsuario.update(usuario);
             boolean agoraeh = true;
+            session.setAttribute("perfil", novoamigo);
             session.setAttribute("agoraeh", agoraeh);
 
             response.sendRedirect("confirmacaoAmigos.jsp");
@@ -81,8 +82,9 @@ public class ServletPerfil extends HttpServlet {
 
             daoUsuario.update(usuario);
             boolean agoraeh = false;
+            session.setAttribute("perfil", inimigo);
             session.setAttribute("agoraeh", agoraeh);
-            response.sendRedirect("home.jsp");
+            response.sendRedirect("confirmacaoAmigos.jsp");
         }
 
 
