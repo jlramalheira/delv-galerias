@@ -21,8 +21,11 @@
                 response.sendRedirect("login.jsp");
             } else {
                 List<Usuario> amigos = (List<Usuario>) session.getAttribute("amigos");
-                int pagina = (Integer) session.getAttribute("paginaatual");
-                int quantidade = (Integer) session.getAttribute("quantidadepaginas");
+                if (amigos.isEmpty()) {
+                    out.println("<h2>Você não possui nenhum amigo</h2>");
+                } else {
+                    int pagina = (Integer) session.getAttribute("paginaatual");
+                    int quantidade = (Integer) session.getAttribute("quantidadepaginas");
         %>
         <form name="formpesquisaAmigos" action="ServletExibeAmigos" method="POST">
             <p><label for="nomeamigo">Nome:</label>
@@ -42,12 +45,18 @@
                 }
             }
         %>
-
-        <%
-                for (int i = 1; i <= quantidade; i++) {
-                    out.println("<a href=\"ServletExibeAmigos?pagina=" + i + "\">" + i + "</a>");
+        <p> Paginas: 
+            <%
+                        for (int i = 1; i <= quantidade; i++) {
+                            if (i == pagina) {
+                                out.println(i);
+                            } else {
+                                out.println("<a href=\"ServletExibeAmigos?pagina=" + i + "\">" + i + "</a>");
+                            }
+                        }
+                    }
                 }
-            }
-        %>
+            %>
+        </p>
     </body>
 </html>
