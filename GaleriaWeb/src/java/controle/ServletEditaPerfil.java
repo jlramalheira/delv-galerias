@@ -92,7 +92,11 @@ public class ServletEditaPerfil extends HttpServlet {
                 imagem = "files/images/" + u.getId() + "/avatar.jpg";
             }
         } else {
-            imagem = "images/pic.png";
+            if (map.get("imagem") == null) {
+                imagem = "images/pic.png";
+            } else {
+                imagem = "files/images/" + u.getId() + "/avatar.jpg";
+            }
         }
 
 
