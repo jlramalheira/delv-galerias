@@ -82,6 +82,7 @@
                 <%-- CONTENT --%>
                 <div class="content">
                     <div class="me"> <a href="ServletPerfil?id=<%= u.getId()%>"><img src="<%=u.getImagem()%>" alt="Foto"/></a>
+                        <a href="galerias.jsp">Imagens</a>
                         <div class="welcome">
                             <p>Bem vindo,<br />
                                 <span class="name"><a href="ServletPerfil?id=<%= u.getId()%>"><%=(u.getNome())%></a></span></p>
