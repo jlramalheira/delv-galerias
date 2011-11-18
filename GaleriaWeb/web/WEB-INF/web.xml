@@ -28,6 +28,10 @@
         <servlet-name>ServletExibeAmigos</servlet-name>
         <servlet-class>controle.ServletExibeAmigos</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletGaleria</servlet-name>
+        <servlet-class>controle.ServletGaleria</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NovoUsuario</servlet-name>
         <url-pattern>/NovoUsuario</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>ServletExibeAmigos</servlet-name>
         <url-pattern>/ServletExibeAmigos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletGaleria</servlet-name>
+        <url-pattern>/ServletGaleria</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
