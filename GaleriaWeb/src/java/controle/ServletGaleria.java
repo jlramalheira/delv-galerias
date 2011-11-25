@@ -20,11 +20,11 @@ public class ServletGaleria extends HttpServlet {
             throws ServletException, IOException {
         String op = request.getParameter("op");
         int id = Integer.parseInt(request.getParameter("id"));
-        if (op.equals("excluir")){
+        if (op.equals("excluir")) {
             daoGaleria.remove(id);
             response.sendRedirect("galerias.jsp");
         }
-        if (op.equals("editar")){
+        if (op.equals("editar")) {
             response.sendRedirect("gerenciagaleria.jsp");
         }
     }
@@ -32,10 +32,10 @@ public class ServletGaleria extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String op = request.getParameter("btGaleria");
         HttpSession session = request.getSession(true);
         Usuario usuario = (Usuario) session.getAttribute("usuario");
-        if (op.equals("new")) {
+        int id = Integer.parseInt(request.getParameter("idGaleria"));
+        if (id == 0) {
             String nome = request.getParameter("nome");
             String descricao = request.getParameter("descricao");
 
@@ -46,9 +46,21 @@ public class ServletGaleria extends HttpServlet {
             g.setDia(Calendar.getInstance().getTime());
 
             daoGaleria.insert(g);
+        } else {
+            String nome = request.getParameter("nome");
+            String descricao = request.getParameter("descricao");
 
-            response.sendRedirect("home.jsp");
+            Galeria g = daoGaleria.get(id);
+            g.setNome(nome);
+            g.setDescricao(descricao);
+            g.setUsuario(usuario);
+            g.setDia(Calendar.getInstance().getTime());
+
+            daoGaleria.update(g);
+            
         }
+
+        response.sendRedirect(".jsp");
+
     }
 }
-

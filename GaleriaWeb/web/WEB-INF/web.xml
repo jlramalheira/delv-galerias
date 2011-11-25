@@ -32,6 +32,10 @@
         <servlet-name>ServletGaleria</servlet-name>
         <servlet-class>controle.ServletGaleria</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletImagem</servlet-name>
+        <servlet-class>controle.ServletImagem</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NovoUsuario</servlet-name>
         <url-pattern>/NovoUsuario</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>ServletGaleria</servlet-name>
         <url-pattern>/ServletGaleria</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletImagem</servlet-name>
+        <url-pattern>/ServletImagem</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

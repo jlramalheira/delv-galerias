@@ -29,6 +29,7 @@ public class Imagem implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String imagem;
+    private String nome;
     private String descricao;
     private boolean filtro;
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -36,6 +37,22 @@ public class Imagem implements Serializable {
     @ManyToOne
     private Galeria galeria;
 
+    public List<Favorito> getFavoritos() {
+        return favoritos;
+    }
+
+    public void setFavoritos(List<Favorito> favoritos) {
+        this.favoritos = favoritos;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    
     public int getId() {
         return id;
     }
