@@ -1,5 +1,5 @@
 <%-- 
-    Document   : newgaleria
+    Document   : gerenciagaleria
     Created on : 18/11/2011, 10:31:21
     Author     : a968501
 --%>
