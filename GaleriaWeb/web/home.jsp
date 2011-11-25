@@ -76,8 +76,6 @@
                         </ul>
                         <p class="vermais"><a href="ServletExibeAmigos?pagina=1">Ver todos os amigos</a></p>
                     </div>
-
-
                 </div>
                 <%-- CONTENT --%>
                 <div class="content">
