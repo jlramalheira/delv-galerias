@@ -49,7 +49,7 @@
                 <div class="sidebar">                   
                     <%-- LISTAR AMIGOS --%>
                     <div class="amigoslist">
-                        <h2>Amigos (<%=u.getAmigos().size() %>)</h2>
+                        <h2>Amigos (<%=u.getAmigos().size()%>)</h2>
                         <ul>                        
                             <%
                                 Collections.shuffle(u.getAmigos());
@@ -81,8 +81,7 @@
                 </div>
                 <%-- CONTENT --%>
                 <div class="content">
-                    <div class="me"> <a href="ServletPerfil?id=<%= u.getId()%>"><img src="<%=u.getImagem()%>" alt="Foto"/></a>
-                        <a href="galerias.jsp">Imagens</a>
+                    <div class="me"> <a href="ServletPerfil?id=<%= u.getId()%>"><img src="<%=u.getImagem()%>" alt="Foto"/></a>                        
                         <div class="welcome">
                             <p>Bem vindo,<br />
                                 <span class="name"><a href="ServletPerfil?id=<%= u.getId()%>"><%=(u.getNome())%></a></span></p>
@@ -93,6 +92,9 @@
                             </form>
                         </div>
                     </div>
+                    <ul class="menu">
+                        <li><a href="galerias.jsp">Imagens</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
