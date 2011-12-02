@@ -4,6 +4,8 @@
     Author     : a968501
 --%>
 
+<%@page import="dao.DaoImagem"%>
+<%@page import="entidades.Imagem"%>
 <%@page import="java.util.Collections"%>
 <%@page import="java.util.List"%>
 <%@page import="entidades.Galeria"%>
@@ -23,6 +25,7 @@
             if (u == null) {
                 response.sendRedirect("login.jsp");
             } else {
+                DaoImagem daoImagem = new DaoImagem(Imagem.class);
         %>
         <%-- HEADER --%>
         <%@include file="header.jsp" %>
@@ -34,7 +37,16 @@
                 <ul>
                     <%List<Galeria> galerias = new Dao<Galeria>(Galeria.class).list();
                     for (Galeria g : galerias) {%>
-                    <p><%=g.getNome()%><br />
+                    <p>
+                        <a href="exibegaleria.jsp?id=1"><img href="<%
+                        if (daoImagem.listOneImageByGaleriaId(g.getId()).isEmpty()){
+                            out.print(((List<Imagem>)daoImagem.listOneImageByGaleriaId(g.getId())).get(0));
+                        } else {
+                            out.print("colocar caminho imagem");
+                        }
+                        %>" 
+                        alt=""></img></a>
+                        <%=g.getNome()%><br />
                         <%=g.getDescricao()%> <br />
                         <a href="ServletGaleria?op=excluir&id=<%=g.getId()%>">Excluir</a> 
                         <a href="ServletGaleria?op=editar&id=<%=g.getId()%>">Editar</a>
