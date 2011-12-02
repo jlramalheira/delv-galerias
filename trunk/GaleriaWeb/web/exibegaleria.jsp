@@ -4,6 +4,9 @@
     Author     : a968501
 --%>
 
+<%@page import="dao.Dao"%>
+<%@page import="entidades.Imagem"%>
+<%@page import="java.util.List"%>
 <%@page import="entidades.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -18,9 +21,12 @@
             if (u == null) {
                 response.sendRedirect("login.jsp");
             } else {
+                List<Imagem> imagens = new Dao<Imagem>(Imagem.class).list();
+                for (Imagem i : imagens) {
         %>
-
+                
         <%            }
+            }
         %>
 
 
