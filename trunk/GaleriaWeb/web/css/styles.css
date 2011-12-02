@@ -302,51 +302,54 @@ body {
 }
 
 /*HOME*/
-.me {	
-    height: 156px;
+.me {
+    float: left; 
+    width: 156px; 
+    height: auto;
 }
 .me img{
-    float:left;
+    margin: 0 auto;
     border:3px solid #6b6456;
 }
-.me .welcome{
+.welcome{
     float:left;
     width: 524px;
+    height: 156px;
     margin:0 0 0 10px;
     font:16px "Trebuchet MS", Arial, Helvetica, sans-serif;	
     color:#7A6A53;
 }
-.me .welcome .name{
+.welcome .name{
     color:#99B2B7;	
     font:22px "Trebuchet MS", Arial, Helvetica, sans-serif;
     font-weight:bold;
     font-variant:small-caps;	
 }
-.me .welcome .name a {
+.welcome .name a {
     text-decoration: none;
     color:#99B2B7;
 }
-.me .welcome .mensagem{
+.welcome .mensagem{
     margin: 10px 0 0 0;
     color:#948C75;
     font-size:14px;
     font-style:italic;
     cursor:pointer;
 }
-.me form{
+.welcome form{
     display:block;
     margin: 10px 0 0 0;
     background-color:#D9CEB2;
     border:1px solid #948C75;	
 }
-.me form input[type='text']{
+.welcome form input[type='text']{
     width:400px;
     margin:10px;
     padding:5px;
     color:#7A6A53;
     font:italic 14px "Trebuchet MS", Arial, Helvetica, sans-serif;		
 }
-.me form input[type='submit']{
+.welcome form input[type='submit']{
     padding:5px 10px;
     background-color:#948C75;
     border:0;
@@ -355,7 +358,7 @@ body {
     text-transform:uppercase;
     cursor:pointer;	
 }
-.me form input[type='submit']:hover{
+.welcome form input[type='submit']:hover{
     background-color:#b0a892;
 }
 

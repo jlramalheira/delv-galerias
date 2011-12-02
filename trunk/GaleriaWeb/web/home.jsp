@@ -77,22 +77,26 @@
                         <p class="vermais"><a href="ServletExibeAmigos?pagina=1">Ver todos os amigos</a></p>
                     </div>
                 </div>
-                <%-- CONTENT --%>
+                <%-- CONTENT --%>                  
                 <div class="content">
-                    <div class="me"> <a href="ServletPerfil?id=<%= u.getId()%>"><img src="<%=u.getImagem()%>" alt="Foto"/></a>                        
-                        <div class="welcome">
-                            <p>Bem vindo,<br />
-                                <span class="name"><a href="ServletPerfil?id=<%= u.getId()%>"><%=(u.getNome())%></a></span></p>
-                            <p class="mensagem" id="msg" title="Clique para alterar sua mensagem" onclick="aparece()"><%=mensagem%></p>
-                            <form name="formMensagem" action="ServletEditaPerfil" method="get" id="formMensagem">
-                                <input type="text" name="mensagem" value="<%=mensagem%>" />
-                                <input type="submit" value="ok" name="btMensagem" />
-                            </form>
-                        </div>
+                    <%-- BARRA LATERAL ME --%>
+                    <div class="me">
+                        <a href="ServletPerfil?id=<%= u.getId()%>"><img src="<%=u.getImagem()%>" alt="Foto"/></a>
+                        <ul class="menu">
+                            <li><a href="galerias.jsp">Imagens</a></li>
+                        </ul>
                     </div>
-                    <ul class="menu">
-                        <li><a href="galerias.jsp">Imagens</a></li>
-                    </ul>
+                        
+                    <div class="welcome">
+                        <p>Bem vindo,<br />
+                            <span class="name"><a href="ServletPerfil?id=<%= u.getId()%>"><%=(u.getNome())%></a></span></p>
+                        <p class="mensagem" id="msg" title="Clique para alterar sua mensagem" onclick="aparece()"><%=mensagem%></p>
+                        <form name="formMensagem" action="ServletEditaPerfil" method="get" id="formMensagem">
+                            <input type="text" name="mensagem" value="<%=mensagem%>" />
+                            <input type="submit" value="ok" name="btMensagem" />
+                        </form>
+                    </div>
+
                 </div>
             </div>
         </div>
