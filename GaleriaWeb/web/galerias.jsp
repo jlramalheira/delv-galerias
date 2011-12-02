@@ -40,7 +40,7 @@
                     <p>
                         <a href="exibegaleria.jsp?id=1"><img href="<%
                         if (daoImagem.listOneImageByGaleriaId(g.getId()).isEmpty()){
-                            out.print(((List<Imagem>)daoImagem.listOneImageByGaleriaId(g.getId())).get(0));
+                            out.print("mini_"+((List<Imagem>)daoImagem.listOneImageByGaleriaId(g.getId())).get(0).getImagem());
                         } else {
                             out.print("colocar caminho imagem");
                         }
