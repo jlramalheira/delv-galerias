@@ -60,7 +60,7 @@ public class ServletGaleria extends HttpServlet {
             
         }
 
-        response.sendRedirect(".jsp");
+        response.sendRedirect("exibegaleria.jsp");
 
     }
 }
