@@ -38,7 +38,7 @@
                     <%List<Galeria> galerias = new Dao<Galeria>(Galeria.class).list();
                     for (Galeria g : galerias) {%>
                     <p>
-                        <a href="exibegaleria.jsp?id=1"><img href="<%
+                        <a href="exibegaleria.jsp?id=<%=g.getId()%>"><img href="<%
                         if (daoImagem.listOneImageByGaleriaId(g.getId()).isEmpty()){
                             out.print("mini_"+((List<Imagem>)daoImagem.listOneImageByGaleriaId(g.getId())).get(0).getImagem());
                         } else {
