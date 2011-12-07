@@ -77,16 +77,17 @@
                         <p class="vermais"><a href="ServletExibeAmigos?pagina=1">Ver todos os amigos</a></p>
                     </div>
                 </div>
-                <%-- CONTENT --%>                  
+                <%-- CONTENT --%>   
+                <div class="me">
+                    <a href="ServletPerfil?id=<%= u.getId()%>"><img src="<%=u.getImagem()%>" alt="Foto"/></a>
+                    <ul class="menu">
+                        <li><a href="galerias.jsp?idUsuario=<%=u.getId()%>">Imagens</a></li>
+                    </ul>
+                </div>
                 <div class="content">
                     <%-- BARRA LATERAL ME --%>
-                    <div class="me">
-                        <a href="ServletPerfil?id=<%= u.getId()%>"><img src="<%=u.getImagem()%>" alt="Foto"/></a>
-                        <ul class="menu">
-                            <li><a href="galerias.jsp?idUsuario=<%=u.getId()%>">Imagens</a></li>
-                        </ul>
-                    </div>
-                        
+
+
                     <div class="welcome">
                         <p>Bem vindo,<br />
                             <span class="name"><a href="ServletPerfil?id=<%= u.getId()%>"><%=(u.getNome())%></a></span></p>
@@ -96,7 +97,7 @@
                             <input type="submit" value="ok" name="btMensagem" />
                         </form>
                     </div>
-                            <a href="gerenciaimagem.jsp">tetse</a>
+                    <a href="gerenciaimagem.jsp">tetse</a>
                 </div>
             </div>
         </div>

@@ -531,6 +531,25 @@ body {
     background-color:#b0a892;
 }
 
+/* GALERIAS */
+.galerias {
+    list-style: none;    
+}
+.galerias li {
+    background-color: #D5DED9;
+}
+.galerias .newgallery {
+    background:url(../images/bkg/new_gallery.png) left center no-repeat;
+    height: 100px;
+    width: auto;
+    text-align: center;
+}
+.galerias .newgallery a {
+    background-color: #D5DED9;
+    height: 100px;
+    width: 100px;
+}
+
 /* OUTROS */
 .voltar {
     background:url(../images/back.png) left center no-repeat;

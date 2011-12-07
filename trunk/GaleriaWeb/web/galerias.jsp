@@ -38,51 +38,48 @@
         <%-- BODY --%>
         <div class="bgcontainer">
             <div class="container">
-                <div style="width: 100%; height: 40px; background-color: #D5DED9;"></div>
-                <p>
-                    <%
-                        if (id == u.getId()) { //vai pra home
-                    %>
-                    <a href="home.jsp"><%=u.getNome()%></a>
-                    <%
-                    } else { //vai pro perfil do dono das galerias
-                    %> 
-                    <a href="ServletPerfil?id=<%=id%>"><%=new Dao<Usuario>(Usuario.class).get(id).getNome()%></a>
-                    <%
-                        }
-                    %>
-                </p>
-                <ul>
+                <div class="me">
+                    <a href="ServletPerfil?id=<%= u.getId()%>"><img src="<%=u.getImagem()%>" alt="Foto"/></a>
+                    <ul class="menu">
+                        <li><a href="galerias.jsp?idUsuario=<%=u.getId()%>">Imagens</a></li>
+                    </ul>
+                </div>
+                <h2>Galerias de <%= u.getNome()%></h2>
+                <ul class="galerias">
                     <%
                         List<Galeria> galerias = new DaoGaleria(Galeria.class).listGaleriaByUser(id);
                         if (!galerias.isEmpty()) {
                             for (Galeria g : galerias) {%>
-                    <p>
+                    <li>
                         <a href="exibegaleria.jsp?idGaleria=<%=g.getId()%>&idUsuario=<%=id%>"><img href="<%
                             if (daoImagem.listOneImageByGaleriaId(g.getId()).isEmpty()) {
                                 out.print("mini_" + ((List<Imagem>) daoImagem.listOneImageByGaleriaId(g.getId())).get(0).getImagem());
                             } else {
                                 out.print("colocar caminho imagem");
                             }
-                                                                                                   %>" 
-                                                                                                   alt=""></img></a>
+                                                                                                   %>" alt="Galeria" /></a>
                         <%=g.getNome()%><br />
                         <%=g.getDescricao()%> <br />
                         <a href="ServletGaleria?op=excluir&id=<%=g.getId()%>">Excluir</a> 
                         <a href="ServletGaleria?op=editar&id=<%=g.getId()%>">Editar</a>
-                    </p>
+                    </li>
                     <%
                             }
                         } else {
-                            out.print("<h2>nenhuma galeria cadastrada</h2>");
+                            out.print("<p>Nenhuma galeria cadastrada</p>");
                         }
                     %>
+                    <li class="newgallery">
+                        <%
+                            if (u.getId() == id) { //mostra o criar se tiver na sua propria galeria
+                                out.println("<a href=\"gerenciagaleria.jsp\">Criar...</a>\n"
+                                        + "<br/>\n"
+                                        + "Nova galeria");
+                            }
+                        %>
+                    </li>
                 </ul>
-                <%
-                    if (u.getId() == id) { //mostra o criar se tiver na sua propria galeria
-                        out.println("<a href=\"gerenciagaleria.jsp\">Criar...</a>");
-                    }
-                %>
+
             </div>           
         </div>
 
