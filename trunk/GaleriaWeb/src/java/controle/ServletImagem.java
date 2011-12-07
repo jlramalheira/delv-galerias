@@ -5,7 +5,11 @@
 package controle;
 
 import dao.Dao;
+import entidades.Galeria;
+import entidades.Imagem;
 import entidades.Usuario;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -21,6 +25,7 @@ import java.io.*;
 import java.util.*;
 import java.util.zip.*;
 import java.text.*;
+import javax.imageio.ImageIO;
 
 /**
  *
@@ -29,6 +34,8 @@ import java.text.*;
 public class ServletImagem extends HttpServlet {
 
     Dao<Usuario> daoUsuario = new Dao<Usuario>(Usuario.class);
+    Dao<Galeria> daoGaleria = new Dao<Galeria>(Galeria.class);
+    Dao<Imagem> daoImagem = new Dao<Imagem>(Imagem.class);
     public String dir = "/files/";
     public String dir1 = "/files/temp";
     public String dir2 = "/files/images";
@@ -74,16 +81,19 @@ public class ServletImagem extends HttpServlet {
         Map<String, String> map = upload.getFormValues(list);
 
         String imagem = map.get("imagem");
+        int idGaleria = Integer.parseInt(map.get("idGaleria"));
         //fez upload de zip
         if (imagem.substring(imagem.lastIndexOf(".")).equalsIgnoreCase(".zip")) {
 
             try {
-                System.out.println("Example of ZIP file decompression.");
 
                 // Specify file to decompress
                 String inFileName = getServletContext().getRealPath("/files/temp/" + u.getId() + "/" + imagem);
                 // Specify destination where file will be unzipped
-                String destinationDirectory = getServletContext().getRealPath("/files/images/" + u.getId() + "/");
+                String destinationDirectory = getServletContext().getRealPath("/files/temp/" + u.getId() + "/");
+                String nome = "";
+                String path1 = getServletContext().getRealPath("/files/temp/" + u.getId() + "/");
+                String path2 = getServletContext().getRealPath("/files/images/" + u.getId() + "/");
 
                 File sourceZipFile = new File(inFileName);
                 File unzipDestinationDirectory = new File(destinationDirectory);
@@ -103,6 +113,7 @@ public class ServletImagem extends HttpServlet {
 
                     File destFile =
                             new File(unzipDestinationDirectory, currentEntry);
+                    nome = destFile.getName();
 
                     // grab file's parent directory structure
                     File destinationParent = destFile.getParentFile();
@@ -114,6 +125,8 @@ public class ServletImagem extends HttpServlet {
                     if (!entry.isDirectory()) {
                         BufferedInputStream is =
                                 new BufferedInputStream(zipFile.getInputStream(entry));
+
+
                         int currentByte;
                         // establish buffer for writing file
                         byte data[] = new byte[BUFFER];
@@ -130,7 +143,42 @@ public class ServletImagem extends HttpServlet {
                         dest.flush();
                         dest.close();
                         is.close();
+
+
                     }
+                    //gerar miniatura
+                    BufferedImage imageb = ImageIO.read(new File(destinationDirectory + "/" + nome));
+                    Image image = imageb.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+                    BufferedImage imagemredimencionada = new BufferedImage(
+                            150, 150, BufferedImage.TYPE_INT_BGR);
+                    imagemredimencionada.createGraphics().drawImage(image, 0, 0, null);
+                    File file = new File(path2);
+                    if (!file.exists()) {
+                        file.mkdir();
+                    }
+                    
+                    Imagem i = new Imagem();
+                    
+                    i.setNome("image" + i.getId());
+                    System.out.println("PASSEI ME OLHA AQUI ---------------"+i.getId());
+                    i.setDescricao("Fotos " + imagem.substring(0, imagem.lastIndexOf(".")));
+                    i.setDia(Calendar.getInstance().getTime());
+                    i.setFiltro(false);
+                    i.setGaleria(daoGaleria.get(idGaleria));
+                    i.setImagem(path2 + i.getNome());
+                    daoImagem.update(i);
+                    ImageIO.write(imagemredimencionada, "JPG", new File(path2 + "/" + "mini_" + i.getNome() + ".jpg"));
+
+                    //escreve a normal
+                    BufferedImage imagebg = ImageIO.read(new File(destinationDirectory + "/" + nome));
+                    Image imageg = imagebg.getScaledInstance(600, 600, Image.SCALE_SMOOTH);
+                    BufferedImage imagemredimencionadag = new BufferedImage(
+                            600, 600, BufferedImage.TYPE_INT_BGR);
+                    imagemredimencionadag.createGraphics().drawImage(imageg, 0, 0, null);
+                    ImageIO.write(imagemredimencionadag, "JPG", new File(path2 + "/" + i.getNome() + ".jpg"));
+                    
+                    file.deleteOnExit();
+                    
                 }
                 zipFile.close();
             } catch (IOException ioe) {
@@ -140,4 +188,3 @@ public class ServletImagem extends HttpServlet {
         //teste
     }
 }
-
