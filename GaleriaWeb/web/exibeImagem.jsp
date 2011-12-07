@@ -1,15 +1,13 @@
 <%-- 
-    Document   : exibegaleria.jsp
-    Created on : 02/12/2011, 09:45:08
-    Author     : a968501
+    Document   : exibeImagem
+    Created on : 07/12/2011, 14:56:18
+    Author     : João
 --%>
 
-<%@page import="entidades.Galeria"%>
-<%@page import="dao.DaoImagem"%>
 <%@page import="dao.Dao"%>
 <%@page import="entidades.Imagem"%>
-<%@page import="java.util.List"%>
 <%@page import="entidades.Usuario"%>
+<%@page import="dao.DaoImagem"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -23,12 +21,11 @@
             if (u == null) {
                 response.sendRedirect("login.jsp");
             } else {
+                DaoImagem daoImagem = new DaoImagem(Imagem.class);
                 int id = u.getId();
                 if (request.getParameter("idUsuario") != null) {
                     id = Integer.parseInt(request.getParameter("idUsuario"));
                 }
-                Galeria g = new Dao<Galeria>(Galeria.class).get(Integer.parseInt(request.getParameter("id")));
-                if (g != null) {
         %>
         <p>
             <%
@@ -45,22 +42,10 @@
             - 
             <a href="galerias.jsp?idUsuario=<%=id%>">Voltar as galerias</a>
         </p>
-        <ul><%
-            List<Imagem> imagens = new DaoImagem(Imagem.class).listImagesByGaleriaId(g.getId());
-            for (Imagem i : imagens) {
-            %>
-            <h2><a href="exibegaleria.jsp?idGaleria=<%=g.getId()%>&idUsuario=<%=id%>"><%=g.getNome()%></a></h2>
-            <li>
-                <a href="exibeimage.jsp?idImagem=<%=i.getId()%>&idUsuario=<%=id%>">
-                    <img src="<%=i.getImagem()%>" alt="Imagem Usuario" />
-                </a>
-            </li>
-            <%            }
-            %></ul><%
-                    }
-                }
-            %>
+          
+        <% //mostrar a imagem aqui
+            }
 
-
+        %>
     </body>
 </html>

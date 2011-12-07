@@ -83,7 +83,7 @@
                     <div class="me">
                         <a href="ServletPerfil?id=<%= u.getId()%>"><img src="<%=u.getImagem()%>" alt="Foto"/></a>
                         <ul class="menu">
-                            <li><a href="galerias.jsp">Imagens</a></li>
+                            <li><a href="galerias.jsp?idUsuario=<%=u.getId()%>">Imagens</a></li>
                         </ul>
                     </div>
                         
