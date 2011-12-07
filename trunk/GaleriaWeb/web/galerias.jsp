@@ -4,6 +4,7 @@
     Author     : a968501
 --%>
 
+<%@page import="dao.DaoGaleria"%>
 <%@page import="dao.DaoImagem"%>
 <%@page import="entidades.Imagem"%>
 <%@page import="java.util.Collections"%>
@@ -26,6 +27,10 @@
                 response.sendRedirect("login.jsp");
             } else {
                 DaoImagem daoImagem = new DaoImagem(Imagem.class);
+                int id = u.getId();
+                if (request.getParameter("idUsuario") != null){
+                    id = Integer.parseInt(request.getParameter("idUsuario"));
+                }
         %>
         <%-- HEADER --%>
         <%@include file="header.jsp" %>
@@ -34,11 +39,24 @@
         <div class="bgcontainer">
             <div class="container">
                 <div style="width: 100%; height: 40px; background-color: #D5DED9;"></div>
+                <p>
+                    <%
+                    if (id == u.getId()){ //vai pra home
+                        %>
+                        <a href="home.jsp"><%=u.getNome()%></a>
+                    <%
+                    } else { //vai pro perfil do dono das galerias
+                    %> 
+                    <a href="ServletPerfil?id=<%=id%>"><%=new Dao<Usuario>(Usuario.class).get(id).getNome()%></a>
+                    <%
+                    }
+                    %>
+                </p>
                 <ul>
-                    <%List<Galeria> galerias = new Dao<Galeria>(Galeria.class).list();
+                    <%List<Galeria> galerias = new DaoGaleria(Galeria.class).listGaleriaByUser(id);
                     for (Galeria g : galerias) {%>
                     <p>
-                        <a href="exibegaleria.jsp?id=<%=g.getId()%>"><img href="<%
+                        <a href="exibegaleria.jsp?idGaleria=<%=g.getId()%>&idUsuario=<%=id%>"><img href="<%
                         if (daoImagem.listOneImageByGaleriaId(g.getId()).isEmpty()){
                             out.print("mini_"+((List<Imagem>)daoImagem.listOneImageByGaleriaId(g.getId())).get(0).getImagem());
                         } else {
