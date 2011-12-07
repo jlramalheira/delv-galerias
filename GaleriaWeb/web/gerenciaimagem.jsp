@@ -40,7 +40,8 @@
                         <input type="submit" name="upload" value="insert" hidden="true"/></p>
             <p><label for="nome">Nome:</label><input type="text" name="nome" value="" id="nome"/></p>
             <p><label for="descricao">Descricao:</label><textarea name="descricao" id="descricao"></textarea></p>
-            <p><p><input type="submit" value="" name="btImagem" /></p></p>
+            
+            <p><input type="hidden" name="idGaleria" value="1" /> <input type="submit" value="" name="btImagem" /> </p>
         </form>
         
         <%
