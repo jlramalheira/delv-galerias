@@ -28,7 +28,7 @@
             } else {
                 DaoImagem daoImagem = new DaoImagem(Imagem.class);
                 int id = u.getId();
-                if (request.getParameter("idUsuario") != null){
+                if (request.getParameter("idUsuario") != null) {
                     id = Integer.parseInt(request.getParameter("idUsuario"));
                 }
         %>
@@ -41,39 +41,48 @@
                 <div style="width: 100%; height: 40px; background-color: #D5DED9;"></div>
                 <p>
                     <%
-                    if (id == u.getId()){ //vai pra home
-                        %>
-                        <a href="home.jsp"><%=u.getNome()%></a>
+                        if (id == u.getId()) { //vai pra home
+                    %>
+                    <a href="home.jsp"><%=u.getNome()%></a>
                     <%
                     } else { //vai pro perfil do dono das galerias
                     %> 
                     <a href="ServletPerfil?id=<%=id%>"><%=new Dao<Usuario>(Usuario.class).get(id).getNome()%></a>
                     <%
-                    }
+                        }
                     %>
                 </p>
                 <ul>
-                    <%List<Galeria> galerias = new DaoGaleria(Galeria.class).listGaleriaByUser(id);
-                    for (Galeria g : galerias) {%>
+                    <%
+                        List<Galeria> galerias = new DaoGaleria(Galeria.class).listGaleriaByUser(id);
+                        if (!galerias.isEmpty()) {
+                            for (Galeria g : galerias) {%>
                     <p>
                         <a href="exibegaleria.jsp?idGaleria=<%=g.getId()%>&idUsuario=<%=id%>"><img href="<%
-                        if (daoImagem.listOneImageByGaleriaId(g.getId()).isEmpty()){
-                            out.print("mini_"+((List<Imagem>)daoImagem.listOneImageByGaleriaId(g.getId())).get(0).getImagem());
-                        } else {
-                            out.print("colocar caminho imagem");
-                        }
-                        %>" 
-                        alt=""></img></a>
+                            if (daoImagem.listOneImageByGaleriaId(g.getId()).isEmpty()) {
+                                out.print("mini_" + ((List<Imagem>) daoImagem.listOneImageByGaleriaId(g.getId())).get(0).getImagem());
+                            } else {
+                                out.print("colocar caminho imagem");
+                            }
+                                                                                                   %>" 
+                                                                                                   alt=""></img></a>
                         <%=g.getNome()%><br />
                         <%=g.getDescricao()%> <br />
                         <a href="ServletGaleria?op=excluir&id=<%=g.getId()%>">Excluir</a> 
                         <a href="ServletGaleria?op=editar&id=<%=g.getId()%>">Editar</a>
                     </p>
                     <%
+                            }
+                        } else {
+                            out.print("<h2>nenhuma galeria cadastrada</h2>");
                         }
                     %>
                 </ul>
-                <a href="gerenciagaleria.jsp">Criar...</a>
+                <%
+                    if (u.getId() == id) { //mostra o criar se tiver na sua propria galeria
+                        out.println("<a href=\"gerenciagaleria.jsp\">Criar...</a>");
+                    }
+                %>
             </div>           
         </div>
 
