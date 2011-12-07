@@ -5,6 +5,7 @@
 package dao;
 
 import entidades.Galeria;
+import entidades.Usuario;
 import java.util.List;
 
 /**
@@ -17,7 +18,7 @@ public class DaoGaleria extends Dao {
         super(classe);
     }
     public List<Galeria> listGaleriaByUser(int id){
-        return Dao.getEm().createQuery("SELECT p  FROM Galeria p WHERE p.usuario = '%"+id+"%'").getResultList();
+        return Dao.getEm().createQuery("SELECT p  FROM Galeria p WHERE p.usuario.id = "+id).getResultList();
     }
     
 }

@@ -18,11 +18,11 @@ public class DaoImagem extends Dao{
     }
     
     public List<Imagem> listOneImageByGaleriaId(int id){
-        return Dao.getEm().createQuery("SELECT p  FROM Imagem p WHERE p.galeria = '%"+id+"%' ORDER BY id LIMIT 1").getResultList();
+        return Dao.getEm().createQuery("SELECT p  FROM Imagem p WHERE p.galeria.id = "+id+" ORDER BY id LIMIT 1").getResultList();
     }
     
     public List<Imagem> listImagesByGaleriaId(int id){
-        return Dao.getEm().createQuery("SELECT p FROM Imagem p WHERE p.galeria = '%"+id+"%'").getResultList();
+        return Dao.getEm().createQuery("SELECT p FROM Imagem p WHERE p.galeria.id = "+id).getResultList();
     }
     
     

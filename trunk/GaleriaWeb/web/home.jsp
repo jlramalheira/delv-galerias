@@ -96,7 +96,7 @@
                             <input type="submit" value="ok" name="btMensagem" />
                         </form>
                     </div>
-
+                            <a href="gerenciaimagem.jsp">tetse</a>
                 </div>
             </div>
         </div>

@@ -34,7 +34,7 @@
                 }
         %>
         
-        <form name="formEditaPerfil" action="ServletImagem" method="post" enctype="multipart/form-data" class="formulario">
+        <form name="formImagem" action="ServletImagem" method="post" enctype="multipart/form-data" class="formulario">
             <p><label for="imagem">Imagem:</label>
                         <input name="imagem" type="file" maxlength="60" id="imagem"/>
                         <input type="submit" name="upload" value="insert" hidden="true"/></p>
