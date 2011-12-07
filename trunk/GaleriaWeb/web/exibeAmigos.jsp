@@ -20,19 +20,29 @@
         <%-- BODY --%>
         <div class="bgcontainer">
             <div class="container">
+                <%
+                    Usuario u = (Usuario) (session.getAttribute("usuario"));
+                    if (u == null) {
+                        response.sendRedirect("login.jsp");
+                    } else {
+                    %>
+
+                <%-- BARRA LATERAL ME --%>
+                <div class="me">
+                    <a href="ServletPerfil?id=<%=u.getId()%>"><img src="<%=u.getImagem()%>" alt="Foto"/></a>
+                    <ul class="menu">
+                        <li><a href="galerias.jsp?idUsuario=<%=u.getId()%>">Imagens</a></li>
+                    </ul>
+                </div>
                 <p class="voltar"><a href="home.jsp">Voltar</a></p>
                 <div class="resultadosbusca">
                     <%
-                        Usuario u = (Usuario) (session.getAttribute("usuario"));
-                        if (u == null) {
-                            response.sendRedirect("login.jsp");
+                        List<Usuario> amigos = (List<Usuario>) session.getAttribute("amigos");
+                        if (amigos.isEmpty()) {
+                            out.println("<h2>Você não possui nenhum amigo</h2>");
                         } else {
-                            List<Usuario> amigos = (List<Usuario>) session.getAttribute("amigos");
-                            if (amigos.isEmpty()) {
-                                out.println("<h2>Você não possui nenhum amigo</h2>");
-                            } else {
-                                int pagina = (Integer) session.getAttribute("paginaatual");
-                                int quantidade = (Integer) session.getAttribute("quantidadepaginas");
+                            int pagina = (Integer) session.getAttribute("paginaatual");
+                            int quantidade = (Integer) session.getAttribute("quantidadepaginas");
                     %>
                     <form name="formpesquisaAmigos" action="ServletExibeAmigos" method="POST" id="buscaamigo">
                         <p><label for="nomeamigo">Nome:</label>

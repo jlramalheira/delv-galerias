@@ -306,6 +306,7 @@ body {
     float: left; 
     width: 156px; 
     height: auto;
+    margin: 0 10px 0 0;
 }
 .me img{
     margin: 0 auto;
@@ -313,9 +314,9 @@ body {
 }
 .welcome{
     float:left;
-    width: 524px;
+    width: 514px;
     height: 156px;
-    margin:0 0 0 10px;
+    margin:0 auto;
     font:16px "Trebuchet MS", Arial, Helvetica, sans-serif;	
     color:#7A6A53;
 }
@@ -493,7 +494,7 @@ body {
 }
 .resultadosbusca ul li .info{
     float: left;
-    width: 840px;
+    width: auto;
     margin: 10px 0 10px 0;
 }
 .resultadosbusca ul li .info .nome{
@@ -531,11 +532,6 @@ body {
 }
 
 /* OUTROS */
-.erro {
-    color: #ff3c55;
-    font: normal bold 14px "Trebuchet MS", Arial, Helvetica, sans-serif;
-    margin: 10px 0;
-}
 .voltar {
     background:url(../images/back.png) left center no-repeat;
     margin: 10px 0;
@@ -547,4 +543,8 @@ body {
     text-decoration: none;
     color: #7A6A53;
 }
-
+.erro {
+    color: #ff3c55;
+    font: normal bold 14px "Trebuchet MS", Arial, Helvetica, sans-serif;
+    margin: 10px 0;
+}
