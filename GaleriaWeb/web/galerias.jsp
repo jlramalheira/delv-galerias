@@ -50,23 +50,22 @@
                         <%
                             List<Galeria> galerias = new DaoGaleria(Galeria.class).listGaleriaByUser(id);
                             if (!galerias.isEmpty()) {
-                                for (Galeria g : galerias) {%>
-                        <li>
-                            <a href="exibegaleria.jsp?idGaleria=<%=g.getId()%>&idUsuario=<%=id%>"><img src="<%
-                                if (!daoImagem.listOneImageByGaleriaId(g.getId()).isEmpty()) {
-                                    String image = ((List<Imagem>) daoImagem.listOneImageByGaleriaId(g.getId())).get(0).getImagem();
-                                    String caminho = image.substring(0, image.lastIndexOf("/"));
-                                    caminho += "/mini_";
-                                    caminho += image.substring(image.lastIndexOf("/") + 1);
-                                    out.print(caminho);
-                                } else {
-                                    out.print("images/bkg/new_gallery.png");
-                                }
-                                                                                                       %>" alt="Galeria" /></a><br />
-                            <%="Nome: "+g.getNome()%><br />
-                            <%="Descricao: "+g.getDescricao()%> <br />
-                            <a href="ServletGaleria?op=excluir&id=<%=g.getId()%>">Excluir</a> 
-                            <a href="ServletGaleria?op=editar&id=<%=g.getId()%>">Editar</a>
+                                for (Galeria g : galerias) {
+                                    String caminho = "";
+                                    if (!daoImagem.listOneImageByGaleriaId(g.getId()).isEmpty()) {
+                                        String image = ((List<Imagem>) daoImagem.listOneImageByGaleriaId(g.getId())).get(0).getImagem();
+                                        caminho = image.substring(0, image.lastIndexOf("/"));
+                                        caminho += "/mini_";
+                                        caminho += image.substring(image.lastIndexOf("/") + 1);
+                                    } else {
+                                        caminho = "images/bkg/new_gallery.png";
+                                    }%>
+                                 <li>
+                            <a href="exibegaleria.jsp?idGaleria=<%=g.getId()%>&idUsuario=<%=id%>"><img src="<%= caminho%>" alt="Galeria" /></a><br />
+                            <span class="galerianome"><%=g.getNome()%><br /></span>
+                            Descrição: <%=g.getDescricao()%> <br />
+                            <span class="galeriaopc"><a href="ServletGaleria?op=excluir&id=<%=g.getId()%>">Excluir</a> | 
+                            <a href="ServletGaleria?op=editar&id=<%=g.getId()%>">Editar</a></span>
                         </li>
                         <%
                                 }
