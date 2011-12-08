@@ -42,39 +42,37 @@
         <%@include file="header.jsp" %>
         <%-- BODY --%>
         <div class="bgcontainer">
-            <div class="container">               
+            <div class="container">
+                <p class="voltar"><a href="galerias.jsp?idUsuario=<%=id%>">Voltar as galerias</a></p>
                 <h2><%=g.getNome()%></h2>
-                <p>Descrição:<br/>
-                    <%= g.getDescricao()%>
-                </p>
-                <p><a href="galerias.jsp?idUsuario=<%=id%>">Voltar as galerias</a></p>
-
-                <ul>
+                <p><%= g.getDescricao()%></p>
+                <%-- GALERIA --%>
+                <ul class="galeria">
                     <%
                         List<Imagem> imagens = new DaoImagem(Imagem.class).listImagesByGaleriaId(g.getId());
                         if (!imagens.isEmpty()) {
                             for (Imagem i : imagens) {
-                    %>
-                    <li>
-                        <a href="exibeImagem.jsp?idImagem=<%=i.getId()%>&idUsuario=<%=id%>">
-                            <img src="<%
+                                String nomeImagem = i.getNome();
                                 String caminho = i.getImagem().substring(0, i.getImagem().lastIndexOf("/"));
                                 caminho += "/mini_";
                                 caminho += i.getImagem().substring(i.getImagem().lastIndexOf("/") + 1);
-                                out.print(caminho);
-                                 %>" alt="Imagem Usuario" />
+                    %>
+                    <li>
+                        <a href="exibeImagem.jsp?idImagem=<%=i.getId()%>&idUsuario=<%=id%>">
+                            <img src="<%= caminho%>" alt="Imagem Usuario" /><br/>
+                            <%= nomeImagem%>
                         </a>
                     </li>
                     <%            }
                         } else {
-                            out.println("<h2>Esta galeria nao possui nenhuma imagem</h2>");
+                            out.println("<p>Esta galeria nao possui nenhuma imagem</p>");
                         }
                     %>
                 </ul>
 
                 <%if (id == u.getId()) { //so adiciona se for o usuario dono
-%>
-                <p><a href="gerenciaimagem.jsp">Adicionar Imagem</a></p>
+                %>
+                <p class="bt"><a href="gerenciaimagem.jsp">Adicionar Imagem</a></p>
                 <%      }
                 %>
             </div>            
@@ -84,5 +82,7 @@
                 }
             }
         %>
+        <%-- FOOTER --%>
+        <%@include file="footer.jsp" %>
     </body>
 </html>
