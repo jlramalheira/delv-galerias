@@ -25,5 +25,12 @@ public class DaoImagem extends Dao{
         return Dao.getEm().createQuery("SELECT p FROM Imagem p WHERE p.galeria.id = "+id).getResultList();
     }
     
+    public int removeAllImagesFromGalery(int id){
+        Dao.getEm().getTransaction().begin();
+        int number = Dao.getEm().createQuery("DELETE FROM Imagem p WHERE p.galeria.id = "+id).executeUpdate();
+        Dao.getEm().getTransaction().commit();
+        return number;
+    }
+    
     
 }
