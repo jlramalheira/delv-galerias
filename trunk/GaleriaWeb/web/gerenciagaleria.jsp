@@ -21,9 +21,9 @@
             } else {
                 Galeria g = (Galeria) session.getAttribute("galeria");
                 int id = 0;
+                String nome = "";
+                String descricao = "";
                 if (g != null) {
-                    String nome = "";
-                    String descricao = "";
                     id = g.getId();
                     if (g.getNome() != null) {
                         nome = g.getNome();
@@ -31,7 +31,7 @@
                     if (g.getDescricao() != null) {
                         descricao = g.getDescricao();
                     }
-
+                }
         %>
         <form name="formGaleria" action="ServletGaleria" method="post" >
             <p><label for="nome">Nome:</label><br/>
@@ -40,12 +40,11 @@
                 <textarea id="descricao" name="descricao"><%=descricao%></textarea></p>
             <input type="hidden" name="idGaleria" value="<%=g.getId()%>" />
             <p><p><input type="submit" value="" name="btGaleria" /></p></p>
-        </form>
-        <%
-                }
-                session.removeAttribute("galeria");
-            }
-        %>
+    </form>
+    <%
+            session.removeAttribute("galeria");
+        }
+    %>
 
-    </body>
+</body>
 </html>

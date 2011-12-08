@@ -41,6 +41,18 @@ public class Usuario implements Serializable {
     private String cidade;
     @OneToMany
     private List<Usuario> amigos;
+    @OneToMany
+    private List<Imagem> favoritos;
+
+    public List<Imagem> getFavoritos() {
+        return favoritos;
+    }
+
+    public void setFavoritos(List<Imagem> favoritos) {
+        this.favoritos = favoritos;
+    }
+    
+    
 
     public int getId() {
         return id;
