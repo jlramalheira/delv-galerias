@@ -16,6 +16,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <%@include file="head.jsp" %>
         <title>Editar Perfil</title>
+        <script type="text/javascript">
+            jQuery(function($){            
+                $.mask.definitions['~']='[+-]';
+                $('#datanascimento').mask('99/99/9999');
+            })
+        </script>
     </head>
 
     <%
@@ -47,13 +53,6 @@
             }
 
     %>
-    <script type="text/javascript">
-        jQuery(function($){            
-            $.mask.definitions['~']='[+-]';
-            $('#datanascimento').mask('99/99/9999');
-        })
-    </script>
-
     <body>
         <%-- HEADER --%>
         <%@include file="header.jsp" %>

@@ -477,6 +477,15 @@ body {
     color:#7A6A53;
     font:normal 14px "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
+.formulario textarea{
+    width:243px;
+    margin:0;
+    border: 1px solid #99B2B7;
+    padding:5px 5px;
+    color:#7A6A53;
+    font:normal 14px "Georgia", serif;
+    resize: none;    
+}
 
 /* RESULTADOS PESQUISA */
 .resultadosbusca {
@@ -537,7 +546,6 @@ body {
 }
 .galerias li {
     min-height: 100px;
-    margin: 10px 0 0 0;
     padding: 10px 0;
     border-bottom: 1px dotted #948C75;
     color: #6b6456;
@@ -557,10 +565,10 @@ body {
     text-decoration: none;
     text-transform: uppercase;
 }
-
 .galerias .newgallery {
     background:url(../images/bkg/new_gallery.png) left center no-repeat;
     height: 100px;
+    margin: 5px 0;
     width: auto;
     padding: 10px 0 0 110px;
     color: #6b6456;
