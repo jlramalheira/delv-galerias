@@ -4,6 +4,9 @@
     Author     : João
 --%>
 
+<%@page import="dao.DaoComentario"%>
+<%@page import="entidades.Comentario"%>
+<%@page import="java.util.List"%>
 <%@page import="dao.Dao"%>
 <%@page import="entidades.Imagem"%>
 <%@page import="entidades.Usuario"%>
@@ -33,11 +36,11 @@
         <p>
             <%
                 if (id == u.getId()) { //vai pra home
-%>
+            %>
             <a href="home.jsp"><%=u.getNome()%></a>
             <%
             } else { //vai pro perfil do dono das galerias
-%> 
+            %> 
             <a href="ServletPerfil?id=<%=id%>"><%=new Dao<Usuario>(Usuario.class).get(id).getNome()%></a>
             <%
                 }
@@ -63,7 +66,7 @@
 
         } else {
             //nao 'e favorita
-%>
+        %>
         <form name="formFavorita" action="ServletFavorito" method="POST">
             <input type="hidden" name="idUsuario" value="<%=id%>" />
             <button type="submit" name="btAdd" value="<%=i.getId()%>">Adicionar Favorito</button>
@@ -74,6 +77,40 @@
         %>
     </p>
     <%
+        DaoComentario daoComentario = new DaoComentario(Comentario.class);
+        int idDest = u.getId();
+        if (request.getParameter("idUsuario") != null) {
+            idDest = Integer.parseInt(request.getParameter("idUsuario"));
+        }
+    %>
+    <form name="formRecado" action="ServletComentario" method="POST">
+        <p><label for="recado">Recado:</label><br />
+            <textarea name="comentario" id="recado">Recado...</textarea><br />
+            <input type="hidden" name="idDest" value="<%=idDest%>" />
+            <input type="hidden" name="idImage" value="<%=i.getId()%>" />
+            <button name ="btComentario" value="imagem">Enviar</button>
+        </p>
+    </form>                
+    <%
+        List<Comentario> comentarios = daoComentario.listComentariosImages(idDest);
+        if (comentarios.isEmpty()) {
+            out.println("<h2>nao existem comentarios</h2>");
+        } else {
+            for (Comentario c : comentarios) { //mostra os comentarios existentes
+    %>
+    <p>
+        <a href="ServletPerfil?id=<%=c.getRemetente().getId()%>"><%=c.getRemetente().getNome()%></a>:<br />
+        <%=c.getComentario()%>       <br />      
+        <%
+            if (c.getRemetente().getId() == u.getId() || c.getDestinatinatario().getId() == u.getId()) {
+                //excluir comentario
+                out.println("<a href=\"ServletComentario?idComentario=" + c.getId() +"&local=imagem\">Excluir</a>");
+            }
+        %>
+    </p>
+    <%                }
+                }
+
             } else {
                 response.sendRedirect("home.jsp");
             }
