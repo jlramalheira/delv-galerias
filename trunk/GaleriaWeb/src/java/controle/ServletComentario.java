@@ -83,7 +83,7 @@ public class ServletComentario extends HttpServlet {
             att.setDestinatario((Usuario)daoUsuario.get(idDest));
             att.setRemetente(u);
             att.setImagem((Imagem)daoImagem.get(idImage));
-            att.setTipo("deicou um recado pra voce");
+            att.setTipo("deixou um recado pra voce");
             
             daoAtualizacao.insert(att);
             

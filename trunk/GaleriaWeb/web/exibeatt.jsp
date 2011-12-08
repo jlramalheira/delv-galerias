@@ -43,7 +43,7 @@
         <%                            } else { //att de imagem 
         %>
         <a href="ServletPerfil?id=<%= a.getRemetente().getId()%>"><%=(a.getRemetente().getNome())%></a>
-        <%=a.getTipo()%> 
+        <%=a.getTipo()%> na imagem  
         <a href="exibeImagem.jsp?idUsuario=<%=a.getImagem().getGaleria().getUsuario().getId()%>&idImagem=<%=a.getImagem().getId()%>"><%=a.getImagem().getNome()%></a>  
         <%                            }                             //chamar exibe imagem          
                         }
