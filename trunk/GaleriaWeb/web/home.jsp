@@ -4,6 +4,10 @@
     Author     : aluno
 --%>
 
+<%@page import="dao.DaoAtualizacao"%>
+<%@page import="dao.Dao"%>
+<%@page import="java.util.List"%>
+<%@page import="entidades.Atualizacao"%>
 <%@page import="java.util.Collections"%>
 <%@page import="java.util.Random"%>
 <%@page import="entidades.Usuario"%>
@@ -97,7 +101,17 @@
                             <input type="submit" value="ok" name="btMensagem" />
                         </form>
                     </div>
-                    <a href="gerenciaimagem.jsp">tetse</a>
+
+                    <%-- mostra att --%>
+                    <p>
+                        <%List<Atualizacao> atts = new DaoAtualizacao(Atualizacao.class).listAttFromUser(u.getId());
+                            if (atts.isEmpty()) {
+                                out.println("<p>Você não possui atualizaçoes</p>");
+                            } else {
+                        %>
+                                <a href="exibeatt.jsp">Você tem (<%=atts.size()%>) atualizações</a>
+                        <% }%>
+                    </p>
                 </div>
             </div>
         </div>

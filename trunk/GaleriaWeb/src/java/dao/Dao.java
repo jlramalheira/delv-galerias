@@ -40,7 +40,7 @@ public class Dao<T> {
             em.getTransaction().commit();
         }
     }
-
+       
     public List<T> list(){
         return em.createQuery("SELECT p FROM "+classe.getSimpleName()+" p").getResultList();
     }

@@ -92,7 +92,6 @@ public class ServletImagem extends HttpServlet {
                 // Specify destination where file will be unzipped
                 String destinationDirectory = getServletContext().getRealPath("/files/temp/" + u.getId() + "/");
                 String nome = "";
-                String path1 = getServletContext().getRealPath("/files/temp/" + u.getId() + "/");
                 String path2 = getServletContext().getRealPath("/files/images/" + u.getId() + "/");
 
                 File sourceZipFile = new File(inFileName);
@@ -156,16 +155,15 @@ public class ServletImagem extends HttpServlet {
                     if (!file.exists()) {
                         file.mkdir();
                     }
-                    
+
                     Imagem i = new Imagem();
-                    
+                    daoImagem.insert(i);
                     i.setNome("image" + i.getId());
-                    System.out.println("PASSEI ME OLHA AQUI ---------------"+i.getId());
                     i.setDescricao("Fotos " + imagem.substring(0, imagem.lastIndexOf(".")));
                     i.setDia(Calendar.getInstance().getTime());
                     i.setFiltro(false);
                     i.setGaleria(daoGaleria.get(idGaleria));
-                    i.setImagem(path2 + i.getNome());
+                    i.setImagem("files/images/" + u.getId() + "/" + i.getNome() + ".jpg");
                     daoImagem.update(i);
                     ImageIO.write(imagemredimencionada, "JPG", new File(path2 + "/" + "mini_" + i.getNome() + ".jpg"));
 
@@ -176,15 +174,47 @@ public class ServletImagem extends HttpServlet {
                             600, 600, BufferedImage.TYPE_INT_BGR);
                     imagemredimencionadag.createGraphics().drawImage(imageg, 0, 0, null);
                     ImageIO.write(imagemredimencionadag, "JPG", new File(path2 + "/" + i.getNome() + ".jpg"));
-                    
-                    file.deleteOnExit();
-                    
+
+
                 }
                 zipFile.close();
             } catch (IOException ioe) {
                 System.out.println("ERRO");
             }
+        } else {
+
+            String path1 = getServletContext().getRealPath("/files/temp/" + u.getId() + "/");
+            String path2 = getServletContext().getRealPath("/files/images/" + u.getId() + "/");
+            //gerar miniatura
+            BufferedImage imageb = ImageIO.read(new File(path1 + "/" + imagem));
+            Image image = imageb.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+            BufferedImage imagemredimencionada = new BufferedImage(
+                    150, 150, BufferedImage.TYPE_INT_BGR);
+            imagemredimencionada.createGraphics().drawImage(image, 0, 0, null);
+            File file = new File(path2);
+            if (!file.exists()) {
+                file.mkdir();
+            }
+
+            Imagem i = new Imagem();
+            daoImagem.insert(i);
+            i.setNome("image" + i.getId());
+            i.setDescricao("Fotos " + imagem.substring(0, imagem.lastIndexOf(".")));
+            i.setDia(Calendar.getInstance().getTime());
+            i.setFiltro(false);
+            i.setGaleria(daoGaleria.get(idGaleria));
+            i.setImagem("files/images/" + u.getId() + "/" + i.getNome() + ".jpg");
+            daoImagem.update(i);
+            ImageIO.write(imagemredimencionada, "JPG", new File(path2 + "/" + "mini_" + i.getNome() + ".jpg"));
+
+            //escreve a normal
+            BufferedImage imagebg = ImageIO.read(new File(path1 + "/" + imagem));
+            Image imageg = imagebg.getScaledInstance(600, 600, Image.SCALE_SMOOTH);
+            BufferedImage imagemredimencionadag = new BufferedImage(
+                    600, 600, BufferedImage.TYPE_INT_BGR);
+            imagemredimencionadag.createGraphics().drawImage(imageg, 0, 0, null);
+            ImageIO.write(imagemredimencionadag, "JPG", new File(path2 + "/" + i.getNome() + ".jpg"));
         }
-        //teste
+
     }
 }

@@ -28,8 +28,6 @@ public class Atualizacao implements Serializable {
     @ManyToOne
     private Imagem imagem;
     @ManyToOne
-    private Diario diario;
-    @ManyToOne
     private Usuario destinatario;
 
     public int getId() {
@@ -56,13 +54,6 @@ public class Atualizacao implements Serializable {
         this.remetente = remetente;
     }
     
-    public Diario getDiario() {
-        return diario;
-    }
-
-    public void setDiario(Diario diario) {
-        this.diario = diario;
-    }
 
     public Imagem getImagem() {
         return imagem;
