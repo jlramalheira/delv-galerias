@@ -52,15 +52,19 @@
                             if (!galerias.isEmpty()) {
                                 for (Galeria g : galerias) {%>
                         <li>
-                            <a href="exibegaleria.jsp?idGaleria=<%=g.getId()%>&idUsuario=<%=id%>"><img href="<%
-                                if (daoImagem.listOneImageByGaleriaId(g.getId()).isEmpty()) {
-                                    out.print("mini_" + ((List<Imagem>) daoImagem.listOneImageByGaleriaId(g.getId())).get(0).getImagem());
+                            <a href="exibegaleria.jsp?idGaleria=<%=g.getId()%>&idUsuario=<%=id%>"><img src="<%
+                                if (!daoImagem.listOneImageByGaleriaId(g.getId()).isEmpty()) {
+                                    String image = ((List<Imagem>) daoImagem.listOneImageByGaleriaId(g.getId())).get(0).getImagem();
+                                    String caminho = image.substring(0, image.lastIndexOf("/"));
+                                    caminho += "/mini_";
+                                    caminho += image.substring(image.lastIndexOf("/") + 1);
+                                    out.print(caminho);
                                 } else {
-                                    out.print("colocar caminho imagem");
+                                    out.print("images/bkg/new_gallery.png");
                                 }
-                                                                                                       %>" alt="Galeria" /></a>
-                            <%=g.getNome()%><br />
-                            <%=g.getDescricao()%> <br />
+                                                                                                       %>" alt="Galeria" /></a><br />
+                            <%="Nome: "+g.getNome()%><br />
+                            <%="Descricao: "+g.getDescricao()%> <br />
                             <a href="ServletGaleria?op=excluir&id=<%=g.getId()%>">Excluir</a> 
                             <a href="ServletGaleria?op=editar&id=<%=g.getId()%>">Editar</a>
                         </li>

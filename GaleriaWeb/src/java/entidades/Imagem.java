@@ -7,6 +7,7 @@ package entidades;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,7 +33,7 @@ public class Imagem implements Serializable {
     private boolean filtro;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dia;
-    @ManyToOne
+    @ManyToOne(cascade= CascadeType.ALL)
     private Galeria galeria;
 
     public String getNome() {

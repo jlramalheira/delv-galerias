@@ -7,6 +7,7 @@ package entidades;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,7 +29,7 @@ public class Galeria implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dia;
     private String descricao;
-    @ManyToOne
+    @ManyToOne(cascade= CascadeType.ALL)
     private Usuario usuario;
 
     public int getId() {
