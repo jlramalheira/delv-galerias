@@ -14,10 +14,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <%@include file="head.jsp" %>
+        <title>Galeria</title>
     </head>
-    <body>
+    <body>        
         <%
             Usuario u = (Usuario) (session.getAttribute("usuario"));
             if (u == null) {
@@ -29,53 +30,58 @@
                 }
                 Galeria g = new Dao<Galeria>(Galeria.class).get(Integer.parseInt(request.getParameter("idGaleria")));
                 if (g != null) {
+                    //Vai para Home se não estiver numa galeria de outro usuário
+                    String nome = u.getNome();
+                    String aux = "home.jsp";
+                    if (id != u.getId()) {
+                        aux = "ServletPerfil?id=" + id;
+                        nome = new Dao<Usuario>(Usuario.class).get(id).getNome();
+                    }
         %>
-        <p>
-            <%
-                if (id == u.getId()) { //vai pra home
-%>
-            <a href="home.jsp"><%=u.getNome()%></a>
-            <%
-            } else { //vai pro perfil do dono das galerias
-%> 
-            <a href="ServletPerfil?id=<%=id%>"><%=new Dao<Usuario>(Usuario.class).get(id).getNome()%></a>
-            <%
-                }
-            %>
-            - 
-            <a href="galerias.jsp?idUsuario=<%=id%>">Voltar as galerias</a>
-        </p>
-        <h2><a href="exibegaleria.jsp?idGaleria=<%=g.getId()%>&idUsuario=<%=id%>"><%=g.getNome()%></a></h2>
-        <ul><%
-            List<Imagem> imagens = new DaoImagem(Imagem.class).listImagesByGaleriaId(g.getId());
-            if (!imagens.isEmpty()) {
-                for (Imagem i : imagens) {
-            %>
-            <li>
-                <a href="exibeImagem.jsp?idImagem=<%=i.getId()%>&idUsuario=<%=id%>">
-                    <img src="<%
-                        String caminho = i.getImagem().substring(0,i.getImagem().lastIndexOf("/"));
-                        caminho += "/mini_";
-                        caminho += i.getImagem().substring(i.getImagem().lastIndexOf("/")+1);
-                        out.print(caminho);
-                         %>" alt="Imagem Usuario" />
-                </a>
-            </li>
-            <%            }
-                } else {
-                    out.println("<h2>Esta galeria nao possui nenhuma imagem</h2>");
-                }
-            %></ul><%
-                } else {
-                    response.sendRedirect("home.jsp");
-                }
-                if (id == u.getId()) { //so adiciona se for o usuario dono
-%>
-        <p><a href="gerenciaimagem.jsp">Adicionar Imagem</a></p>
-        <%                }
-            }
+        <%-- HEADER --%>
+        <%@include file="header.jsp" %>
+        <%-- BODY --%>
+        <div class="bgcontainer">
+            <div class="container">               
+                <h2><%=g.getNome()%></h2>
+                <p>Descrição:<br/>
+                    <%= g.getDescricao()%>
+                </p>
+                <p><a href="galerias.jsp?idUsuario=<%=id%>">Voltar as galerias</a></p>
+
+                <ul>
+                    <%
+                        List<Imagem> imagens = new DaoImagem(Imagem.class).listImagesByGaleriaId(g.getId());
+                        if (!imagens.isEmpty()) {
+                            for (Imagem i : imagens) {
+                    %>
+                    <li>
+                        <a href="exibeImagem.jsp?idImagem=<%=i.getId()%>&idUsuario=<%=id%>">
+                            <img src="<%
+                                String caminho = i.getImagem().substring(0, i.getImagem().lastIndexOf("/"));
+                                caminho += "/mini_";
+                                caminho += i.getImagem().substring(i.getImagem().lastIndexOf("/") + 1);
+                                out.print(caminho);
+                                 %>" alt="Imagem Usuario" />
+                        </a>
+                    </li>
+                    <%            }
+                        } else {
+                            out.println("<h2>Esta galeria nao possui nenhuma imagem</h2>");
+                        }
+                    %>
+                </ul>
+
+                <%if (id == u.getId()) { //so adiciona se for o usuario dono
+                %>
+                <p><a href="gerenciaimagem.jsp">Adicionar Imagem</a></p>
+                <%      }
+                %>
+            </div>            
+        </div>
+        <%        } else {
+                response.sendRedirect("home.jsp");
+            }            
         %>
-
-
     </body>
 </html>
