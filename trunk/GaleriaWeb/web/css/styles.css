@@ -537,10 +537,28 @@ body {
     list-style: none;    
 }
 .galerias li {
-    background-color: #D5DED9;
+    min-height: 100px;
     margin: 10px 0 0 0;
+    padding: 10px 0;
     border-bottom: 1px dotted #948C75;
+    color: #6b6456;
+    font: oblique normal normal 0.875em "Trebuchet MS", Helvetica, sans-serif;
 }
+.galerias li img {
+    float: left;
+    margin: 0 10px 0 0;
+}
+.galerias li .galerianome {
+    color: #948c75;
+    font: normal small-caps bold 1.25em "Trebuchet MS", sans-serif;
+}
+.galerias li .galeriaopc a{
+    color: #99B2B7;
+    font: normal normal normal 0.875em "Trebuchet MS", sans-serif;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
 .galerias .newgallery {
     background:url(../images/bkg/new_gallery.png) left center no-repeat;
     height: 100px;
