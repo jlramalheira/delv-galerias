@@ -4,7 +4,6 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>entidades.Atualizacao</class>
     <class>entidades.Comentario</class>
-    <class>entidades.Favorito</class>
     <class>entidades.Galeria</class>
     <class>entidades.Imagem</class>
     <class>entidades.Pais</class>

@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package entidades;
 
 import java.io.Serializable;
@@ -22,8 +21,7 @@ import javax.persistence.Temporal;
  */
 @Entity
 public class Imagem implements Serializable {
-    @ManyToMany(mappedBy = "imagens")
-    private List<Favorito> favoritos;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,14 +35,6 @@ public class Imagem implements Serializable {
     @ManyToOne
     private Galeria galeria;
 
-    public List<Favorito> getFavoritos() {
-        return favoritos;
-    }
-
-    public void setFavoritos(List<Favorito> favoritos) {
-        this.favoritos = favoritos;
-    }
-
     public String getNome() {
         return nome;
     }
@@ -52,7 +42,7 @@ public class Imagem implements Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
+
     public int getId() {
         return id;
     }
@@ -125,5 +115,4 @@ public class Imagem implements Serializable {
     public String toString() {
         return "entidades.Imagem[id=" + id + "]";
     }
-
 }

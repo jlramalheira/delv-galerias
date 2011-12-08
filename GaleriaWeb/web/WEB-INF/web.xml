@@ -40,6 +40,10 @@
         <servlet-name>ServletEditaImagem</servlet-name>
         <servlet-class>controle.ServletEditaImagem</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletFavorito</servlet-name>
+        <servlet-class>controle.ServletFavorito</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NovoUsuario</servlet-name>
         <url-pattern>/NovoUsuario</url-pattern>
@@ -79,6 +83,10 @@
     <servlet-mapping>
         <servlet-name>ServletEditaImagem</servlet-name>
         <url-pattern>/ServletEditaImagem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletFavorito</servlet-name>
+        <url-pattern>/ServletFavorito</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
