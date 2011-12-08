@@ -90,8 +90,6 @@
                 </div>
                 <div class="content">
                     <%-- BARRA LATERAL ME --%>
-
-
                     <div class="welcome">
                         <p>Bem vindo,<br />
                             <span class="name"><a href="ServletPerfil?id=<%= u.getId()%>"><%=(u.getNome())%></a></span></p>

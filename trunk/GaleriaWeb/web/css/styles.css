@@ -159,6 +159,7 @@ body {
 }
 .content {
     width:690px;
+    margin-left: 166px;
     min-height:300px;
 }
 .sidebar {
@@ -537,17 +538,27 @@ body {
 }
 .galerias li {
     background-color: #D5DED9;
+    margin: 10px 0 0 0;
+    border-bottom: 1px dotted #948C75;
 }
 .galerias .newgallery {
     background:url(../images/bkg/new_gallery.png) left center no-repeat;
     height: 100px;
     width: auto;
-    text-align: center;
+    padding: 10px 0 0 110px;
+    color: #6b6456;
+    font: oblique normal normal 0.875em "Trebuchet MS", Helvetica, sans-serif;
 }
-.galerias .newgallery a {
-    background-color: #D5DED9;
-    height: 100px;
-    width: 100px;
+.galerias .newgallery span {
+    color: #948c75;
+    font: normal small-caps bold 1.25em "Trebuchet MS", sans-serif;    
+}
+.galerias .newgallery span a {
+    color: #948c75;
+    text-decoration: none;   
+}
+.galerias .newgallery span a:hover {
+    text-decoration: underline;   
 }
 
 /* OUTROS */

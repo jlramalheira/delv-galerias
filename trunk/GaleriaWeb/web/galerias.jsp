@@ -34,7 +34,6 @@
         %>
         <%-- HEADER --%>
         <%@include file="header.jsp" %>
-
         <%-- BODY --%>
         <div class="bgcontainer">
             <div class="container">
@@ -44,42 +43,45 @@
                         <li><a href="galerias.jsp?idUsuario=<%=u.getId()%>">Imagens</a></li>
                     </ul>
                 </div>
-                <h2>Galerias de <%= u.getNome()%></h2>
-                <ul class="galerias">
-                    <%
-                        List<Galeria> galerias = new DaoGaleria(Galeria.class).listGaleriaByUser(id);
-                        if (!galerias.isEmpty()) {
-                            for (Galeria g : galerias) {%>
-                    <li>
-                        <a href="exibegaleria.jsp?idGaleria=<%=g.getId()%>&idUsuario=<%=id%>"><img href="<%
-                            if (daoImagem.listOneImageByGaleriaId(g.getId()).isEmpty()) {
-                                out.print("mini_" + ((List<Imagem>) daoImagem.listOneImageByGaleriaId(g.getId())).get(0).getImagem());
-                            } else {
-                                out.print("colocar caminho imagem");
-                            }
-                                                                                                   %>" alt="Galeria" /></a>
-                        <%=g.getNome()%><br />
-                        <%=g.getDescricao()%> <br />
-                        <a href="ServletGaleria?op=excluir&id=<%=g.getId()%>">Excluir</a> 
-                        <a href="ServletGaleria?op=editar&id=<%=g.getId()%>">Editar</a>
-                    </li>
-                    <%
-                            }
-                        } else {
-                            out.print("<p>Nenhuma galeria cadastrada</p>");
-                        }
-                    %>
-                    <li class="newgallery">
+                <%-- CONTENT --%>
+                <div class="content">
+                    <h2>Galerias de <%= u.getNome()%></h2>
+                    <ul class="galerias">
                         <%
-                            if (u.getId() == id) { //mostra o criar se tiver na sua propria galeria
-                                out.println("<a href=\"gerenciagaleria.jsp\">Criar...</a>\n"
-                                        + "<br/>\n"
-                                        + "Nova galeria");
+                            List<Galeria> galerias = new DaoGaleria(Galeria.class).listGaleriaByUser(id);
+                            if (!galerias.isEmpty()) {
+                                for (Galeria g : galerias) {%>
+                        <li>
+                            <a href="exibegaleria.jsp?idGaleria=<%=g.getId()%>&idUsuario=<%=id%>"><img href="<%
+                                if (daoImagem.listOneImageByGaleriaId(g.getId()).isEmpty()) {
+                                    out.print("mini_" + ((List<Imagem>) daoImagem.listOneImageByGaleriaId(g.getId())).get(0).getImagem());
+                                } else {
+                                    out.print("colocar caminho imagem");
+                                }
+                                                                                                       %>" alt="Galeria" /></a>
+                            <%=g.getNome()%><br />
+                            <%=g.getDescricao()%> <br />
+                            <a href="ServletGaleria?op=excluir&id=<%=g.getId()%>">Excluir</a> 
+                            <a href="ServletGaleria?op=editar&id=<%=g.getId()%>">Editar</a>
+                        </li>
+                        <%
+                                }
+                            } else {
+                                out.print("<p>Nenhuma galeria cadastrada</p>");
                             }
-                        %>
-                    </li>
-                </ul>
 
+                            //mostra o criar se tiver na sua propria galeria
+                            if (u.getId() == id) {
+                        %>
+                        <li class="newgallery">
+                            <span><a href="gerenciagaleria.jsp">Nova galeria</a></span><br/>
+                            Crie uma nova galeria para organizar suas imagens.                            
+                        </li>
+                        <%                            }
+                        %>
+
+                    </ul>
+                </div>
             </div>           
         </div>
 
