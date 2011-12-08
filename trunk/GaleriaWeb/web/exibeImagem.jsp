@@ -46,24 +46,30 @@
             <a href="galerias.jsp?idUsuario=<%=id%>">Voltar as galerias</a>
         </p>
         <%-- Mostrar Imagem--%>
-
+        <p>
+            <img src="<%=i.getImagem()%>" alt="<%=i.getNome()%>" />
+        </p>
         <%-- Favoritar Imagem--%>
         <p>
             <%
-                if (u.getFavoritos().contains(i)) {
-                    //ja eh favorito%>
+                if (id != u.getId()) {
+                    if (u.getFavoritos().contains(i)) {
+                        //ja eh favorito%>
         <form name="formFavorita" action="ServletFavorito" method="POST">
+            <input type="hidden" name="idUsuario" value="<%=id%>" />
             <button type="submit" name="btRemove" value="<%=i.getId()%>">Remover Favorito</button>
         </form>
         <%
 
-            } else {
-                //nao 'e favorita
-                    %>
+        } else {
+            //nao 'e favorita
+%>
         <form name="formFavorita" action="ServletFavorito" method="POST">
+            <input type="hidden" name="idUsuario" value="<%=id%>" />
             <button type="submit" name="btAdd" value="<%=i.getId()%>">Adicionar Favorito</button>
         </form>
         <%
+                }
             }
         %>
     </p>
