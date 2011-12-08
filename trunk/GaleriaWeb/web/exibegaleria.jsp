@@ -73,15 +73,16 @@
                 </ul>
 
                 <%if (id == u.getId()) { //so adiciona se for o usuario dono
-                %>
+%>
                 <p><a href="gerenciaimagem.jsp">Adicionar Imagem</a></p>
                 <%      }
                 %>
             </div>            
         </div>
         <%        } else {
-                response.sendRedirect("home.jsp");
-            }            
+                    response.sendRedirect("home.jsp");
+                }
+            }
         %>
     </body>
 </html>

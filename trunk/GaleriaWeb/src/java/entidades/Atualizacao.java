@@ -29,8 +29,18 @@ public class Atualizacao implements Serializable {
     @ManyToOne(cascade= CascadeType.ALL)
     private Imagem imagem;
     @ManyToOne(cascade= CascadeType.ALL)
+    private Comentario comentario;
+    @ManyToOne(cascade= CascadeType.ALL)
     private Usuario destinatario;
 
+    public Comentario getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(Comentario comentario) {
+        this.comentario = comentario;
+    }
+    
     public int getId() {
         return id;
     }
