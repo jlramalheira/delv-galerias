@@ -34,8 +34,6 @@ public class Comentario implements Serializable {
     @ManyToOne
     private Imagem imagem;
     @ManyToOne
-    private Diario diario;
-    @ManyToOne
     private Usuario destinatinatario;
 
     public int getId() {
@@ -70,13 +68,6 @@ public class Comentario implements Serializable {
         this.tipo = tipo;
     }
 
-    public Diario getDiario() {
-        return diario;
-    }
-
-    public void setDiario(Diario diario) {
-        this.diario = diario;
-    }
 
     public Imagem getImagem() {
         return imagem;

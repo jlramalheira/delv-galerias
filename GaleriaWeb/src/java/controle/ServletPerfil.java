@@ -5,6 +5,8 @@
 package controle;
 
 import dao.Dao;
+import dao.DaoAtualizacao;
+import entidades.Atualizacao;
 import entidades.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -22,6 +24,7 @@ import javax.servlet.http.HttpSession;
 public class ServletPerfil extends HttpServlet {
 
     Dao<Usuario> daoUsuario = new Dao<Usuario>(Usuario.class);
+    DaoAtualizacao daoAtualizacao = new DaoAtualizacao(Atualizacao.class);
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -62,9 +65,18 @@ public class ServletPerfil extends HttpServlet {
                 usuario.setAmigos(listamigos);
                 session.removeAttribute("amigos");
             }
+            
+            
 
             daoUsuario.update(usuario);
             boolean agoraeh = true;
+            
+            Atualizacao a = new Atualizacao();
+            a.setTipo("é seu novo amigo!");
+            a.setRemetente(usuario);
+            a.setDestinatario(novoamigo);
+            daoAtualizacao.insert(a);
+            
             session.setAttribute("perfil", novoamigo);
             session.setAttribute("agoraeh", agoraeh);
 
