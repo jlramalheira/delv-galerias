@@ -60,12 +60,12 @@
                                     } else {
                                         caminho = "images/bkg/new_gallery.png";
                                     }%>
-                                 <li>
+                        <li>
                             <a href="exibegaleria.jsp?idGaleria=<%=g.getId()%>&idUsuario=<%=id%>"><img src="<%= caminho%>" alt="Galeria" /></a><br />
                             <span class="galerianome"><%=g.getNome()%><br /></span>
                             Descrição: <%=g.getDescricao()%> <br />
                             <span class="galeriaopc"><a href="ServletGaleria?op=excluir&id=<%=g.getId()%>">Excluir</a> | 
-                            <a href="ServletGaleria?op=editar&id=<%=g.getId()%>">Editar</a></span>
+                                <a href="ServletGaleria?op=editar&id=<%=g.getId()%>">Editar</a></span>
                         </li>
                         <%
                                 }
@@ -87,7 +87,6 @@
                 </div>
             </div>           
         </div>
-
         <%-- FOOTER --%>
         <%@include file="footer.jsp" %>
         <%}%>
