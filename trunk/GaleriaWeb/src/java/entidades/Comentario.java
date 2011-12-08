@@ -7,6 +7,7 @@ package entidades;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,9 +32,9 @@ public class Comentario implements Serializable {
     @ManyToOne
     private Usuario remetente;
     private String tipo;
-    @ManyToOne
+    @ManyToOne(cascade= CascadeType.ALL)
     private Imagem imagem;
-    @ManyToOne
+    @ManyToOne(cascade= CascadeType.ALL)
     private Usuario destinatinatario;
 
     public int getId() {

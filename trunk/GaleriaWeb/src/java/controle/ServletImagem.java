@@ -81,6 +81,8 @@ public class ServletImagem extends HttpServlet {
         Map<String, String> map = upload.getFormValues(list);
 
         String imagem = map.get("imagem");
+        String nomeImagem = map.get("nome");
+        String descricaoImagem = map.get("descricao");
         int idGaleria = Integer.parseInt(map.get("idGaleria"));
         //fez upload de zip
         if (imagem.substring(imagem.lastIndexOf(".")).equalsIgnoreCase(".zip")) {
@@ -147,9 +149,9 @@ public class ServletImagem extends HttpServlet {
                     }
                     //gerar miniatura
                     BufferedImage imageb = ImageIO.read(new File(destinationDirectory + "/" + nome));
-                    Image image = imageb.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+                    Image image = imageb.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
                     BufferedImage imagemredimencionada = new BufferedImage(
-                            150, 150, BufferedImage.TYPE_INT_BGR);
+                            100, 100, BufferedImage.TYPE_INT_BGR);
                     imagemredimencionada.createGraphics().drawImage(image, 0, 0, null);
                     File file = new File(path2);
                     if (!file.exists()) {
@@ -158,8 +160,8 @@ public class ServletImagem extends HttpServlet {
 
                     Imagem i = new Imagem();
                     daoImagem.insert(i);
-                    i.setNome("image" + i.getId());
-                    i.setDescricao("Fotos " + imagem.substring(0, imagem.lastIndexOf(".")));
+                    i.setNome(nomeImagem+i.getId());
+                    i.setDescricao(descricaoImagem + " - "+i.getNome());
                     i.setDia(Calendar.getInstance().getTime());
                     i.setFiltro(false);
                     i.setGaleria(daoGaleria.get(idGaleria));
@@ -187,9 +189,9 @@ public class ServletImagem extends HttpServlet {
             String path2 = getServletContext().getRealPath("/files/images/" + u.getId() + "/");
             //gerar miniatura
             BufferedImage imageb = ImageIO.read(new File(path1 + "/" + imagem));
-            Image image = imageb.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+            Image image = imageb.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
             BufferedImage imagemredimencionada = new BufferedImage(
-                    150, 150, BufferedImage.TYPE_INT_BGR);
+                    100, 100, BufferedImage.TYPE_INT_BGR);
             imagemredimencionada.createGraphics().drawImage(image, 0, 0, null);
             File file = new File(path2);
             if (!file.exists()) {
@@ -198,8 +200,8 @@ public class ServletImagem extends HttpServlet {
 
             Imagem i = new Imagem();
             daoImagem.insert(i);
-            i.setNome("image" + i.getId());
-            i.setDescricao("Fotos " + imagem.substring(0, imagem.lastIndexOf(".")));
+            i.setNome(nomeImagem);
+            i.setDescricao(descricaoImagem);
             i.setDia(Calendar.getInstance().getTime());
             i.setFiltro(false);
             i.setGaleria(daoGaleria.get(idGaleria));
@@ -215,6 +217,8 @@ public class ServletImagem extends HttpServlet {
             imagemredimencionadag.createGraphics().drawImage(imageg, 0, 0, null);
             ImageIO.write(imagemredimencionadag, "JPG", new File(path2 + "/" + i.getNome() + ".jpg"));
         }
+        
+        response.sendRedirect("exibegaleria.jsp?idGaleria=" + idGaleria);
 
     }
 }

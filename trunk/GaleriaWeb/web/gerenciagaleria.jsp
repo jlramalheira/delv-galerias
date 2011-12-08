@@ -38,7 +38,7 @@
                 <input type="text" name="nome" value="<%=nome%>" id="nome"/></p>
             <p><label for="descricao">Descrição:</label><br/>
                 <textarea id="descricao" name="descricao"><%=descricao%></textarea></p>
-            <input type="hidden" name="idGaleria" value="<%=(g != null) ? g.getId() : 0 %>" />
+            <input type="hidden" name="idGaleria" value="<%=(g != null) ? g.getId() : 0%>" />
             <p><p><input type="submit" value="" name="btGaleria" /></p></p>
     </form>
     <%

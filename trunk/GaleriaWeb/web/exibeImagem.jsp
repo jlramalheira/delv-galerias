@@ -61,7 +61,7 @@
                 //nao 'e favorita
                     %>
         <form name="formFavorita" action="ServletFavorito" method="POST">
-            <button type="submit" name="btAdd" value="<%=i.getId()%>">Remover Favorito</button>
+            <button type="submit" name="btAdd" value="<%=i.getId()%>">Adicionar Favorito</button>
         </form>
         <%
             }

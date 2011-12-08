@@ -8,6 +8,7 @@ package entidades;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -36,12 +37,12 @@ public class Usuario implements Serializable {
     private String descricao;
     private String mensagem;
     private String imagem;
-    @ManyToOne
+    @ManyToOne(cascade= CascadeType.ALL)
     private Pais pais;
     private String cidade;
-    @OneToMany
+    @OneToMany(cascade= CascadeType.ALL)
     private List<Usuario> amigos;
-    @OneToMany
+    @OneToMany(cascade= CascadeType.ALL)
     private List<Imagem> favoritos;
 
     public List<Imagem> getFavoritos() {
