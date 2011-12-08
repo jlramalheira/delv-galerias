@@ -52,7 +52,12 @@
             <h2><a href="exibegaleria.jsp?idGaleria=<%=g.getId()%>&idUsuario=<%=id%>"><%=g.getNome()%></a></h2>
             <li>
                 <a href="exibeimage.jsp?idImagem=<%=i.getId()%>&idUsuario=<%=id%>">
-                    <img src="<%=i.getImagem()%>" alt="Imagem Usuario" />
+                    <img src="<%
+                    String caminho = i.getImagem().substring(i.getImagem().lastIndexOf("/"));
+                    caminho += "mini_";
+                    caminho += i.getImagem().substring(i.getImagem().lastIndexOf("/")+1);
+                    out.print(caminho);
+                        %>" alt="Imagem Usuario" />
                 </a>
             </li>
             <%            }

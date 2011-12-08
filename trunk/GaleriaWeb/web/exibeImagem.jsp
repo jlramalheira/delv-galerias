@@ -42,10 +42,11 @@
             - 
             <a href="galerias.jsp?idUsuario=<%=id%>">Voltar as galerias</a>
         </p>
-          
-        <% //mostrar a imagem aqui
+        <%-- Mostrar Imagem--%>
+        
+        <%-- Favoritar Imagem--%>
+        <% 
             }
-
         %>
     </body>
 </html>
