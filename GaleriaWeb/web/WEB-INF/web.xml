@@ -44,6 +44,10 @@
         <servlet-name>ServletFavorito</servlet-name>
         <servlet-class>controle.ServletFavorito</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletComentario</servlet-name>
+        <servlet-class>controle.ServletComentario</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NovoUsuario</servlet-name>
         <url-pattern>/NovoUsuario</url-pattern>
@@ -87,6 +91,10 @@
     <servlet-mapping>
         <servlet-name>ServletFavorito</servlet-name>
         <url-pattern>/ServletFavorito</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletComentario</servlet-name>
+        <url-pattern>/ServletComentario</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -18,6 +18,9 @@ public class DaoComentario extends Dao {
     }
 
     public List<Comentario> listComentariosPerfil(int id) {
-        return Dao.getEm().createQuery("SELECT p FROM Comentario p WHERE p.imagem = null AND p.destinatinatario.id ="+id ).getResultList();
+        return Dao.getEm().createQuery("SELECT p FROM Comentario p WHERE p.imagem is null AND p.destinatinatario.id ="+id ).getResultList();
+    }
+    public List<Comentario> listComentariosImages(int id) {
+        return Dao.getEm().createQuery("SELECT p FROM Comentario p WHERE p.imagem is not null AND p.destinatinatario.id ="+id ).getResultList();
     }
 }
