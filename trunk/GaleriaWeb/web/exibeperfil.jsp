@@ -37,27 +37,30 @@
                             <p><strong>Local:</strong> <%= ((perfil.getCidade() != null) ? perfil.getCidade() : "")
                                     + " - " + ((perfil.getPais() != null) ? perfil.getPais().getNome() : "")%></p>
                             <p><strong>Descrição:</strong> <%= ((perfil.getDescricao() != null) ? perfil.getDescricao() : "")%></p>
+                            <p class="opc">
+                                <a href="galerias.jsp?idUsuario=<%=perfil.getId()%>">Imagens</a> |
+                                <a href="paginaRecados.jsp?idUsuario=<%=perfil.getId()%>">Recados</a> |
+                                <a href="exibefavoritos.jsp?idUsuario=<%=perfil.getId()%>">Favoritos</a>
+                            </p>                            
 
                             <%
                                 if (session.getAttribute("amigos") != null) {
                                     boolean amigos = (Boolean) session.getAttribute("amigos");
                                     if (!amigos && (u.getId() != perfil.getId())) {
                             %>
-                            <form name="formadicionaamigo" action="ServletPerfil" method="POST">
+                            <form name="formadicionaamigo" action="ServletPerfil" method="POST" style="margin-top: 25px;">
                                 <button type="submit" name="btAdd" value="<%=perfil.getId()%>">Adicionar aos amigos</button>
                             </form>
                             <%              }
                                 if (amigos) {
                             %>
-                            <form name="formRemoveamigo" action="ServletPerfil" method="POST">
+                            <form name="formRemoveamigo" action="ServletPerfil" method="POST" style="margin-top: 25px;">
                                 <button type="submit" name="btRemove" value="<%=perfil.getId()%>">Remover dos Amigos</button>
                             </form>
                             <%
                                     }
                                 }%>
-                                <p>
-                                    <a href="galerias.jsp?idUsuario=<%=perfil.getId()%>">Imagens</a>
-                                </p>
+
                         </div>
                     </div>
                 </div>
