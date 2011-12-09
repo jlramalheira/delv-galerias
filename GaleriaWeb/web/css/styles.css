@@ -175,6 +175,10 @@ body {
     color:#99B2B7;
     font: normal bold 20px "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
+.container h3{
+    color:#99B2B7;
+    font: normal bold 1em "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
 .container p{
     color:#7A6A53;
     font: normal 14px "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -610,8 +614,68 @@ body {
     text-decoration: none;
 }
 
+/* IMAGEM */
+.imagem {
+    background: #ebf0f1;
+    width: 925px;
+    height: auto;
+    text-align: center;
+    margin: 15px 0;
+    padding: 10px;
+}
+.imagem img{
+    border: 1px solid #99B2B7;
+}
 
-
+/* COMENTÁRIOS */
+.comentarios {
+    width: 100%;
+    margin: 15px;
+    list-style: none;
+}
+.comentarios li {
+    width: 600px;
+    min-height: 100px;
+    background-color: #d5ded9;
+    border-bottom: 1px solid #99B2B7;
+    margin: 0 auto;
+    padding: 10px 0 0 0;
+    color: #4c6e75;
+    font: normal normal normal 0.875em "Georgia", serif;
+    text-indent: 25px;
+    line-height: 25px;
+}
+.comentarios .inforemetente {
+    float: left;
+    width: 100px;
+    height: auto;
+    margin: 0 10px;
+    border-right: 1px dotted #99B2B7;
+    text-align: center;
+    font: normal normal normal 0.875em "Trebuchet MS", sans-serif;
+    text-indent: 0;
+    line-height: normal;
+}
+.comentarios .inforemetente img {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #4c6e75;
+}
+.comentarios .inforemetente a{
+    color: #4c6e75;
+    text-decoration: none;
+}
+.comentarios .inforemetente a{
+    color: #4c6e75;
+    text-decoration: none;
+}
+.comentarios .inforemetente a:hover{
+    text-decoration: underline;
+}
+.comentarios .inforemetente .excluir:hover{
+    color: #ff3c55;
+    text-decoration: none;
+}
 /* OUTROS */
 .voltar {
     background:url(../images/back.png) left center no-repeat;
