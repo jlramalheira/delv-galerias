@@ -687,6 +687,24 @@ body {
     color: #ff3c55;
     text-decoration: none;
 }
+/* ATUALIZAÇÕES */
+.att{
+    
+}
+.att li{
+    color:#6b6456;
+    font:normal normal normal 14px "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+.att a{
+    color: #4c6e75;
+    text-decoration: none;
+    font:bold 14px "Trebuchet MS", Arial, Helvetica, sans-serif;    
+}
+.att a:hover{
+    color: #99B2B7;
+    text-decoration: underline;
+}
+
 /* OUTROS */
 .voltar {
     background:url(../images/back.png) left center no-repeat;
