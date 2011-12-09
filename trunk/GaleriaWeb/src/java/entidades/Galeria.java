@@ -31,7 +31,7 @@ public class Galeria implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dia;
     private String descricao;
-    @ManyToOne(cascade= CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade= {CascadeType.ALL}, fetch = FetchType.EAGER)
     @CascadeOnDelete
     private Usuario usuario;
 

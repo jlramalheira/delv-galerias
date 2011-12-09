@@ -28,13 +28,13 @@ public class Atualizacao implements Serializable {
     @ManyToOne
     private Usuario remetente;
     private String tipo;
-    @ManyToOne(cascade= CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade= {CascadeType.ALL}, fetch = FetchType.EAGER)
     @CascadeOnDelete
     private Imagem imagem;
-    @ManyToOne(cascade= CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade= {CascadeType.ALL}, fetch = FetchType.EAGER)
     @CascadeOnDelete
     private Comentario comentario;
-    @ManyToOne(cascade= CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade= {CascadeType.ALL}, fetch = FetchType.EAGER)
     @CascadeOnDelete
     private Usuario destinatario;
 

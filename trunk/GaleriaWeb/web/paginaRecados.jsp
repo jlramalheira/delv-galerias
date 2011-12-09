@@ -47,7 +47,7 @@
             <%
             if (c.getRemetente().getId() == u.getId() || c.getDestinatinatario().getId() == u.getId()){
                 //excluir comentario
-                out.println("<a href=\"ServletComentario?idComentario="+c.getId()+"\">Excluir</a>");
+               // out.println("<a href=\"ServletComentario?idUser="+idDest+"&local=perfil&idComentario="+c.getId()+"\">Excluir</a>");
             }
             %>
         </p>

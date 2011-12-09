@@ -57,7 +57,7 @@
                 <div class="imagem">
                     <img src="<%=i.getImagem()%>" alt="<%=i.getNome()%>"/>
                     <%if (id==u.getId()){ %>
-                    <a href="ServletImagem?idImagem=<%=i.getId()%>&op=excluir">Excluir</a>
+                    <%--<a href="ServletImagem?idImagem=<%=i.getId()%>&op=excluir">Excluir</a>--%>
                     <a href="ServletImagem?idImagem=<%=i.getId()%>&op=editar">Editar</a>
                     <%}%>
                 </div>                
@@ -120,7 +120,7 @@
                                 <img src="<%=c.getRemetente().getImagem()%>" alt="Foto de <%= c.getRemetente().getNome()%>" /><br/>
                                 <%=c.getRemetente().getNome()%>
                             </a><br/>
-                            <span class="excluir"><%=excluir%></span>
+                           <%-- <span class="excluir"><%=excluir%></span>--%>
                         </div>
                         <%=c.getComentario()%>
                     </li> 
