@@ -31,6 +31,12 @@ public class DaoImagem extends Dao{
         Dao.getEm().getTransaction().commit();
         return number;
     }
+    public int removeAllImage(int id){
+        Dao.getEm().getTransaction().begin();
+        int number = Dao.getEm().createQuery("DELETE FROM Imagem p WHERE p.id = "+id).executeUpdate();
+        Dao.getEm().getTransaction().commit();
+        return number;
+    }
     
     
 }

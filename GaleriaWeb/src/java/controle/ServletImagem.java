@@ -7,6 +7,7 @@ package controle;
 import dao.Dao;
 import dao.DaoComentario;
 import dao.DaoGaleria;
+import dao.DaoImagem;
 import entidades.Comentario;
 import entidades.Galeria;
 import entidades.Imagem;
@@ -38,7 +39,7 @@ public class ServletImagem extends HttpServlet {
 
     Dao<Usuario> daoUsuario = new Dao<Usuario>(Usuario.class);
     DaoGaleria daoGaleria = new DaoGaleria(Galeria.class);
-    Dao<Imagem> daoImagem = new Dao<Imagem>(Imagem.class);
+    DaoImagem daoImagem = new DaoImagem(Imagem.class);
     DaoComentario daoComentario = new DaoComentario(Comentario.class);
     public String dir = "/files/";
     public String dir1 = "/files/temp";
@@ -51,10 +52,9 @@ public class ServletImagem extends HttpServlet {
         String op = request.getParameter("op");
         int id = Integer.parseInt(request.getParameter("idImagem"));
         if (op.equalsIgnoreCase("excluir")){
-            daoComentario.removeAllComentarisFromImages(daoImagem.get(id).getGaleria().getId());
-            
-            daoImagem.remove(id);
-            response.sendRedirect("exibegaleria.jsp?idGaleria="+daoImagem.get(id).getGaleria().getId());
+            daoComentario.removeAllComentarisFromImages(((Imagem)daoImagem.get(id)).getGaleria().getId());
+            daoImagem.removeAllImage(id);
+            response.sendRedirect("exibegaleria.jsp?idGaleria="+((Imagem)daoImagem.get(id)).getGaleria().getId());
         } else {
             response.sendRedirect("editarImagem.jsp?idImagem="+id);
         }

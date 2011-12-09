@@ -21,5 +21,4 @@ public class DaoGaleria extends Dao {
         return Dao.getEm().createQuery("SELECT p  FROM Galeria p WHERE p.usuario.id = "+id).getResultList();
     }
     
-    
 }
