@@ -61,11 +61,11 @@ public class ServletComentario extends HttpServlet {
             att.setComentario(c);
             att.setDestinatario((Usuario)daoUsuario.get(idDest));
             att.setRemetente(u);
-            att.setTipo("deicou um recado pra voce");
+            att.setTipo("deixou um recado pra voce");
             
             daoAtualizacao.insert(att);
             
-            response.sendRedirect("paginaRecados.jsp?idUsuario"+idDest);
+            response.sendRedirect("paginaRecados.jsp?idUsuario="+idDest);
         } else {
             int idDest = Integer.parseInt(request.getParameter("idDest"));
             int idImage = Integer.parseInt(request.getParameter("idImage"));
@@ -87,7 +87,7 @@ public class ServletComentario extends HttpServlet {
             
             daoAtualizacao.insert(att);
             
-            response.sendRedirect("exibeImagem.jsp?idUsuario"+idDest+"&idImagem="+((Imagem)daoImagem.get(idImage)).getId());
+            response.sendRedirect("exibeImagem.jsp?idUsuario="+idDest+"&idImagem="+((Imagem)daoImagem.get(idImage)).getId());
         }
     }
 

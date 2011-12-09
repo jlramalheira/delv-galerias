@@ -9,11 +9,13 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
+import org.eclipse.persistence.annotations.CascadeOnDelete;
 
 /**
  *
@@ -29,7 +31,8 @@ public class Galeria implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dia;
     private String descricao;
-    @ManyToOne(cascade= CascadeType.ALL)
+    @ManyToOne(cascade= CascadeType.ALL, fetch = FetchType.EAGER)
+    @CascadeOnDelete
     private Usuario usuario;
 
     public int getId() {

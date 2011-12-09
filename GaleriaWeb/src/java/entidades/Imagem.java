@@ -9,12 +9,14 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
+import org.eclipse.persistence.annotations.CascadeOnDelete;
 
 /**
  *
@@ -33,7 +35,8 @@ public class Imagem implements Serializable {
     private boolean filtro;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dia;
-    @ManyToOne(cascade= CascadeType.ALL)
+    @ManyToOne(cascade= CascadeType.ALL, fetch = FetchType.EAGER)
+    @CascadeOnDelete
     private Galeria galeria;
 
     public String getNome() {

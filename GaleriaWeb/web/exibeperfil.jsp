@@ -55,6 +55,9 @@
                             <%
                                     }
                                 }%>
+                                <p>
+                                    <a href="galerias.jsp?idUsuario=<%=perfil.getId()%>">Imagens</a>
+                                </p>
                         </div>
                     </div>
                 </div>

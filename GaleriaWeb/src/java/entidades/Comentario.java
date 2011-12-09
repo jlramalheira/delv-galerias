@@ -9,12 +9,14 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
+import org.eclipse.persistence.annotations.CascadeOnDelete;
 
 /**
  *
@@ -32,9 +34,11 @@ public class Comentario implements Serializable {
     @ManyToOne
     private Usuario remetente;
     private String tipo;
-    @ManyToOne(cascade= CascadeType.ALL)
+    @ManyToOne(cascade= CascadeType.ALL, fetch = FetchType.EAGER)
+    @CascadeOnDelete
     private Imagem imagem;
-    @ManyToOne(cascade= CascadeType.ALL)
+    @ManyToOne(cascade= CascadeType.ALL, fetch = FetchType.EAGER)
+    @CascadeOnDelete
     private Usuario destinatinatario;
 
     public int getId() {

@@ -114,9 +114,6 @@
                         <h3><a href="exibeatt.jsp">Você tem (<%=atts.size()%>) atualizações</a>
                             <% }%></h3>
                     </p>
-                    <p>
-                        <a href="paginaRecados.jsp?idUsuario<%=u.getId()%>">Pagina Recados</a>
-                    </p>
                 </div>
             </div>
         </div>

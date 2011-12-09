@@ -106,6 +106,9 @@
                         } else {
                             //Mostra os comentários existentes
                             for (Comentario c : comentarios) {
+                                if (c.getImagem().getId() != i.getId()){
+                                    continue;
+                                }
                                 //Mostra o link para excluir se o usuário for o remetente da mensagem
                                 if (c.getRemetente().getId() == u.getId() || c.getDestinatinatario().getId() == u.getId()) {
                                     String excluir = "<a class=\"excluir\" href=\"ServletComentario?idComentario=" + c.getId() + "&local=imagem\">Excluir</a>";
