@@ -4,6 +4,7 @@
     Author     : a968501
 --%>
 
+<%@page import="dao.DaoUsuario"%>
 <%@page import="dao.DaoGaleria"%>
 <%@page import="dao.DaoImagem"%>
 <%@page import="entidades.Imagem"%>
@@ -27,6 +28,7 @@
                 response.sendRedirect("login.jsp");
             } else {
                 DaoImagem daoImagem = new DaoImagem(Imagem.class);
+                DaoUsuario daoUsuario = new DaoUsuario(Usuario.class);
                 int id = u.getId();
                 if (request.getParameter("idUsuario") != null) {
                     id = Integer.parseInt(request.getParameter("idUsuario"));
@@ -45,7 +47,7 @@
                 </div>
                 <%-- CONTENT --%>
                 <div class="content">
-                    <h2>Galerias de <%= u.getNome()%></h2>
+                    <h2>Galerias de <%= ((Usuario)daoUsuario.get(id)).getNome() %></h2>
                     <ul class="galerias">
                         <%
                             List<Galeria> galerias = new DaoGaleria(Galeria.class).listGaleriaByUser(id);
@@ -64,8 +66,10 @@
                             <a href="exibegaleria.jsp?idGaleria=<%=g.getId()%>&idUsuario=<%=id%>"><img src="<%= caminho%>" alt="Galeria" /></a><br />
                             <span class="galerianome"><%=g.getNome()%><br /></span>
                             Descrição: <%=g.getDescricao()%> <br />
+                            <%if(id == u.getId()){ %>
                             <span class="galeriaopc"><a href="ServletGaleria?op=excluir&id=<%=g.getId()%>">Excluir</a> | 
                                 <a href="ServletGaleria?op=editar&id=<%=g.getId()%>">Editar</a></span>
+                                <%}%>
                         </li>
                         <%
                                 }

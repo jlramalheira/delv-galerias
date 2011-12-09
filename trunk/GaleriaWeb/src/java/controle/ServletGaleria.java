@@ -1,8 +1,10 @@
 package controle;
 
 import dao.Dao;
+import dao.DaoAtualizacao;
 import dao.DaoComentario;
 import dao.DaoImagem;
+import entidades.Atualizacao;
 import entidades.Comentario;
 import entidades.Galeria;
 import entidades.Imagem;
@@ -20,6 +22,7 @@ public class ServletGaleria extends HttpServlet {
     Dao<Galeria> daoGaleria = new Dao<Galeria>(Galeria.class);
     DaoImagem daoImagem = new DaoImagem(Imagem.class);
     DaoComentario daoComentario = new DaoComentario(Comentario.class);
+    DaoAtualizacao daoAtualizacao = new DaoAtualizacao(Atualizacao.class);
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

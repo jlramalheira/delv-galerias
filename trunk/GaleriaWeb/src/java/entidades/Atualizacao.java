@@ -7,10 +7,12 @@ package entidades;
 import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import org.eclipse.persistence.annotations.CascadeOnDelete;
 
 /**
  *
@@ -26,11 +28,14 @@ public class Atualizacao implements Serializable {
     @ManyToOne
     private Usuario remetente;
     private String tipo;
-    @ManyToOne(cascade= CascadeType.ALL)
+    @ManyToOne(cascade= CascadeType.ALL, fetch = FetchType.EAGER)
+    @CascadeOnDelete
     private Imagem imagem;
-    @ManyToOne(cascade= CascadeType.ALL)
+    @ManyToOne(cascade= CascadeType.ALL, fetch = FetchType.EAGER)
+    @CascadeOnDelete
     private Comentario comentario;
-    @ManyToOne(cascade= CascadeType.ALL)
+    @ManyToOne(cascade= CascadeType.ALL, fetch = FetchType.EAGER)
+    @CascadeOnDelete
     private Usuario destinatario;
 
     public Comentario getComentario() {
