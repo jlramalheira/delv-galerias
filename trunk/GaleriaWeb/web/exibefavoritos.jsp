@@ -4,6 +4,7 @@
     Author     : João
 --%>
 
+<%@page import="dao.DaoUsuario"%>
 <%@page import="entidades.Imagem"%>
 <%@page import="dao.DaoImagem"%>
 <%@page import="java.util.List"%>
@@ -35,7 +36,7 @@
                 <%-- GALERIA --%>
                 <ul class="galeria">
                     <%
-                        List<Imagem> imagens = u.getFavoritos();
+                        List<Imagem> imagens = ((Usuario)new DaoUsuario(Usuario.class).get(id)).getFavoritos();
                         if (!imagens.isEmpty()) {
                             for (Imagem i : imagens) {
                                 String nomeImagem = i.getNome();

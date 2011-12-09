@@ -29,28 +29,34 @@
                     for (Atualizacao a : atts) { //mostras as atts
                         if (a.getImagem() == null && a.getComentario() == null) {
         %>
-        <p>
-            <a href="ServletPerfil?id=<%= a.getRemetente().getId()%>"><%=(a.getRemetente().getNome())%></a> <%=a.getTipo()%>
-        </p>
-        <% } else {
+        <%-- HEADER --%>
+        <%@include file="header.jsp" %>
+        <%-- BODY --%>
+        <div class="bgcontainer">
+            <div class="container"> 
+
+                <p>
+                    <a href="ServletPerfil?id=<%= a.getRemetente().getId()%>"><%=(a.getRemetente().getNome())%></a> <%=a.getTipo()%>
+                </p>
+                <% } else {
             if (a.getImagem() == null) {   //att de comentario
-        %>  
-        <p>
-            <a href="ServletPerfil?id=<%= a.getRemetente().getId()%>"><%=(a.getRemetente().getNome())%></a>
-            <%=a.getTipo()%> 
-            <a href="paginaRecados.jsp?idUsuario=<%=a.getComentario().getDestinatinatario().getId() %>">ver</a> 
-        </p>
-        <%                            } else { //att de imagem 
-        %>
-        <a href="ServletPerfil?id=<%= a.getRemetente().getId()%>"><%=(a.getRemetente().getNome())%></a>
-        <%=a.getTipo()%> na imagem  
-        <a href="exibeImagem.jsp?idUsuario=<%=a.getImagem().getGaleria().getUsuario().getId()%>&idImagem=<%=a.getImagem().getId()%>"><%=a.getImagem().getNome()%></a>  
-        <%                            }                             //chamar exibe imagem          
+%>  
+                <p>
+                    <a href="ServletPerfil?id=<%= a.getRemetente().getId()%>"><%=(a.getRemetente().getNome())%></a>
+                    <%=a.getTipo()%> 
+                    <a href="paginaRecados.jsp?idUsuario=<%=a.getComentario().getDestinatinatario().getId()%>">ver</a> 
+                </p>
+                <%                            } else { //att de imagem 
+%>
+                <a href="ServletPerfil?id=<%= a.getRemetente().getId()%>"><%=(a.getRemetente().getNome())%></a>
+                <%=a.getTipo()%> na imagem  
+                <a href="exibeImagem.jsp?idUsuario=<%=a.getImagem().getGaleria().getUsuario().getId()%>&idImagem=<%=a.getImagem().getId()%>"><%=a.getImagem().getNome()%></a>  
+                <%                            }                             //chamar exibe imagem          
+                                }
+                            } //exclui todas elas
+                            daoAtualizacao.removeAll(u.getId());
                         }
-                    } //exclui todas elas
-                    daoAtualizacao.removeAll(u.getId());
-                }
-            }
-        %>
-    </body>
-</html>
+                    }
+                %>
+                </body>
+                </html>
