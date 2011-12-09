@@ -21,6 +21,10 @@
                 response.sendRedirect("login.jsp");
             } else {
                 Imagem i = (Imagem) session.getAttribute("imagem");
+                if (request.getParameter("idGaleria") == null){
+                    response.sendRedirect("home.jsp");
+                }
+                int idGaleria = Integer.parseInt(request.getParameter("idGaleria"));
                 int id = 0;
                 if (i != null) {
                     id = i.getId();
@@ -46,7 +50,7 @@
                         <input type="submit" name="upload" value="insert" hidden="true"/></p>
                     <p><label for="nome">Nome:</label><input type="text" name="nome" value="" id="nome"/></p>
                     <p><label for="descricao">Descricao:</label><textarea name="descricao" id="descricao"></textarea></p>
-                    <p><input type="hidden" name="idGaleria" value="1" /> 
+                    <p><input type="hidden" name="idGaleria" value="<%=idGaleria%>" /> 
                         <input type="submit" value="" name="btImagem" style="margin-top: 25px;"/></p>
                 </form>
             </div>

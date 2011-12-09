@@ -5,6 +5,9 @@
 package controle;
 
 import dao.Dao;
+import dao.DaoComentario;
+import dao.DaoGaleria;
+import entidades.Comentario;
 import entidades.Galeria;
 import entidades.Imagem;
 import entidades.Usuario;
@@ -34,8 +37,9 @@ import javax.imageio.ImageIO;
 public class ServletImagem extends HttpServlet {
 
     Dao<Usuario> daoUsuario = new Dao<Usuario>(Usuario.class);
-    Dao<Galeria> daoGaleria = new Dao<Galeria>(Galeria.class);
+    DaoGaleria daoGaleria = new DaoGaleria(Galeria.class);
     Dao<Imagem> daoImagem = new Dao<Imagem>(Imagem.class);
+    DaoComentario daoComentario = new DaoComentario(Comentario.class);
     public String dir = "/files/";
     public String dir1 = "/files/temp";
     public String dir2 = "/files/images";
@@ -44,6 +48,16 @@ public class ServletImagem extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String op = request.getParameter("op");
+        int id = Integer.parseInt(request.getParameter("idImagem"));
+        if (op.equalsIgnoreCase("excluir")){
+            daoComentario.removeAllComentarisFromImages(daoImagem.get(id).getGaleria().getId());
+            
+            daoImagem.remove(id);
+            response.sendRedirect("exibegaleria.jsp?idGaleria="+daoImagem.get(id).getGaleria().getId());
+        } else {
+            response.sendRedirect("editarImagem.jsp?idImagem="+id);
+        }
     }
 
     @Override
@@ -164,7 +178,7 @@ public class ServletImagem extends HttpServlet {
                     i.setDescricao(descricaoImagem + " - "+i.getNome());
                     i.setDia(Calendar.getInstance().getTime());
                     i.setFiltro(false);
-                    i.setGaleria(daoGaleria.get(idGaleria));
+                    i.setGaleria((Galeria)daoGaleria.get(idGaleria));
                     i.setImagem("files/images/" + u.getId() + "/" + i.getNome() + ".jpg");
                     daoImagem.update(i);
                     ImageIO.write(imagemredimencionada, "JPG", new File(path2 + "/" + "mini_" + i.getNome() + ".jpg"));
@@ -204,7 +218,7 @@ public class ServletImagem extends HttpServlet {
             i.setDescricao(descricaoImagem);
             i.setDia(Calendar.getInstance().getTime());
             i.setFiltro(false);
-            i.setGaleria(daoGaleria.get(idGaleria));
+            i.setGaleria((Galeria)daoGaleria.get(idGaleria));
             i.setImagem("files/images/" + u.getId() + "/" + i.getNome() + ".jpg");
             daoImagem.update(i);
             ImageIO.write(imagemredimencionada, "JPG", new File(path2 + "/" + "mini_" + i.getNome() + ".jpg"));

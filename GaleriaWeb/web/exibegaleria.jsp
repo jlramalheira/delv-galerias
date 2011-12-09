@@ -72,7 +72,7 @@
 
                 <%if (id == u.getId()) { //so adiciona se for o usuario dono
                 %>
-                <p class="bt"><a href="gerenciaimagem.jsp">Adicionar Imagem</a></p>
+                <p class="bt"><a href="gerenciaimagem.jsp?idGaleria=<%=g.getId()%>">Adicionar Imagem</a></p>
                 <%      }
                 %>
             </div>            

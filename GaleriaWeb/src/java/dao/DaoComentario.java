@@ -23,4 +23,11 @@ public class DaoComentario extends Dao {
     public List<Comentario> listComentariosImages(int id) {
         return Dao.getEm().createQuery("SELECT p FROM Comentario p WHERE p.imagem is not null AND p.destinatinatario.id ="+id ).getResultList();
     }
+    
+    public int removeAllComentarisFromImages(int id){
+        Dao.getEm().getTransaction().begin();
+        int number = Dao.getEm().createQuery("DELETE FROM Comentario p WHERE p.imagem.galeria.id = "+id).executeUpdate();
+        Dao.getEm().getTransaction().commit();
+        return number;
+    }
 }

@@ -57,6 +57,8 @@
                 <p><%=i.getDescricao()%></p>
                 <div class="imagem">
                     <img src="<%=i.getImagem()%>" alt="<%=i.getNome()%>"/>
+                    <a href="ServletImagem?idImagem=<%=i.getId()%>&op=excluir">Excluir</a>
+                    <a href="ServletImagem?idImagem=<%=i.getId()%>&op=editar">Editar</a>
                 </div>                
                 <%-- FAVORITAR IMAGEM --%>
                 <%

@@ -1,7 +1,9 @@
 package controle;
 
 import dao.Dao;
+import dao.DaoComentario;
 import dao.DaoImagem;
+import entidades.Comentario;
 import entidades.Galeria;
 import entidades.Imagem;
 import entidades.Usuario;
@@ -17,6 +19,7 @@ public class ServletGaleria extends HttpServlet {
 
     Dao<Galeria> daoGaleria = new Dao<Galeria>(Galeria.class);
     DaoImagem daoImagem = new DaoImagem(Imagem.class);
+    DaoComentario daoComentario = new DaoComentario(Comentario.class);
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -25,6 +28,7 @@ public class ServletGaleria extends HttpServlet {
         String op = request.getParameter("op");
         int id = Integer.parseInt(request.getParameter("id"));
         if (op.equals("excluir")) {
+            daoComentario.removeAllComentarisFromImages(id);
             daoImagem.removeAllImagesFromGalery(id);
             daoGaleria.remove(id);
             response.sendRedirect("galerias.jsp");
