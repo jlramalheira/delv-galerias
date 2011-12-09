@@ -81,15 +81,19 @@
                         <p class="vermais"><a href="ServletExibeAmigos?pagina=1">Ver todos os amigos</a></p>
                     </div>
                 </div>
-                <%-- CONTENT --%>   
+                <%-- BARRA LATERAL ME --%>
                 <div class="me">
                     <a href="ServletPerfil?id=<%= u.getId()%>"><img src="<%=u.getImagem()%>" alt="Foto"/></a>
                     <ul class="menu">
                         <li><a href="galerias.jsp?idUsuario=<%=u.getId()%>">Imagens</a></li>
+                        <li><a href="paginaRecados.jsp?idUsuario<%=u.getId()%>">Recados</a></li>
+                        <li><a href="ServletExibeAmigos?pagina=1">Amigos</a></li>
+
                     </ul>
                 </div>
+                <%-- CONTENT --%> 
                 <div class="content">
-                    <%-- BARRA LATERAL ME --%>
+
                     <div class="welcome">
                         <p>Bem vindo,<br />
                             <span class="name"><a href="ServletPerfil?id=<%= u.getId()%>"><%=(u.getNome())%></a></span></p>
@@ -104,11 +108,11 @@
                     <p>
                         <%List<Atualizacao> atts = new DaoAtualizacao(Atualizacao.class).listAttFromUser(u.getId());
                             if (atts.isEmpty()) {
-                                out.println("<p>Você não possui atualizaçoes</p>");
+                                out.println("<h3>Você não possui atualizações</h3>");
                             } else {
                         %>
-                                <a href="exibeatt.jsp">Você tem (<%=atts.size()%>) atualizações</a>
-                        <% }%>
+                        <h3><a href="exibeatt.jsp">Você tem (<%=atts.size()%>) atualizações</a>
+                            <% }%></h3>
                     </p>
                     <p>
                         <a href="paginaRecados.jsp?idUsuario<%=u.getId()%>">Pagina Recados</a>

@@ -40,10 +40,9 @@
                 if (i != null) {
                     //Exibe o nome e caminho para o perfil certo
                     String nome = u.getNome();
-                    String aux = "home.jsp";
+                    String aux = "exibegaleria.jsp?idGaleria="+ i.getGaleria().getId() +"&idUsuario=" + i.getGaleria().getUsuario().getId();
                     if (id != u.getId()) {
                         nome = new Dao<Usuario>(Usuario.class).get(id).getNome();
-                        aux = "ServletPerfil?id=" + id;
                     }
         %>
         <%-- HEADER --%>
@@ -51,7 +50,7 @@
         <%-- BODY --%>
         <div class="bgcontainer">
             <div class="container">
-                <p class="voltar"><a href="<%= aux%>">Voltar as galerias de <%= nome%></a></p>                
+                <p class="voltar"><a href="<%= aux%>">Voltar ao álbum <%= i.getGaleria().getNome() %></a></p>                
                 <%-- IMAGEM --%>
                 <h2><%=i.getNome()%></h2>
                 <p><%=i.getDescricao()%></p>

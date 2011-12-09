@@ -233,12 +233,12 @@ body {
     width: 134px;
     margin: 5px 10px;
 }
+.menu li:hover{
+    font-weight: bold;
+}
 .menu li a{
     color: #6b6456;
     text-decoration: none;
-}
-.menu li a:hover{
-    text-decoration: underline;
 }
 /* FOOTER */
 .bgfooter {
