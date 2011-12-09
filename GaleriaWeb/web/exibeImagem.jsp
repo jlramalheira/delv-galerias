@@ -18,6 +18,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <%@include file="head.jsp" %>
         <title>Imagem</title>
+        <script type="text/javascript">          
+            $(document).ready(function(){
+                $('textarea').val('Escreva seu comentário aqui').toggleVal();
+            });       
+        </script>
     </head>
     <body>
         <%
@@ -83,10 +88,9 @@
                         idDest = Integer.parseInt(request.getParameter("idUsuario"));
                     }
                 %>
-                <form style="margin: 0 auto; height: 80px;" name="formRecado" action="ServletComentario" method="POST" class="formulario">
-                    <p><label for="recado">Recado:</label>
-                        <textarea name="comentario" id="recado">Recado...</textarea><br />
-                        <input type="submit" name="btComentario" value=""/>
+                <form style="margin: 0 auto; height: 150px;" name="formRecado" action="ServletComentario" method="POST" class="formulario">
+                    <p><textarea name="comentario" style="width: 325px; height:100px"></textarea><br />
+                        <input type="submit" name="btComentario" value="" style="margin-top: 10px"/>
                         <input type="hidden" name="idDest" value="<%=idDest%>" />
                         <input type="hidden" name="idImage" value="<%=i.getId()%>" />                        
                     </p>
