@@ -43,10 +43,10 @@ public class Usuario implements Serializable {
     @CascadeOnDelete
     private Pais pais;
     private String cidade;
-    @OneToMany(cascade= CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade= {CascadeType.ALL}, fetch = FetchType.EAGER)
     @CascadeOnDelete
     private List<Usuario> amigos;
-    @OneToMany(cascade= CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade= {CascadeType.ALL}, fetch = FetchType.EAGER)
     @CascadeOnDelete
     private List<Imagem> favoritos;
 

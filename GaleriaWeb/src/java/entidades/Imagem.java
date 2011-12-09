@@ -35,7 +35,7 @@ public class Imagem implements Serializable {
     private boolean filtro;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dia;
-    @ManyToOne(cascade= CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade= {CascadeType.ALL}, fetch = FetchType.EAGER)
     @CascadeOnDelete
     private Galeria galeria;
 

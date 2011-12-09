@@ -67,7 +67,7 @@
                             <span class="galerianome"><%=g.getNome()%><br /></span>
                             Descrição: <%=g.getDescricao()%> <br />
                             <%if(id == u.getId()){ %>
-                            <span class="galeriaopc"><a href="ServletGaleria?op=excluir&id=<%=g.getId()%>">Excluir</a> | 
+                            <%--<span class="galeriaopc"><a href="ServletGaleria?op=excluir&id=<%=g.getId()%>">Excluir</a> | --%>
                                 <a href="ServletGaleria?op=editar&id=<%=g.getId()%>">Editar</a></span>
                                 <%}%>
                         </li>

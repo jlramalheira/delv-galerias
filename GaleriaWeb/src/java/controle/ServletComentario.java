@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.apache.tomcat.jni.Local;
 
 /**
  *
@@ -35,8 +36,14 @@ public class ServletComentario extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String op = request.getParameter("local");
-        int idComentario = Integer.parseInt(request.getParameter("idComentario"));
-        daoComentario.remove(idComentario);
+        if (op.equalsIgnoreCase("perfil")){
+            int idComentario = Integer.parseInt(request.getParameter("idComentario"));
+            int idDest = Integer.parseInt(request.getParameter("idUser"));
+            daoComentario.remove(idComentario);
+            response.sendRedirect("paginaRecados.jsp?idUsuario="+idDest);
+        } else {
+            response.sendRedirect("home.jsp");//vai pra local da imagem
+        }
     }
 
     @Override
