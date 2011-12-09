@@ -88,6 +88,7 @@
                         <li><a href="galerias.jsp?idUsuario=<%=u.getId()%>">Imagens</a></li>
                         <li><a href="paginaRecados.jsp?idUsuario<%=u.getId()%>">Recados</a></li>
                         <li><a href="ServletExibeAmigos?pagina=1">Amigos</a></li>
+                        <li><a href="exibefavoritos.jsp?idUsuario=<%=u.getId()%>">Favoritos</a></li>
 
                     </ul>
                 </div>
