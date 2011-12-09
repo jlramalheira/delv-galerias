@@ -490,6 +490,17 @@ body {
     font:normal 14px "Georgia", serif;
     resize: none;    
 }
+.formulario button{
+    width: auto;
+    height: 25px;
+    padding:5px 10px;
+    background-color:#948C75;
+    border:0;
+    color:#FFFFFF;
+    font:bold 14px "Trebuchet MS", Arial, Helvetica, sans-serif;
+    text-transform:uppercase;
+    cursor:pointer;
+}
 
 /* RESULTADOS PESQUISA */
 .resultadosbusca {
@@ -710,4 +721,10 @@ body {
 }
 .bt:hover{
     background-color:#b0a892;
+}
+.opc a{
+    color: #99B2B7;
+    font: normal normal normal 0.875em "Trebuchet MS", sans-serif;
+    text-decoration: none;
+    text-transform: uppercase;
 }

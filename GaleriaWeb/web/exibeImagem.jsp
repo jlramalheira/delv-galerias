@@ -40,7 +40,7 @@
                 if (i != null) {
                     //Exibe o nome e caminho para o perfil certo
                     String nome = u.getNome();
-                    String aux = "exibegaleria.jsp?idGaleria="+ i.getGaleria().getId() +"&idUsuario=" + i.getGaleria().getUsuario().getId();
+                    String aux = "exibegaleria.jsp?idGaleria=" + i.getGaleria().getId() + "&idUsuario=" + i.getGaleria().getUsuario().getId();
                     if (id != u.getId()) {
                         nome = new Dao<Usuario>(Usuario.class).get(id).getNome();
                     }
@@ -50,16 +50,19 @@
         <%-- BODY --%>
         <div class="bgcontainer">
             <div class="container">
-                <p class="voltar"><a href="<%= aux%>">Voltar ao álbum <%= i.getGaleria().getNome() %></a></p>                
+                <p class="voltar"><a href="<%= aux%>">Voltar ao álbum <%= i.getGaleria().getNome()%></a></p>
+                <p class="opc">
+                    <%if (id == u.getId()) {%>
+                    <%--<a href="ServletImagem?idImagem=<%=i.getId()%>&op=excluir">Excluir</a>--%>
+                    <a href="ServletImagem?idImagem=<%=i.getId()%>&op=editar">Editar</a>
+                    <%}%>
+                </p>
                 <%-- IMAGEM --%>
                 <h2><%=i.getNome()%></h2>
                 <p><%=i.getDescricao()%></p>
                 <div class="imagem">
                     <img src="<%=i.getImagem()%>" alt="<%=i.getNome()%>"/>
-                    <%if (id==u.getId()){ %>
-                    <%--<a href="ServletImagem?idImagem=<%=i.getId()%>&op=excluir">Excluir</a>--%>
-                    <a href="ServletImagem?idImagem=<%=i.getId()%>&op=editar">Editar</a>
-                    <%}%>
+
                 </div>                
                 <%-- FAVORITAR IMAGEM --%>
                 <%
@@ -106,7 +109,7 @@
                         } else {
                             //Mostra os comentários existentes
                             for (Comentario c : comentarios) {
-                                if (c.getImagem().getId() != i.getId()){
+                                if (c.getImagem().getId() != i.getId()) {
                                     continue;
                                 }
                                 //Mostra o link para excluir se o usuário for o remetente da mensagem
@@ -120,7 +123,7 @@
                                 <img src="<%=c.getRemetente().getImagem()%>" alt="Foto de <%= c.getRemetente().getNome()%>" /><br/>
                                 <%=c.getRemetente().getNome()%>
                             </a><br/>
-                           <%-- <span class="excluir"><%=excluir%></span>--%>
+                            <%-- <span class="excluir"><%=excluir%></span>--%>
                         </div>
                         <%=c.getComentario()%>
                     </li> 
