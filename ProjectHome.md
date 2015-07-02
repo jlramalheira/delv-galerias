@@ -1,0 +1,2 @@
+Rede social com ênfase em Imagens requisitado como trabalho final para obtenção de nota na disciplina de Desenvolvimento Web II. Ministrada por Prof. André Luis Schwerz.
+Alunos: João Luiz Ramalheira de Almeida e Max Naegeler Roecker.
